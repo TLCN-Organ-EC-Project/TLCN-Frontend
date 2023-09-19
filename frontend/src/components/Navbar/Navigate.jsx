@@ -14,14 +14,14 @@ const Navigate = () => {
     }, 0);
   };
   return (
-    <div className='w-main py-2 border-y mb-6 text-sm flex items-center justify-center'>  
+    <div className='w-main py-2 border-b-gray-600 mb-6 text-sm flex items-center justify-center'>  
     {navigation.map((el)=>(
       <button
         key={el.id}
         onClick={()=>{setActiveTab(el.id);handleItemClick(el)}}
         className={`${
           activeTab===el.id ? "text-gray-900" : "hover:text-gray-500"
-        } relative px-3 py-1.5 text-sm font-medium text-gray-900 transition 
+        } relative px-5 py-1.5 text-sm font-medium text-gray-900 transition 
         `}
       >
           {activeTab===el.id && (
@@ -29,7 +29,7 @@ const Navigate = () => {
               layoutId='active-pill'
               className='absolute inset-0 border-b-2 border-b-rose-300 '
               style={{borderRadius:9999}}
-              transition={{duration:0.7}}
+              transition={{duration:0.5}}
             />
           )}
           <NavLink  to={el.path}  className='relative z-50'>{el.value}</NavLink>

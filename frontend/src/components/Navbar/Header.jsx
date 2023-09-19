@@ -6,8 +6,8 @@ const Header = () => {
         <div className="pl-4">
           <span>Saigon : 173 Huynh Van Banh - Dist. Phu Nhuan  - 0773 648 867</span>
         </div>
-        <div className="pr-5">
-          <span>Hanoi : 974 Duong Lang - Dist. Dong Da - 0975 190 036</span>
+        <div className="pr-10">
+          <span className="text-white hover:text-gray-800 transition cursor-pointer">Login and Create account</span>
         </div>
       </div>
     </div>

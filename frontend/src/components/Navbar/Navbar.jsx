@@ -1,10 +1,14 @@
 import Logo from "./Logo"
+import NavbarLeft from "./NavbarLeft"
 
 const Navbar = () => {
   return (
-    <div className="w-main">
-        <div className="w-[73px] flex justify-between items-center py-3">
+    <div className="w-main bg-navbar">
+        <div className="h-[73px] py-3">
+          <div className="flex justify-between ">
             <Logo/>
+            <NavbarLeft/>
+          </div>
         </div>
     </div>
   )

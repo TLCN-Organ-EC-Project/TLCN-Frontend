@@ -5,8 +5,10 @@ const Public = () => {
     return (
        <div className="w-full flex flex-col items-center ">
             <Header />
-            <Navbar />
-            <Navigate/>
+            <div className="w-main">
+                  <Navbar />
+                  <Navigate/>
+            </div>
             <Outlet />
             <Footer />
        </div>
