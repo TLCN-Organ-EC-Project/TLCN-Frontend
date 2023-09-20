@@ -8,7 +8,8 @@ import {BiGift} from 'react-icons/bi'
 import {BsThreeDots} from 'react-icons/bs'
 import {ImBin} from 'react-icons/im'
 import {TfiViewListAlt} from 'react-icons/tfi'
-import {RiProductHuntLine,RiBillLine} from 'react-icons/ri'
+import {SiBlockchaindotcom} from 'react-icons/si'
+import {RiProductHuntLine,RiBillLine,RiOpenbaseFill} from 'react-icons/ri'
 import {AiFillStar,AiOutlineStar,AiFillEye,AiOutlineMenu,AiOutlineDashboard,AiOutlineLogout,AiOutlineDown,AiOutlineCloseCircle} from 'react-icons/ai'
 
 const icons={
@@ -31,6 +32,7 @@ const icons={
     BsReplyAll,
     BiGift,
     FaTty,
+    RiOpenbaseFill,
     AiOutlineDown,
     AiOutlineShoppingCart,
     BsThreeDots,
@@ -40,6 +42,7 @@ const icons={
     ImBin,
     AiOutlineProfile,
     TfiViewListAlt,
+    SiBlockchaindotcom,
 }
 
 export default icons
