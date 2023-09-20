@@ -1,10 +1,10 @@
 import {memo}from 'react'
 import clsx from 'clsx'
-const Button = ({children, handleOnClick, style,type='button'}) => {
+const Button = ({children, handleOnClick, style,type='button',buttonAdmin}) => {
   return (
     <button
      type={type}
-     className={clsx('px-2 py-2 rounded-md text-gray-800 bg-red-300 text-semibold border border-gray-600 transition opacity-90 hover:opacity-100 hover:border-gray-900 hover:shadow-lg')}
+     className={clsx('px-2 py-2 rounded-md text-white bg-red-400 text-semibold', buttonAdmin && 'flex justify-end  ml-40 my-5')}
      onClick={()=>{handleOnClick && handleOnClick()}}
     >
      {children}   
