@@ -1,4 +1,5 @@
-
+import { Link } from "react-router-dom"
+import path from "../../ultils/path"
 const Header = () => {
   return (
     <div className="bg-header w-main  h-7 hidden xl:block py-1">
@@ -7,7 +8,7 @@ const Header = () => {
           <span>Saigon : 173 Huynh Van Banh - Dist. Phu Nhuan  - 0773 648 867</span>
         </div>
         <div className="pr-10">
-          <span className="text-white hover:text-gray-800 transition cursor-pointer">Login and Create account</span>
+          <Link to={`/${path.LOGIN}`} className="text-white hover:text-gray-800 transition cursor-pointer">Login and Create account</Link>
         </div>
       </div>
     </div>
