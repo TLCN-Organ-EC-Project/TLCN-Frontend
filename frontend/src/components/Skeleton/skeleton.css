@@ -4,6 +4,7 @@
     margin-right: 12px;
     margin-bottom: 30px;
     animation: skeleton 1s ease infinite alternate;
+    transition: ease-in;
   }
   
   @keyframes skeleton {
