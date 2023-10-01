@@ -9,7 +9,8 @@ export default function Skeleton({ type }) {
       <div className="postSkImg"></div>
       <div className="postSkInfo">
         <div className="postSkDetail">
-          <div className="postSkTitle"></div>
+          <div className="postSkTitle1"></div>
+          <div className="postSkTitle2"></div>
           <div className="postSkauthor"></div>
           <div className="postSkText"></div>
         </div>

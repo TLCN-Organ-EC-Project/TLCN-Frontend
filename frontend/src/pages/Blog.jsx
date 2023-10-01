@@ -9,7 +9,7 @@ const Blog = () => {
   useEffect (()=>{
     setTimeout(()=>{
       setIsLoading(false)
-    },2*1000)
+    },3*1000)
   },[])
   return (
     <div className='w-main h-full'>
