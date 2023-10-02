@@ -11,25 +11,26 @@ import { apiResgister,apiLogin } from "../apis/user";
 import { validate } from '../ultils/helper'
 import Swal from 'sweetalert2'
 import { useNavigate ,Link} from "react-router-dom";
+import { login } from "../store/user/userSlice";
 
 const Login = () => {
 
 
+  const dispatch = useDispatch()
   const navigate=useNavigate()
   const [loading, setLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [invalidFields, setInvalidFields] = useState([])
   const [payload, setPayload] = useState({
     email: '',
-    password: '',
     username: '',
     full_name: '',
     address: '',
     province: '',
+    password:'',
     phone: '+84',
     role:'Buyer'
   })
-
 
   const resetPayload = () => {
     setPayload({
@@ -43,9 +44,10 @@ const Login = () => {
     })
   }
 
+ 
+
   const handleSubmit = useCallback(async () => {resetPayload()
     const { email, full_name, address, province, phone, role,...data } = payload
-    console.log({payload})
     const invalids = isRegister ? validate(payload, setInvalidFields) : validate(data, setInvalidFields)
     if (invalids === 0) {
       if (isRegister) {
@@ -56,7 +58,6 @@ const Login = () => {
           Swal.fire('Congratulation', 'success').then(() => {
             setIsRegister(false)
             navigate(`/${path.LOGIN}`)
-            resetPayload()
           })
         } else {
           Swal.fire('Oops!', 'error')
@@ -65,10 +66,17 @@ const Login = () => {
         const response=await apiLogin(data)
         console.log(response)
         if (response){
-          setLoading(true)
+          setLoading(true);
+         const token = response.header.headers.get('x-access-token ');
+         setLoading(false)
+         console.log(token)
+          dispatch(login({
+            isLoggedIn: true,
+            userData:response,
+          }))
           navigate(`/${path.HOME}`)
-          resetPayload()
-          setLoading(false)
+         
+      
         }else  Swal.fire('Oops!','error')
       }
     }

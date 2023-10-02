@@ -1,8 +1,11 @@
+import SwiperComponet from "../components/Swiper/SwiperComponet"
 
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="w-main">
+        <SwiperComponet/>
+    </div>
   )
 }
 
