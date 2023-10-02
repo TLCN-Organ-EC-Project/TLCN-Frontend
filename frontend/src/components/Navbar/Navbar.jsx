@@ -3,7 +3,7 @@ import NavbarLeft from "./NavbarLeft"
 
 const Navbar = () => {
   return (
-    <div className="w-main shadow-lg">
+    <div className="w-main shadow-sm">
         <div className="h-[73px] py-3">
           <div className="flex justify-between ">
             <Logo/>

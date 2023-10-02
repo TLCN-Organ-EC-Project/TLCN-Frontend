@@ -1,9 +1,9 @@
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo2.webp'
 
 const Logo = () => {
   return (
     <div>
-        <img src={logo} alt='Huhu Error' className='w-[42px] h-[47px] ml-10 hidden md:block'/>
+        <img src={logo} alt='Huhu Error' className='w-[190px] h-[70px] ml-10 hidden md:block'/>
     </div>
   )
 }
