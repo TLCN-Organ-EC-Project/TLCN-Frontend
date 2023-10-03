@@ -14,26 +14,26 @@ body {
   }
 
   .custom-slider button.slick-next{
-    width: 40px;
-    height: 40px;
+  /*   width: 40px;
+    height: 40px; */
    }
    .custom-slider button.slick-next::before{
-           width: 10px !important;
+          /*  width: 10px !important;
            height: 10px !important;
            color: rgb(39, 39, 45);
            display: flex ;
            justify-content: center;
            align-items: center;
            display: block;
-           padding-left: 20px;
+           padding-left: 20px; */
    }
    .custom-slider button.slick-prev::before{
-       width: 20px !important;
+     /*   width: 20px !important;
        height: 20px !important;
        color: rgb(39, 39, 45);
        display: flex ;
        justify-content: center;
-       align-items: center;
+       align-items: center; */
    }
    
    

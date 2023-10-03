@@ -36,7 +36,7 @@ const ProductsSort = () => {
                     </h1>
                 ))}
             </div>
-            <CustomSlider className='custom-slider' products={products}/>
+            <CustomSlider  products={products}/>
         </div>
     )
 }

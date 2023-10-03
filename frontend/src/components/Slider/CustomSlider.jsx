@@ -16,7 +16,7 @@ var settings = {
 const CustomSlider = ({products}) => {
  
   return (
-    <>
+    <div className='w-main'>
         {products && <Slider className='custom-slider' {...settings}>
          {products?.map((el,index)=>(
              <Product
@@ -26,7 +26,7 @@ const CustomSlider = ({products}) => {
              />
              ))}
          </Slider>}
-    </>
+    </div>
   )
 }
 

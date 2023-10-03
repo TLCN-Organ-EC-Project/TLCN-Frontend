@@ -68,13 +68,5 @@ export const menuSPMoi = [
     {
         "id": 2,
         "name": "Short"
-    },
-    {
-        "id": 3,
-        "name": "Shocks"
-    },
-    {
-        "id": 4,
-        "name": "Polo"
     }
 ]
