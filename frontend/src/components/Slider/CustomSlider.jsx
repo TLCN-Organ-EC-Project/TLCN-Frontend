@@ -13,7 +13,8 @@ var settings = {
   };
 
 
-const CustomSlider = ({products, activedTab}) => {
+const CustomSlider = ({products}) => {
+ 
   return (
     <>
         {products && <Slider className='custom-slider' {...settings}>
@@ -21,7 +22,6 @@ const CustomSlider = ({products, activedTab}) => {
              <Product
              key={index} 
              productData={el} 
-             isNew={activedTab===1?false:true}
              pid={el.id}
              />
              ))}

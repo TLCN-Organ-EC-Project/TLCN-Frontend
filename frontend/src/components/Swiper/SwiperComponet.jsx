@@ -12,8 +12,7 @@ import '../../styles/swiper.css'
 
 const SwiperComponet = () => {
   return (
-    <div className="w-main">
-        
+    <div className="w-main border border-b-gray-300  border-t-gray-100 border-l-gray-100 border-r-gray-100 mb-5">
         <Swiper
             effect={'coverflow'}
             grabCursor={true}

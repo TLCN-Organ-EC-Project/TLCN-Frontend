@@ -64,15 +64,16 @@ const Login = () => {
         }
       }else{
         const response=await apiLogin(data)
-        console.log(response)
+      /*   console.log(response) */
         if (response){
-          setLoading(true);
-         const token = response.header.headers.get('x-access-token ');
+         setLoading(true);
+         const token = response.headers.get('x-access-token');
          setLoading(false)
-         console.log(token)
+      /*    console.log(token) */
           dispatch(login({
             isLoggedIn: true,
-            userData:response,
+            userData:response.data,
+            token:token
           }))
           navigate(`/${path.HOME}`)
          
@@ -127,7 +128,7 @@ const Login = () => {
             }
 
             {isRegister &&
-              <div className="flex  gap-2">
+              <div className="flex gap-2">
 
                 <InputField
                   value={payload.email}
