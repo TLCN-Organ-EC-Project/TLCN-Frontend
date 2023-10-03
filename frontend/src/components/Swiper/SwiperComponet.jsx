@@ -8,6 +8,7 @@ import slide_image1 from '../../assets/anh1.jpg'
 import slide_image2 from '../../assets/anh2.jpg'
 import slide_image3 from '../../assets/anh3.jpg'
 import slide_image4 from '../../assets/anh5.jpg'
+import slide_image5 from '../../assets/anh4.jpg'
 import '../../styles/swiper.css'
 
 const SwiperComponet = () => {
@@ -46,7 +47,7 @@ const SwiperComponet = () => {
                 <img src={slide_image3} alt='slide_image'/>
             </SwiperSlide>
             <SwiperSlide>
-                <img src={slide_image3} alt='slide_image'/>
+                <img src={slide_image5} alt='slide_image'/>
             </SwiperSlide>
             <SwiperSlide>
                 <img src={slide_image4} alt='slide_image'/>
