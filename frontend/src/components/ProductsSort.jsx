@@ -4,14 +4,20 @@ import CustomSlider from './Slider/CustomSlider'
 import { getProductByCategory } from '../apis/products'
 import { useParams } from 'react-router-dom'
 import ButtonSeeMore from './Button/ButtonSeeMore'
+import { useNavigate } from 'react-router-dom'
+import path from '../ultils/path'
 
 const ProductsSort = () => {
+    const navigate=useNavigate()
 
     const [activedTab, setActivedTab] = useState(1)
 
     const [products, setproducts] = useState(null)
 
-
+    const handleClickButtonShowMore = () => {
+        navigate(`${path.PRODUCTS}`);
+      };
+      
     const fetchProducts = async (cid) => {
         const response = await getProductByCategory(
             cid, 1, 10
@@ -39,7 +45,7 @@ const ProductsSort = () => {
             </div>
             <CustomSlider products={products} />
             <div className="justify-center flex  pt-10">
-                <ButtonSeeMore children="Show more" />
+                <ButtonSeeMore children="Show more" handleOnClick={handleClickButtonShowMore}/>
             </div>
         </div>
     )

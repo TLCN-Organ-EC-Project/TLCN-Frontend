@@ -7,7 +7,6 @@ const Home = () => {
     <div className="w-main">
         <SwiperComponet/>
         <ProductsSort/>
-       
     </div>
   )
 }
