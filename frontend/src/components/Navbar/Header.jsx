@@ -18,10 +18,12 @@ const Header = ({dispatch, navigate}) => {
         {
           isLoggedIn && current ? 
           <div className='flex text-center gap-3 justify-center text-white'>
-              <span>
+              <span className="text-blue-300">
                   {`Welcome, ${current?.username}`}
               </span>
               <span 
+                  title="Logout"
+                  className="pr-5 hover:text-blue-500 transition"
                   onClick={()=>dispatch(logout())}>
                   <AiOutlineLogout  fontSize={18}/>
                 </span>              
