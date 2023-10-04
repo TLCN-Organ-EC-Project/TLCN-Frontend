@@ -64,10 +64,8 @@
   }
   
   .topSkIcon {
-    margin-right: 20px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
+    width: 300px;
+    height: 300px;
     background-color: #313131;
   }
   
@@ -79,51 +77,7 @@
     background-color: #313131;
   }
   
-  .menuSk {
-    animation: skeleton 1s ease infinite alternate;
-  }
-  
-  .menuSkItem {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #535353;
-    margin-top: 40px;
-  }
-  
-  .circle,
-  .custom {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .custom {
-    flex-direction: column;
-  }
-  
-  .balls {
-    display: flex;
-  }
-  
-  .ball {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgb(178, 178, 178);
-    margin-right: 10px;
-    animation: ball 0.5s ease infinite alternate;
-  }
-  
-  .ball2 {
-    animation-delay: 0.1s;
-  }
-  
-  .ball3 {
-    animation-delay: 0.2s;
-  }
-  
+ 
   @keyframes ball {
     to {
       transform: translateY(-10px);
@@ -132,4 +86,106 @@
   
   .customTet {
     font-weight: 100;
+  }
+
+  .card{
+    margin-top: 10px;
+    max-width: 350px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+  }
+  .card .header{
+    align-items: center;
+  }
+  .header .img{
+    height: 300px;
+    width: 300px;
+    background: #d9d9d9;
+    position: relative;
+    overflow: hidden;
+  }
+  .details span{
+    display: block;
+    background: #d9d9d9;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .details .name{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 300px;
+  }
+  .details .about{
+    height: 20px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 80px;
+  }
+  .card .description{
+    margin: 25px 0;
+  }
+  .description .line{
+    background: #d9d9d9;
+    border-radius: 10px;
+    height: 13px;
+    margin: 10px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .description .line-1{
+    width: calc(100% - 15%);
+  }
+  .description .line-3{
+    width: calc(100% - 40%);
+  }
+  .card .btns{
+    display: flex;
+  }
+  .card .btns .btn{
+    height: 45px;
+    width: 100%;
+    background: #d9d9d9;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btns .btn-1{
+    margin-right: 8px;
+  }
+  .btns .btn-2{
+    margin-left: 8px;
+  }
+  .header .img::before,
+  .details span::before,
+  .description .line::before,
+  .btns .btn::before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+    background-repeat: no-repeat;
+    background-size: 450px 400px;
+    animation: shimmer 1s linear infinite;
+  }
+  .header .img::before{
+    background-size: 650px 600px;
+  }
+  .details span::before{
+    animation-delay: 0.2s;
+  }
+  .btns .btn-2::before{
+    animation-delay: 0.22s;
+  }
+  @keyframes shimmer {
+    0%{
+      background-position: -450px 0;
+    }
+    100%{
+      background-position: 450px 0;
+    }
   }
