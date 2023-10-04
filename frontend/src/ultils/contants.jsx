@@ -70,3 +70,42 @@ export const menuSPMoi = [
         "name": "Short"
     }
 ]
+
+export const category=[
+    {
+        "id": 1,
+        "name": "T-Shirt"
+      },
+      {
+        "id": 2,
+        "name": "Short"
+      },
+      {
+        "id": 3,
+        "name": "Shocks"
+      },
+      {
+        "id": 4,
+        "name": "Polo"
+      },
+      {
+        "id": 5,
+        "name": "Hat"
+      },
+      {
+        "id": 6,
+        "name": "Bag"
+      },
+      {
+        "id": 7,
+        "name": "Hoodie"
+      },
+      {
+        "id": 8,
+        "name": "Jeans"
+      },
+      {
+        "id": 9,
+        "name": "Trousers"
+      }
+]

@@ -1,11 +1,13 @@
-import icons from '../ultils/icons'
-import bcn from '../assets/bct.png'
+import icons from '../../ultils/icons'
+import bcn from '../../assets/bct.png'
+import TopFooter from './TopFooter'
 
 const {BsFacebook,AiFillGoogleCircle,AiFillInstagram,BsTiktok,MdEmail,BsFillTelephoneFill}=icons
 
 const Footer = () => {
   return (
     <div className="w-main mt-5 border border-t-gray-300 hidden md:block">
+      <TopFooter/>
        <div className="flex justify-around mt-2">
           <div>
             <h3 className='text-sm uppercase tracking-wider mb-5 relative leading-6'>KENTA VN</h3>

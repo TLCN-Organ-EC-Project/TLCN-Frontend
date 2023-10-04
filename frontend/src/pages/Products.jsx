@@ -1,7 +1,9 @@
+import NavBarCategory from "../components/Navbar/NavBarCategory"
+
 const Products = () => {
   return (
-    <div>
-      
+    <div className="w-main">
+        <NavBarCategory/>
     </div>
   )
 }
