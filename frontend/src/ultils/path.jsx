@@ -3,12 +3,12 @@ const path={
     HOME:'',
     ALL:'*',
     LOGIN:'login',
-    PRODUCTS:':category',
+    PRODUCTS:'category',
     BLOGS:'blogs',
     DETAIL_BLOG:':bid/:title',
     SERVICES:'services',
     CONTACT_US:'contact',
-    DETAIL__PRODUCT__CATEGORY__PID__TITLE:':category/:pid/:title',
+    DETAIL__PRODUCT__CATEGORY__PID__TITLE:':pid/:productname',
     DETAIL_CART:'my-cart',
 
 
