@@ -64,20 +64,16 @@ const Login = () => {
         }
       }else{
         const response=await apiLogin(data)
-      /*   console.log(response) */
         if (response){
          setLoading(true);
          const token = response.headers.get('x-access-token');
          setLoading(false)
-      /*    console.log(token) */
           dispatch(login({
             isLoggedIn: true,
-            userData:response.data,
-            token:token
+            token:token,
+            current:response.data,
           }))
           navigate(`/${path.HOME}`)
-         
-      
         }else  Swal.fire('Oops!','error')
       }
     }
