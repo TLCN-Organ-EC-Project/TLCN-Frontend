@@ -3,7 +3,7 @@ import "./skeleton.css";
 
 
 export default function Skeleton({ type }) {
-  const COUNTER = 10;
+  const COUNTER = 3;
   const COUNTERPOST=3;
   const FeedSkeleton = () => (
     <div className="postSk">

@@ -27,6 +27,7 @@ const Products = () => {
     }
   }
   useEffect(() => {
+    setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
     }, 2 * 1000)
