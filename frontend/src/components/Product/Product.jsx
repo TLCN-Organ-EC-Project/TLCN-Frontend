@@ -4,7 +4,6 @@ import {formatNumber} from '../../ultils/helper'
 import { useNavigate } from 'react-router-dom'
 
 const Product = ({productData}) => {
-  console.log(productData)
   const navigate=useNavigate();
   return (
     <div className='w-main text-base'>
