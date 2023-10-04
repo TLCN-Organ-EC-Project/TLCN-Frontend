@@ -3,6 +3,7 @@ import { menuSPMoi } from '../ultils/contants'
 import CustomSlider from './Slider/CustomSlider'
 import { getProductByCategory } from '../apis/products'
 import { useParams } from 'react-router-dom'
+import ButtonSeeMore from './Button/ButtonSeeMore'
 
 const ProductsSort = () => {
 
@@ -36,7 +37,10 @@ const ProductsSort = () => {
                     </h1>
                 ))}
             </div>
-            <CustomSlider  products={products}/>
+            <CustomSlider products={products} />
+            <div className="justify-center flex  pt-10">
+                <ButtonSeeMore children="Show more" />
+            </div>
         </div>
     )
 }

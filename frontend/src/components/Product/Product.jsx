@@ -3,8 +3,6 @@ import withBase from '../../hocs/withBase'
 import {formatNumber} from '../../ultils/helper'
 
 const Product = ({productData}) => {
- 
-  console.log(productData)
   return (
     <div className='w-main text-base'>
         <div className='p-[15px] flex flex-col items-center gap-3'>
@@ -15,5 +13,4 @@ const Product = ({productData}) => {
     </div>
   )
 }
-
 export default withBase(Product)
