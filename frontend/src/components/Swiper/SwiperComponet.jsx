@@ -20,6 +20,7 @@ const SwiperComponet = () => {
             centeredSlides={true}
             loop={true}
             slidesPerView={'auto'}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
             coverflowEffect={
                 {
                     rotate:0,
@@ -52,9 +53,6 @@ const SwiperComponet = () => {
             <SwiperSlide>
                 <img src={slide_image4} alt='slide_image'/>
             </SwiperSlide>
-            <div className='slider-controler'>
-                .
-            </div>
         </Swiper>
     </div>
   )

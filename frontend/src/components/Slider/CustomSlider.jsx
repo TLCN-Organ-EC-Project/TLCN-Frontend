@@ -9,7 +9,9 @@ var settings = {
     speed: 500,
     slidesToShow: 3,
     lazyLoad: true,
-    slidesToScroll: 1
+    autoplay: true, 
+    slidesToScroll: 1,
+    autoplaySpeed: 3000,
   };
 
 
