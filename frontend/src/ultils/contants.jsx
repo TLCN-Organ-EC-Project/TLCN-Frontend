@@ -109,3 +109,22 @@ export const category=[
         "name": "Trousers"
       }
 ]
+
+export const size=[
+  {
+    id:1,
+    size:'M',
+  },
+  {
+    id:2,
+    size:'L',
+  },
+  {
+    id:3,
+    size:'XL',
+  },
+  {
+    id:4,
+    size:'2XL',
+  }
+]

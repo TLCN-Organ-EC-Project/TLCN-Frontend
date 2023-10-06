@@ -16,9 +16,6 @@ var settings = {
 
 
 const CustomSlider = ({products}) => {
-
- console.log(products)
- 
   return (
     <div className='w-main'>
         {products && <Slider className='custom-slider' {...settings}>
