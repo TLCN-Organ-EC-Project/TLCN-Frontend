@@ -28,12 +28,12 @@ export default function Skeleton({ type }) {
   );
 
   const Product = () => (
-    <div class="card">
-    <div class="header">
-      <div class="img"></div>
-      <div class="details">
-        <span class="name"></span>
-        <span class="about"></span>
+    <div className="card">
+    <div className="header">
+      <div className="img"></div>
+      <div className="details">
+        <span className="name"></span>
+        <span className="about"></span>
       </div>
     </div>
   </div>

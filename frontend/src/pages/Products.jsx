@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import NavBarCategory from "../components/Navbar/NavBarCategory"
 import { getProductByCategory } from '../apis/products'
 import { category } from '../ultils/contants'
@@ -18,14 +18,15 @@ const Products = () => {
       navigate(el.id);
     }, 0);
   };
-  const fetchProducts = async (cid) => {
+  const fetchProducts = useCallback(async (cid) => {
     const response = await getProductByCategory(
       cid, 1, 10
     )
     if (response) {
       setproducts(response?.data)
     }
-  }
+  },[])
+
   useEffect(() => {
     setIsLoading(true)
     setTimeout(() => {
@@ -33,6 +34,7 @@ const Products = () => {
     }, 2 * 1000)
     fetchProducts(activeTab)
   }, [activeTab])
+  
   return (
     <div className="w-main">
       <div className='w-main flex justify-around items-center bg-gray-200 h-10'>
