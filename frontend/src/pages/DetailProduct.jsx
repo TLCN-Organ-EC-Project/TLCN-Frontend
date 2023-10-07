@@ -9,6 +9,7 @@ import Size from "../components/Size/Size"
 import { size } from '../ultils/contants'
 import SelectQuality from "../components/SelectOption/SelectQuality"
 import ButtonSeeMore from "../components/Button/ButtonSeeMore"
+import { ButtonBack } from "../components/Button/ButtonBack"
 
 const DetailProduct = () => {
   const [first, setfirst] = useState(size[0].id)
@@ -82,7 +83,7 @@ const DetailProduct = () => {
               <SelectQuality quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
               </div>
               <div className="py-5">
-               
+                      <ButtonBack/>
               </div>
           </div>
         )}
