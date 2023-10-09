@@ -12,7 +12,7 @@ const ContactRight = () => {
         <InputField placeholder="Phone number"/>
         <InputField placeholder="Message"/>
         <div className='flex justify-end py-2'>
-            <Button children="SEND"/>
+            <Button children="SEND" buttonAdd/>
         </div>
     </div>
   )

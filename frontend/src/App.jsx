@@ -1,11 +1,15 @@
 import { Route,Routes } from "react-router-dom"
 import path from "./ultils/path"
+import { useDispatch,useSelector } from 'react-redux'
 import { Blog, Contact, DetailCart, DetailProduct, Home, Login, Products, Public, Services } from "./pages"
+import { useState } from "react";
+import ModalChildren from "./components/Modal/ModalChildren";
 
 function App() {
-
+  const {isShowModal, modalChildren}=useSelector(state=>state.app)  
   return (
-    <>
+    <div className="relative">
+        {isShowModal && <ModalChildren>{modalChildren}</ModalChildren>}
     <Routes>
       <Route path={path.PUBLIC} element={<Public/>}>
           <Route path={path.HOME} element={<Home/>}/>
@@ -18,7 +22,7 @@ function App() {
       </Route>
       <Route path={path.LOGIN} element={<Login/>}/>
     </Routes>
-    </>
+    </div>
   )
 }
 

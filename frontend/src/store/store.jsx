@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage'
+import appSlice from './app/appSlice';
 import {
     persistReducer,
     persistStore,
@@ -24,6 +25,7 @@ const userConfig = {
 
 export const store = configureStore({
     reducer: {
+        app:appSlice,
         user: persistReducer(userConfig, userSlice),
     },
     middleware: (getDefaultMiddleware) =>

@@ -3,7 +3,7 @@ import {MdEmail,MdKeyboardArrowRight,MdOutlineDonutSmall} from 'react-icons/md'
 import {AiOutlineHeart,AiOutlineShoppingCart,AiOutlineProfile} from 'react-icons/ai'
 import {PiHandbagDuotone} from 'react-icons/pi'
 import {GrGroup} from 'react-icons/gr'
-import {FaUserCircle,FaTty} from 'react-icons/fa'
+import {FaUserCircle,FaTty,FaSearch} from 'react-icons/fa'
 import {BiGift} from 'react-icons/bi'
 import {BsThreeDots,BsFacebook,BsBag,BsTiktok} from 'react-icons/bs'
 import {ImBin} from 'react-icons/im'
@@ -15,6 +15,7 @@ import {AiFillStar,AiFillGoogleCircle,AiFillInstagram,AiOutlineStar,AiFillEye,Ai
 
 const icons={
     BsFillTelephoneFill,
+    FaSearch,
     BsBag,
     HiOutlineShoppingBag,
     AiFillGoogleCircle,

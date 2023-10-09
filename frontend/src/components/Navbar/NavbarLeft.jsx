@@ -1,9 +1,24 @@
 import icons from "../../ultils/icons"
+import { ShowModal } from "../../store/app/appSlice"
+import withBase from "../../hocs/withBase"
+import ModalSearch from "../Modal/ModalSearch"
+import { useDispatch } from "react-redux"
 
 
-const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,HiOutlineShoppingBag } = icons
+const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,FaSearch} = icons
+
 
 const NavbarLeft = () => {
+
+  const dispatch=useDispatch()
+  const handleSearch =()=>{
+    dispatch(ShowModal({
+      isShowModal:true, 
+      modalChildren:<ModalSearch/>
+    }))
+  }
+
+  
   return (
     <div className="flex gap-10 pr-5 ">
       <div className="hidden md:block">
@@ -26,6 +41,9 @@ const NavbarLeft = () => {
         <BsBag size={26} color="#696969" />
         <span className="text-sm absolute  top-2 ml-2">0</span>
       </div>
+      <div onClick={handleSearch}>
+        <FaSearch size={22} color="rose" />
+      </div>
       <div>
         <FaUserCircle size={24} color="rose" />
       </div>
@@ -33,4 +51,4 @@ const NavbarLeft = () => {
   )
 }
 
-export default NavbarLeft
+export default withBase(NavbarLeft)

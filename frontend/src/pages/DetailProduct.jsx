@@ -46,7 +46,7 @@ const DetailProduct = () => {
 
   return (
     <div className="w-main">
-      <div className="border pl-3 h-[50px] flex items-center">
+      <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
         <Breadcumb title={productname} />
       </div>
       <div className="flex">
