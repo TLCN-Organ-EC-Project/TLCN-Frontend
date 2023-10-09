@@ -1,35 +1,30 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { 
-  Transition,
-  Variants, 
-  AnimatePresence,
-  useAnimate
-} from 'framer-motion';
+import React, { useRef } from 'react';
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-export const MotionContainer: React.FC<{
-  children,
-  color,
-  onClick
-}> = React.memo((props) => {
-  const { children, color, onClick } = props;
-
+export const MotionContainer = ({onClick,color,children}) => {
+/* 
   const transition = useRef<Transition>({
-    duration: 0.3,
+    duration: 0.3
   });
 
   const variants = useRef<Variants>({
-    hide: { opacity: 1, x: '-150%' },
-    enter: { opacity: 1, x: 0 },
-  });
+    hide: { opacity: 1, x: "-150%" },
+    enter: { opacity: 1, x: 0 }
+  })
+ */
 
   return (
     <StyledContainer
       onClick={onClick}
       color={color}
-      variants={variants.current}
-      transition={transition.current}
+      variants={{
+        hide: { opacity: 1, x: "-150%" },
+        enter: { opacity: 1, x: 0 }
+      }}
+      transition={{
+        duration: 0.3
+      }}
       initial='hide'
       animate='enter'
       exit='hide'
@@ -37,12 +32,12 @@ export const MotionContainer: React.FC<{
       {children}
     </StyledContainer>
   );
-});
+};
 
 export const StyledContainer = styled(motion.div)`
   border: solid 1px #eee5;
   color: #eee5;
-  background: linear-gradient(to left, rgb(255, 255, 255, 0) 50%,#eee5 50%) right;
+  background: linear-gradient(to left, rgb(255, 255, 255, 0) 50%,#eee5 50%) right; 
   width: 200px;
   height: 40px;
   display: flex;
@@ -56,6 +51,6 @@ export const StyledContainer = styled(motion.div)`
   &:hover {
     cursor: pointer;
     background-position: left;
-    color: white;
+    color: eee5;
   }
 `;

@@ -5,8 +5,9 @@ import {PiHandbagDuotone} from 'react-icons/pi'
 import {GrGroup} from 'react-icons/gr'
 import {FaUserCircle,FaTty} from 'react-icons/fa'
 import {BiGift} from 'react-icons/bi'
-import {BsThreeDots,BsFacebook,BsTiktok} from 'react-icons/bs'
+import {BsThreeDots,BsFacebook,BsBag,BsTiktok} from 'react-icons/bs'
 import {ImBin} from 'react-icons/im'
+import {HiOutlineShoppingBag} from 'react-icons/hi'
 import {TfiViewListAlt} from 'react-icons/tfi'
 import {SiBlockchaindotcom} from 'react-icons/si'
 import {RiProductHuntLine,RiBillLine,RiOpenbaseFill} from 'react-icons/ri'
@@ -14,6 +15,8 @@ import {AiFillStar,AiFillGoogleCircle,AiFillInstagram,AiOutlineStar,AiFillEye,Ai
 
 const icons={
     BsFillTelephoneFill,
+    BsBag,
+    HiOutlineShoppingBag,
     AiFillGoogleCircle,
     AiFillInstagram,
     BsTiktok,

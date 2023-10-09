@@ -16,8 +16,7 @@ export const textVariant = (delay) => {
       },
     };
   };
-  // Hàm này dùng tạo ra 1 hình ảnh mờ dần khi di chuyển nó theo 1 hướng nhất định
-
+  
   export const fadeIn = (direction, type, delay, duration) => {
     return {
       hidden: {
@@ -76,6 +75,7 @@ export const textVariant = (delay) => {
       },
     };
   };
+
   export const staggerContainer = (staggerChildren, delayChildren) => {
     return {
       hidden: {},

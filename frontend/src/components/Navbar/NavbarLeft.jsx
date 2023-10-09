@@ -1,7 +1,7 @@
 import icons from "../../ultils/icons"
 
 
-const { BsFillTelephoneFill, MdEmail, PiHandbagDuotone, FaUserCircle } = icons
+const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,HiOutlineShoppingBag } = icons
 
 const NavbarLeft = () => {
   return (
@@ -22,8 +22,9 @@ const NavbarLeft = () => {
         </div>
         <div className="text-xs text-gray-700 flex justify-center">Online Support 24/7</div>
       </div>
-      <div>
-        <PiHandbagDuotone size={24} color="#A9A9A9" />
+      <div className="relative">
+        <BsBag size={26} color="#696969" />
+        <span className="text-sm absolute  top-2 ml-2">0</span>
       </div>
       <div>
         <FaUserCircle size={24} color="rose" />

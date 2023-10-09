@@ -2,14 +2,13 @@ import { useState, useCallback, useEffect, memo } from "react"
 import { useParams } from "react-router-dom"
 import Breadcumb from "../components/BreadCumb/Breadcumb"
 import { getProductById } from '../apis/products'
-import CustomSlider from "../components/Slider/CustomSlider"
 import { formatNumber } from '../ultils/helper'
 import CustomSliderProduct from "../components/Slider/CustomSliderProduct"
-import Size from "../components/Size/Size"
 import { size } from '../ultils/contants'
 import SelectQuality from "../components/SelectOption/SelectQuality"
-import ButtonSeeMore from "../components/Button/ButtonSeeMore"
 import { ButtonBack } from "../components/Button/ButtonBack"
+import Button from "../components/Button/Button"
+import bang from '../assets/bang.jpg'
 
 const DetailProduct = () => {
   const [first, setfirst] = useState(size[0].id)
@@ -40,7 +39,9 @@ const DetailProduct = () => {
     fecthProductById(pid)
       , [pid, productname]
   })
+  const handleClick=()=>{
 
+  }
 
 
   return (
@@ -71,7 +72,7 @@ const DetailProduct = () => {
                   <div
                     onClick={() => { setfirst(el.id) }}
                     key={el.id}
-                    className={`${first === el.id ? "bg-gray-800 text-white" : "hover:text-gray-500"
+                    className={`${first === el.id ? "bg-black text-white" : "hover:text-gray-500"
                       } bg-white text-gray border flex text-sm transition font-light items-center justify-center w-10 h-10 cursor-pointer
                   `}
                   >
@@ -82,8 +83,30 @@ const DetailProduct = () => {
               <div className="py-4">
               <SelectQuality quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
               </div>
+              <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
+                    <Button children='ADD TO CART' buttonAdd handleOnClick={handleClick}/>
+              </div>
+              <div  className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
+                   <div className="text-sm font-medium underline">
+                      Description
+                   </div>
+                   <ul className="text-sm">
+                    <li>
+                     + {product[0].descriptions_product.gender}
+                    </li>
+                    <li>
+                     + {product[0].descriptions_product.material}
+                    </li>
+                    <li>
+                     + {product[0].descriptions_product.size}
+                    </li>
+                    <li>
+                     + {product[0].descriptions_product.size_of_model}
+                    </li>
+                   </ul>
+              </div>
               <div className="py-5">
-                      <ButtonBack/>
+                      <img src={bang}/>
               </div>
           </div>
         )}

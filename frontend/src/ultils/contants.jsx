@@ -13,12 +13,6 @@ export const navigation = [
         value: 'PRODUCTS',
         path: `/${path.PRODUCTS}`
     },
-
-    {
-        id: 3,
-        value: 'NEW',
-        path: `/${path.SERVICES}`
-    },
     {
         id: 4,
         value: 'BLOGS',
