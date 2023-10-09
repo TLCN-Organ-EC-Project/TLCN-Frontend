@@ -3,11 +3,13 @@ import icons from '../../ultils/icons'
 import ProductModalFind from '../Product/ProductModalFind'
 import { findProducts } from '../../apis/products'
 import useDebounce from '../../hooks/useDebounce'
+import { useDispatch } from 'react-redux'
+import { ShowModal } from '../../store/app/appSlice'
 import clsx from 'clsx'
 
 const { AiOutlineCloseCircle } = icons
 const ModalSearch = () => {
-
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
     const [productsData, setProductsData] = useState(null)
     const [search, setSearch] = useState('')
@@ -20,12 +22,12 @@ const ModalSearch = () => {
             setProductsData(response?.data)
         }
     }, [])
-    const debounce = useDebounce(search,800)
+    const debounce = useDebounce(search, 800)
     useEffect(() => {
         setIsLoading(true)
         fetchProducts(debounce)
         setIsLoading(false)
-    }, [search,debounce])
+    }, [search, debounce])
     return (
         <div
             onClick={(e) => e.stopPropagation()}
@@ -33,7 +35,13 @@ const ModalSearch = () => {
             <div className='flex justify-between'>
                 <span className='text-base font-semibold'>Find products</span>
                 <span className='hover:text-blue-600 transition cursor-pointer'>
-                    <AiOutlineCloseCircle size={25} />
+                    <AiOutlineCloseCircle
+                        onClick={() => dispatch(ShowModal({
+                            isShowModal: false,
+                            modalChildren: null,
+                        }))}
+                        size={25}
+                    />
                 </span>
             </div>
             <div className='py-5'>
@@ -48,7 +56,7 @@ const ModalSearch = () => {
                 </div>
             </div>
             {
-                productsData?.map((el)=>(
+                productsData?.map((el) => (
                     <ProductModalFind productsData={el} key={el.id} />
                 ))
             }
