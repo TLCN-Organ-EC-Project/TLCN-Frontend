@@ -1,13 +1,10 @@
 import { useEffect, useState,useCallback } from "react";
-import NavBarCategory from "../components/Navbar/NavBarCategory"
 import { getProductByCategory } from '../apis/products'
 import { category } from '../ultils/contants'
 import { motion } from "framer-motion";
 import { NavLink, useNavigate } from 'react-router-dom'
 import Product from "../components/Product/Product";
 import Skeleton from "../components/Skeleton/Skeleton";
-
-
 const Products = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
@@ -26,7 +23,6 @@ const Products = () => {
       setproducts(response?.data)
     }
   },[])
-
   useEffect(() => {
     setIsLoading(true)
     setTimeout(() => {
@@ -34,7 +30,6 @@ const Products = () => {
     }, 2 * 1000)
     fetchProducts(activeTab)
   }, [activeTab])
-  
   return (
     <div className="w-main">
       <div className='w-main flex justify-around items-center bg-gray-200 h-10'>
@@ -72,5 +67,4 @@ const Products = () => {
     </div>
   )
 }
-
 export default Products

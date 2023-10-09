@@ -1,36 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import icons from '../../ultils/icons'
-import { InputField } from '../Input'
 import ProductModalFind from '../Product/ProductModalFind'
-import { useSearchParams } from 'react-router-dom'
 import { findProducts } from '../../apis/products'
 import useDebounce from '../../hooks/useDebounce'
+import clsx from 'clsx'
 
 const { AiOutlineCloseCircle } = icons
 const ModalSearch = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [productsData, setProductsData] = useState(null)
-    const [params] = useSearchParams()
+    const [search, setSearch] = useState('')
 
-    const [search, setSearch] = useState({
-        search: ''
-    })
-    console.log(search)
-    const queriesDebounce = useDebounce(search.search, 800)
     const fetchProducts = useCallback(async (keyword) => {
         const response = await findProducts(
             keyword, 1, 10
         )
         if (response) {
-            setProductsData(response)
+            setProductsData(response?.data)
         }
     }, [])
     useEffect(() => {
         setIsLoading(true)
-        const queries = Object.fromEntries([...params])
-        if (queriesDebounce) queries.search = queriesDebounce
-        fetchProducts(queries)
+        fetchProducts(search)
+        setIsLoading(false)
     }, [search])
     return (
         <div
@@ -43,15 +36,21 @@ const ModalSearch = () => {
                 </span>
             </div>
             <div className='py-5'>
-                <InputField
-                    search
-                    placeholder='Find products here'
-                    nameKey={'search'}
-                    value={search.search}
-                    setValue={setSearch}
-                />
+                <div className={clsx('w-full relative mb-2 ')}>
+                    <input
+                        type='text'
+                        className={clsx('px-4 py-2 rounded-sm border w-full focus:invalid:border-pink-300')}
+                        placeholder='Find product here'
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </div>
             </div>
-            <ProductModalFind productsData={productsData} />
+            {
+                productsData?.map((el)=>(
+                    <ProductModalFind productsData={el} key={el.id} />
+                ))
+            }
         </div>
     )
 }

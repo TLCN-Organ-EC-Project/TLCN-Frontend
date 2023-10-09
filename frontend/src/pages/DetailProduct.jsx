@@ -15,8 +15,6 @@ const DetailProduct = () => {
   const { pid, productname } = useParams()
   const [product, setProduct] = useState(null)
   const [quantily, setQuantity] = useState(1)
-
-
   const fecthProductById = useCallback(async (pid) => {
     const response = await getProductById(pid, 1, 10);
     if (response) {
@@ -39,11 +37,9 @@ const DetailProduct = () => {
     fecthProductById(pid)
       , [pid, productname]
   })
-  const handleClick=()=>{
+  const handleClick = () => {
 
   }
-
-
   return (
     <div className="w-main">
       <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
@@ -67,52 +63,51 @@ const DetailProduct = () => {
             <div className="py-2 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
               <div className="text-lg font-semibold">{`${formatNumber(product[0].product.price)}₫`}</div>
             </div>
-              <div className='flex justify-start py-3 gap-3 border border-b-gray-300 border-r-gray-100 border-l-gray-100'>
-                {size.map((el) => (
-                  <div
-                    onClick={() => { setfirst(el.id) }}
-                    key={el.id}
-                    className={`${first === el.id ? "bg-gray-500 text-white" : ""
-                      } bg-white text-gray border flex text-sm transition font-light items-center justify-center w-10 h-10 cursor-pointer
+            <div className='flex justify-start py-3 gap-3 border border-b-gray-300 border-r-gray-100 border-l-gray-100'>
+              {size.map((el) => (
+                <div
+                  onClick={() => { setfirst(el.id) }}
+                  key={el.id}
+                  className={`${first === el.id ? "bg-gray-500 text-white" : ""
+                    } bg-white text-gray border flex text-sm transition font-light items-center justify-center w-10 h-10 cursor-pointer
                   `}
-                  >
-                    {el.size}
-                  </div>
-                ))}
-              </div>
-              <div className="py-4">
+                >
+                  {el.size}
+                </div>
+              ))}
+            </div>
+            <div className="py-4">
               <SelectQuality quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
+            </div>
+            <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
+              <Button children='ADD TO CART' buttonAdd handleOnClick={handleClick} />
+            </div>
+            <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
+              <div className="text-sm font-medium underline">
+                Description
               </div>
-              <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
-                    <Button children='ADD TO CART' buttonAdd handleOnClick={handleClick}/>
-              </div>
-              <div  className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
-                   <div className="text-sm font-medium underline">
-                      Description
-                   </div>
-                   <ul className="text-sm">
-                    <li>
-                     + {product[0].descriptions_product.gender}
-                    </li>
-                    <li>
-                     + {product[0].descriptions_product.material}
-                    </li>
-                    <li>
-                     + {product[0].descriptions_product.size}
-                    </li>
-                    <li>
-                     + {product[0].descriptions_product.size_of_model}
-                    </li>
-                   </ul>
-              </div>
-              <div className="py-5">
-                      <img src={bang}/>
-              </div>
+              <ul className="text-sm">
+                <li>
+                  + {product[0].descriptions_product.gender}
+                </li>
+                <li>
+                  + {product[0].descriptions_product.material}
+                </li>
+                <li>
+                  + {product[0].descriptions_product.size}
+                </li>
+                <li>
+                  + {product[0].descriptions_product.size_of_model}
+                </li>
+              </ul>
+            </div>
+            <div className="py-5">
+              <img src={bang} />
+            </div>
           </div>
         )}
       </div>
     </div>
   )
 }
-
 export default memo(DetailProduct)

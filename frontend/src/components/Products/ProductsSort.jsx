@@ -30,7 +30,7 @@ const ProductsSort = () => {
     }, [activedTab])
     return (
         <div className='w-main'>
-            <h3 className='font-light text-center text-sm'>SẢN PHẨM MỚI</h3>
+            <h3 className='font-light text-center text-sm'>NEW PRODUCTS</h3>
             <div className='flex justify-center text-center transition  py-3 gap-10'>
                 {menuSPMoi.map((el) => (
                     <h1
