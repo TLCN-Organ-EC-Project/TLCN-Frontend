@@ -20,11 +20,12 @@ const ModalSearch = () => {
             setProductsData(response?.data)
         }
     }, [])
+    const debounce = useDebounce(search,800)
     useEffect(() => {
         setIsLoading(true)
-        fetchProducts(search)
+        fetchProducts(debounce)
         setIsLoading(false)
-    }, [search])
+    }, [search,debounce])
     return (
         <div
             onClick={(e) => e.stopPropagation()}
