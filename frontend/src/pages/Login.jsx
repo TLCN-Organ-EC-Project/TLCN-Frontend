@@ -21,7 +21,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [invalidFields, setInvalidFields] = useState([])
-  const [payload, setPayload] = useState({
+  const [payload,setPayload] = useState({
     email: '',
     username: '',
     full_name: '',
@@ -161,6 +161,7 @@ const Login = () => {
 
           <Button
             children={isRegister ? ' Register ' : ' Login '}
+            btnLogin
             handleOnClick={handleSubmit}
           />
 

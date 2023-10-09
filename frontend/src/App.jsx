@@ -9,7 +9,7 @@ function App() {
   const {isShowModal, modalChildren}=useSelector(state=>state.app)  
   return (
     <div className="relative">
-        {isShowModal && <ModalChildren>{modalChildren}</ModalChildren>}
+        { isShowModal && <ModalChildren>{modalChildren}</ModalChildren> }
     <Routes>
       <Route path={path.PUBLIC} element={<Public/>}>
           <Route path={path.HOME} element={<Home/>}/>

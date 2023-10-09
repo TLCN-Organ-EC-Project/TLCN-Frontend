@@ -9,7 +9,7 @@ import Skeleton from "../components/Skeleton/Skeleton";
 
 
 const Products = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(category[0].id)
   const [products, setproducts] = useState(null)
@@ -54,7 +54,7 @@ const Products = () => {
                 transition={{ duration: 0.5 }}
               />
             )}
-            <NavLink to={el.path} className='relative z-50'>{el.name}</NavLink>
+            <NavLink to={el.path} className='relative'>{el.name}</NavLink>
           </button>
         ))}
       </div>

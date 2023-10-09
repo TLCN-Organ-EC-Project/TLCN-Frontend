@@ -16,7 +16,7 @@ const ModalChildren = ({children}) => {
   return (
     <div 
     onClick={()=>dispatch(ShowModal({isShowModal:false, modalChildren:null}))} 
-    className='absolute inset-0 z-50 bg-overplay'
+    className='absolute inset-0 z-50 bg-overplay flex justify-end'
     id='modal'
     >
       {children}

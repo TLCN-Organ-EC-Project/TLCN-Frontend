@@ -17,3 +17,12 @@ export const getProductById=(pid,pageId = 1, pageSize = 10)=>axios({
         page_size: pageSize,
     },
 })
+
+export const findProducts=(keyword,pageId = 1, pageSize = 10)=>axios({
+    url:`/find/${keyword}`,
+    method:'get',
+    params:{
+        page_id: pageId,
+        page_size: pageSize,
+    },
+})

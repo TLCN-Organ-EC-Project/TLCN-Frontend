@@ -72,7 +72,7 @@ const DetailProduct = () => {
                   <div
                     onClick={() => { setfirst(el.id) }}
                     key={el.id}
-                    className={`${first === el.id ? "bg-black text-white" : "hover:text-gray-500"
+                    className={`${first === el.id ? "bg-gray-500 text-white" : ""
                       } bg-white text-gray border flex text-sm transition font-light items-center justify-center w-10 h-10 cursor-pointer
                   `}
                   >
