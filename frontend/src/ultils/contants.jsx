@@ -1,5 +1,8 @@
 import path from './path'
 import blogimage from '../assets/blog.webp'
+import icons from '../ultils/icons'
+
+const {AiOutlineDashboard,GrGroup}=icons
 
 
 export const navigation = [
@@ -121,4 +124,19 @@ export const size=[
     id:4,
     size:'2XL',
   }
+]
+
+export const memberSideBar=[
+  {
+    id:1,
+    text:'Account information',
+    path:`/${path.MEMBER}/${path.PERSINAL}`,
+    icon:<AiOutlineDashboard size={20}/>
+},
+{
+    id:2,
+    text:'List address',
+    path:`/${path.MEMBER}/${path.ADDRESS}`,
+    icon:<GrGroup color='white' size={20}/>
+},
 ]

@@ -3,14 +3,12 @@ import { ShowModal } from "../../store/app/appSlice"
 import withBase from "../../hocs/withBase"
 import ModalSearch from "../Modal/ModalSearch"
 import { useDispatch } from "react-redux"
-
-
+import { useNavigate } from "react-router-dom"
+import path from "../../ultils/path"
 const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,FaSearch} = icons
-
-
 const NavbarLeft = () => {
-
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const handleSearch =()=>{
     dispatch(ShowModal({
       isShowModal:true, 
@@ -44,7 +42,9 @@ const NavbarLeft = () => {
       <div onClick={handleSearch}>
         <FaSearch size={22} color="rose" />
       </div>
-      <div>
+      <div 
+        onClick={()=>navigate(`${path.MEMBER}`)}
+      >
         <FaUserCircle size={24} color="rose" />
       </div>
     </div>

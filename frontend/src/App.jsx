@@ -4,6 +4,9 @@ import { useDispatch,useSelector } from 'react-redux'
 import { Blog, Contact, DetailCart, DetailProduct, Home, Login, Products, Public, Services } from "./pages"
 import { useState } from "react";
 import ModalChildren from "./components/Modal/ModalChildren";
+import Personal from "./pages/member/Personal";
+import MemberLayout from "./pages/member/MemberLayout";
+import Address from "./pages/member/Address";
 
 function App() {
   const {isShowModal, modalChildren}=useSelector(state=>state.app)  
@@ -17,8 +20,11 @@ function App() {
           <Route path={path.PRODUCTS} element={<Products/>}/>
           <Route path={path.DETAIL_CART} element={<DetailCart/>}/>
           <Route path={path.BLOGS} element={<Blog/>}/>
-          <Route path={path.SERVICES} element={<Services/>}/>
           <Route path={path.CONTACT_US} element={<Contact/>}/>
+          <Route path={path.MEMBER} element={<MemberLayout/>}>
+             <Route path={path.PERSINAL} element={<Personal/>}/>
+             <Route path={path.ADDRESS} element={<Address/>}/>
+          </Route>
       </Route>
       <Route path={path.LOGIN} element={<Login/>}/>
     </Routes>

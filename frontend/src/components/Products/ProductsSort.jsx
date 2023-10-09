@@ -34,6 +34,7 @@ const ProductsSort = () => {
             <div className='flex justify-center text-center transition  py-3 gap-10'>
                 {menuSPMoi.map((el) => (
                     <h1
+                        key={el.id}
                         className={`text-2xl font-semibold text-gray-700 transition hover:text-blue-400 cursor-pointer 
                     ${activedTab === el.id ? 'border-b-black transition border border-t-gray-100 pb-1' : ''}`}
                         onClick={() => setActivedTab(el.id)}
