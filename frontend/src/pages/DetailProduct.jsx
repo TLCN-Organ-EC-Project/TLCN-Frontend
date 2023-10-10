@@ -33,10 +33,11 @@ const DetailProduct = () => {
     if (flag === 'minus') setQuantity(prev => +prev - 1)
     if (flag === 'plus') setQuantity(prev => +prev + 1)
   }, [quantily])
+
   useEffect(() => {
     fecthProductById(pid)
-      , [pid, productname]
-  })
+  }, [pid, productname])
+  
   const handleClick = () => {
 
   }

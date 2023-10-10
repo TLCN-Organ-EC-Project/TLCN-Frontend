@@ -10,11 +10,13 @@ const Products = () => {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(category[0].id)
   const [products, setproducts] = useState(null)
+
   const handleItemClick = (el) => {
     setTimeout(() => {
       navigate(el.id);
     }, 0);
   };
+
   const fetchProducts = useCallback(async (cid) => {
     const response = await getProductByCategory(
       cid, 1, 10
@@ -23,6 +25,7 @@ const Products = () => {
       setproducts(response?.data)
     }
   },[])
+
   useEffect(() => {
     setIsLoading(true)
     setTimeout(() => {
@@ -30,6 +33,7 @@ const Products = () => {
     }, 2 * 1000)
     fetchProducts(activeTab)
   }, [activeTab])
+
   return (
     <div className="w-main">
       <div className='w-main flex justify-around items-center bg-gray-200 h-10'>
