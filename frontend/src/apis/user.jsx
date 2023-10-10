@@ -11,3 +11,9 @@ export const apiLogin =(data)=>axios({
     method:'post',
     data
 })
+
+export const apiUpdateUser=(username,data)=>axios({
+    url: `/users/${username}`,
+    method:'put',
+    data
+})

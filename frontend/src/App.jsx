@@ -7,6 +7,8 @@ import ModalChildren from "./components/Modal/ModalChildren";
 import Personal from "./pages/member/Personal";
 import MemberLayout from "./pages/member/MemberLayout";
 import Address from "./pages/member/Address";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const {isShowModal, modalChildren}=useSelector(state=>state.app)  
@@ -28,6 +30,19 @@ function App() {
       </Route>
       <Route path={path.LOGIN} element={<Login/>}/>
     </Routes>
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+      <ToastContainer />
     </div>
   )
 }
