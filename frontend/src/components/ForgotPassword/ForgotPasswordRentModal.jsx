@@ -198,7 +198,6 @@ const ForgotPasswordRentModal = () => {
             isOpen={rentModal.isOpen}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
-           /*  secondaryAction={step === STEPS.EMAIL ? undefined : onBack} */
             title='You Forgot PassWord ? '
             onClose={rentModal.onClose}
             onSubmit={handleSubmit(onSubmit)}

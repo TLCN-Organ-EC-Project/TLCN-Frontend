@@ -27,3 +27,12 @@ export const findProducts=(keyword,pageId = 1, pageSize = 10)=>axios({
         page_size: pageSize,
     },
 })
+
+export const getListProvinces=()=>axios({
+    url:'/provinces',
+    method:'get',
+})
+export const getProvinceById=(pid)=>axios({
+    url:`/provinces/${pid}`,
+    method:'get',
+})

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
@@ -7,11 +7,13 @@ import InputForm from '../../components/Input/InputForm'
 import { Button } from '../../components'
 import { apiUpdateUser } from '../../apis/user'
 import { login } from "../../store/user/userSlice";
+import { getListProvinces,getProvinceById } from '../../apis/products'
 
 const Personal = () => {
   const { register, formState: { errors, isDirty }, handleSubmit, reset } = useForm()
   const { current } = useSelector(state => state.user)
   const [userData, setUserData] = useState(null)
+  const [provinces, setProvinces] = useState(null)
   const dispatch = useDispatch()
  
   const handleUpdateInfor = async (data) => {
@@ -26,13 +28,22 @@ const Personal = () => {
     }
   }
 
+
+  const getProvince=useCallback(async(pid)=>{
+    const response=await getProvinceById(pid)
+    if (response){
+      setProvinces(response?.data?.name)
+    }
+  },[provinces,current])
+  
   useEffect(() => {
+    getProvince(current?.province?.toString())
     reset({
       username: current?.username,
       email: current?.email,
       phone: current?.phone,
       address: current?.address,
-      province: 'Quảng Nam',
+      province: provinces,
     })
   }, [userData])
   return (
