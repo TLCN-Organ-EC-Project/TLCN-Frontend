@@ -12,10 +12,12 @@ import { validate } from '../ultils/helper'
 import Swal from 'sweetalert2'
 import { useNavigate ,Link} from "react-router-dom";
 import { login } from "../store/user/userSlice";
+import useRentModal from '../hooks/useRentModal'
 
 const Login = () => {
 
 
+  const rentModal=useRentModal()
   const dispatch = useDispatch()
   const navigate=useNavigate()
   const [loading, setLoading] = useState(false)
@@ -161,16 +163,16 @@ const Login = () => {
 
           <Button
             children={isRegister ? ' Register ' : ' Login '}
-            btnLogin
+            buttonAdd
             handleOnClick={handleSubmit}
           />
 
           <div className="flex items-center justify-between my-2">
             {!isRegister &&
-              <span onClick={handleForgotPassWord} className="text-gray-700 hover:underline">Forgot your password ?</span>
+              <span onClick={rentModal.onOpen} className="text-gray-700 hover:underline cursor-pointer ">Forgot your password ?</span>
             }
             {!isRegister &&
-              <span onClick={() => setIsRegister(true)} className="text-gray-700 hover:underline">Create account ?</span>
+              <span onClick={() => setIsRegister(true)} className="text-gray-700 hover:underline cursor-pointer">Create account ?</span>
             }
             {
               isRegister &&

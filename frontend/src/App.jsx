@@ -9,11 +9,15 @@ import MemberLayout from "./pages/member/MemberLayout";
 import Address from "./pages/member/Address";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from "./components/ForgotPassword/Modal";
+import ForgotPasswordRentModal from "./components/ForgotPassword/ForgotPasswordRentModal";
 
 function App() {
   const {isShowModal, modalChildren}=useSelector(state=>state.app)  
   return (
     <div className="relative">
+      <ForgotPasswordRentModal/>
+      <Modal/>
         { isShowModal && <ModalChildren>{modalChildren}</ModalChildren> }
     <Routes>
       <Route path={path.PUBLIC} element={<Public/>}>
@@ -25,7 +29,6 @@ function App() {
           <Route path={path.CONTACT_US} element={<Contact/>}/>
           <Route path={path.MEMBER} element={<MemberLayout/>}>
              <Route path={path.PERSINAL} element={<Personal/>}/>
-             <Route path={path.ADDRESS} element={<Address/>}/>
           </Route>
       </Route>
       <Route path={path.LOGIN} element={<Login/>}/>

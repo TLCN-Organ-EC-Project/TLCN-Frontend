@@ -1,6 +1,7 @@
 import React from 'react'
 import MemberSideBar from '../../components/Member/MemberSideBar'
 import { Outlet } from 'react-router-dom'
+import Personal from './Personal'
 
 const MemberLayout = () => {
   return (
@@ -9,7 +10,7 @@ const MemberLayout = () => {
     <div className='flex w-main'>
             <MemberSideBar/>
             <div>
-                <Outlet/>
+                <Personal/>
             </div>
     </div>
     </div>
