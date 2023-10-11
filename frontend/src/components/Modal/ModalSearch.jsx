@@ -22,7 +22,7 @@ const ModalSearch = () => {
             setProductsData(response?.data)
         }
     }, [])
-    const debounce = useDebounce(search, 800)
+    const debounce = useDebounce(search, 400)
     useEffect(() => {
         setIsLoading(true)
         fetchProducts(debounce)

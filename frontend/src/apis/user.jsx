@@ -17,3 +17,16 @@ export const apiUpdateUser=(username,data)=>axios({
     method:'put',
     data
 })
+
+export const apiForgotPassword =(data)=>axios({
+    url:'/forgotpassword',
+    method:'post',
+    data
+})
+
+export const apiResetPassword =(data)=>axios({
+    url:'/resetpassword',
+    method:'post',
+    data
+})
+

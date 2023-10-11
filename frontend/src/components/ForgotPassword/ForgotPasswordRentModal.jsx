@@ -1,9 +1,12 @@
-import React, { useState,useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import useRentModal from '../../hooks/useRentModal'
 import Modal from './Modal'
 import { useForm } from 'react-hook-form';
 import Heading from '../Heading/Heading'
 import InputForGot from '../Input/InputForGot';
+import axios from 'axios';
+import { apiForgotPassword, apiResetPassword } from '../../apis/user';
+import { toast } from 'react-toastify'
 
 
 const STEPS = {
@@ -27,141 +30,182 @@ const ForgotPasswordRentModal = () => {
         defaultValues: {
             email: '',
             username: '',
-            password:'',
-            confirmpassword:'',
-            otp:'',
+            password: '',
+            confirmpassword: '',
+            otp: '',
         },
     });
+
     const onBack = () => {
         setStep((value) => value - 1)
     }
     const onNext = () => {
         setStep((value) => value + 1)
     }
-    const actionLabel=useMemo(()=>{
-        if(step===STEPS.OTP){
-          return 'Submit'
+    const actionLabel = useMemo(() => {
+        if (step === STEPS.OTP) {
+            return 'Submit'
         }
         return 'Next'
-      },[step])
+    }, [step])
 
-      const secondaryActionLabel=useMemo(()=>{
-        if (step===STEPS.EMAIL){
-          return undefined;
+    const secondaryActionLabel = useMemo(() => {
+        if (step === STEPS.EMAIL) {
+            return undefined;
         }
         return 'Back'
-      },[step])
+    }, [step])
 
 
-      const onSubmit=()=>{
+
+    const onSubmit = () => {
+      
+        if (step === STEPS.EMAIL) {
+            const email = watch('email');
+            const username = watch('username');
+            const combinedObject = { email, username };
+            axios.post('https://gin-ec-clothing.onrender.com/api/forgotpassword', combinedObject)
+                .then(() => {
+                    setStep(STEPS.MES)
+                    reset()
+                })
+                .catch(() => {
+                    console.log('error')
+                })
+                .finally(() => {
+                    setIsLoading(false)
+                })
+        }
+
+        if (step === STEPS.OTP) {
+            const username = watch('username');
+            const first_password = watch('first_password');
+            const otpcode = watch('otpcode');
+            const second_password = watch('second_password');
+            const combinedObject = { first_password, otpcode,second_password,username };
+            setIsLoading(true)
+            axios.post('https://gin-ec-clothing.onrender.com/api/resetpassword', combinedObject)
+                .then(() => {
+                    reset()
+                    rentModal.onClose();
+                    setStep(STEPS.EMAIL)
+                    toast.success('Update success')
+                })
+                .catch(() => {
+                    console.log('error')
+                })
+                .finally(() => {
+                    setIsLoading(false)
+                })
+        }
         if (step !== STEPS.OTP) {
             return onNext();
-          }
-      }
+        }
+    }
 
-      let bodyContent=(
+    let bodyContent = (
         <div className='flex flex-col gap-8'>
-            <Heading title='Which of these best describes your place ? ' subtitle='Pick the category'/>
+            <Heading title='Which of these best describes your place ? ' subtitle='Pick the category' />
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto'>
             </div>
         </div>
-      )
+    )
 
-      if(step===STEPS.EMAIL){
-        bodyContent=(
+    if (step === STEPS.EMAIL) {
+        bodyContent = (
             <div className="flex flex-col gap-8">
-            <Heading
-              title="Please enter your email address"
-              subtitle="--- Your email and username ---"
-            />
-            <InputForGot
-              id="email"
-              label="Email"
-              disabled={isLoading}
-              register={register}
-              errors={errors}
-              required
-            />
-            <hr />
-            <InputForGot
-              id="username"
-              label="Username"
-              disabled={isLoading}
-              register={register}
-              errors={errors}
-              required
-            />
-        </div>
-        )
-      }
-    
-        if (step===STEPS.MES){
-            bodyContent=(
-                <div className="flex flex-col gap-8">
                 <Heading
-                  title="Please check your email and write OTP next step "
-                  subtitle="--- Your email and username ---"
-                />
-            </div>
-            )
-        }
-        if (step===STEPS.OTP){
-            bodyContent=(
-                <div className="flex flex-col gap-4">
-                <Heading
-                  title="Please enter your email address"
-                  subtitle="--- Your email and username ---"
+                    title="Please enter your email address"
+                    subtitle="--- Your email and username ---"
                 />
                 <InputForGot
-                  id="username"
-                  label="Username"
-                  disabled={isLoading}
-                  register={register}
-                  errors={errors}
-                  required
+                    id="email"
+                    label="Email"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
                 />
                 <hr />
                 <InputForGot
-                  id="password"
-                  label="Password"
-                  disabled={isLoading}
-                  register={register}
-                  errors={errors}
-                  required
-                />
-                 <hr />
-                <InputForGot
-                  id="confirmpassword"
-                  label="Confirm password"
-                  disabled={isLoading}
-                  register={register}
-                  errors={errors}
-                  required
-                />
-                 <hr />
-                <InputForGot
-                  id="otp"
-                  label="OTP HERE"
-                  disabled={isLoading}
-                  register={register}
-                  errors={errors}
-                  required
+                    id="username"
+                    label="Username"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
                 />
             </div>
-            )
-        }
+        )
+    }
+
+    if (step === STEPS.MES) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="Please check your email and write OTP next step "
+                    subtitle="--- Check Email ---"
+                />
+            </div>
+        )
+    }
+    if (step === STEPS.OTP) {
+        bodyContent = (
+            <div className="flex flex-col gap-4">
+                <Heading
+                    title="Please enter your email address"
+                    subtitle="--- Your email and username ---"
+                />
+                <InputForGot
+                    id="username"
+                    label="Username"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <InputForGot
+                    id="first_password"
+                    label="Password"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <InputForGot
+                    id="second_password"
+                    label="Confirm password"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <InputForGot
+                    id="otpcode"
+                    label="OTP HERE"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+            </div>
+        )
+    }
 
     return (
         <Modal
-        isOpen={rentModal.isOpen}
-        actionLabel={actionLabel}
-        secondaryActionLabel={secondaryActionLabel}
-        secondaryAction={step===STEPS.EMAIL ? undefined : onBack}
-        title='You Forgot PassWord ? !'
-        onClose={rentModal.onClose}
-        onSubmit={handleSubmit(onSubmit)}
-        body={bodyContent}
-      />
+            isOpen={rentModal.isOpen}
+            actionLabel={actionLabel}
+            secondaryActionLabel={secondaryActionLabel}
+            secondaryAction={step === STEPS.EMAIL ? undefined : onBack}
+            title='You Forgot PassWord ? '
+            onClose={rentModal.onClose}
+            onSubmit={handleSubmit(onSubmit)}
+            body={bodyContent}
+        />
     )
 }
 

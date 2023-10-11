@@ -81,11 +81,6 @@ const Login = () => {
     }
   })
 
-
-  const handleForgotPassWord = () => {
-
-  }
-
   return (
     <div
       className={` flex xl:flex-row flex-col-reverse gap-10 overflow-hidden bg-blue-300 h-[706px] relative`}
@@ -163,7 +158,7 @@ const Login = () => {
 
           <Button
             children={isRegister ? ' Register ' : ' Login '}
-            buttonAdd
+            btnLogin
             handleOnClick={handleSubmit}
           />
 
