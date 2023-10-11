@@ -56,10 +56,7 @@ const ForgotPasswordRentModal = () => {
         return 'Back'
     }, [step])
 
-
-
-    const onSubmit = () => {
-      
+    const onSubmit = () => {      
         if (step === STEPS.EMAIL) {
             const email = watch('email');
             const username = watch('username');
@@ -67,7 +64,6 @@ const ForgotPasswordRentModal = () => {
             axios.post('https://gin-ec-clothing.onrender.com/api/forgotpassword', combinedObject)
                 .then(() => {
                     setStep(STEPS.MES)
-                    reset()
                 })
                 .catch(() => {
                     console.log('error')
@@ -86,13 +82,15 @@ const ForgotPasswordRentModal = () => {
             setIsLoading(true)
             axios.post('https://gin-ec-clothing.onrender.com/api/resetpassword', combinedObject)
                 .then(() => {
-                    reset()
                     rentModal.onClose();
                     setStep(STEPS.EMAIL)
+                    reset()
                     toast.success('Update success')
                 })
                 .catch(() => {
-                    console.log('error')
+                    rentModal.onClose();
+                    setStep(STEPS.EMAIL)
+                    toast.error('Can not update')
                 })
                 .finally(() => {
                     setIsLoading(false)
@@ -105,7 +103,7 @@ const ForgotPasswordRentModal = () => {
 
     let bodyContent = (
         <div className='flex flex-col gap-8'>
-            <Heading title='Which of these best describes your place ? ' subtitle='Pick the category' />
+            <Heading title=' ' subtitle='' />
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto'>
             </div>
         </div>
@@ -143,7 +141,7 @@ const ForgotPasswordRentModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading
-                    title="Please check your email and write OTP next step "
+                    title="Please check your email and write OTPCODE next step "
                     subtitle="--- Check Email ---"
                 />
             </div>
@@ -171,12 +169,13 @@ const ForgotPasswordRentModal = () => {
                     disabled={isLoading}
                     register={register}
                     errors={errors}
+                    type='password'
                     required
                 />
                 <hr />
                 <InputForGot
                     id="second_password"
-                    label="Confirm password"
+                    label="Confirm password" 
                     disabled={isLoading}
                     register={register}
                     errors={errors}
@@ -194,13 +193,12 @@ const ForgotPasswordRentModal = () => {
             </div>
         )
     }
-
     return (
         <Modal
             isOpen={rentModal.isOpen}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
-            secondaryAction={step === STEPS.EMAIL ? undefined : onBack}
+           /*  secondaryAction={step === STEPS.EMAIL ? undefined : onBack} */
             title='You Forgot PassWord ? '
             onClose={rentModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
