@@ -27,6 +27,9 @@ const ForgotPasswordRentModal = () => {
         defaultValues: {
             email: '',
             username: '',
+            password:'',
+            confirmpassword:'',
+            otp:'',
         },
     });
     const onBack = () => {
@@ -51,7 +54,9 @@ const ForgotPasswordRentModal = () => {
 
 
       const onSubmit=()=>{
-        
+        if (step !== STEPS.OTP) {
+            return onNext();
+          }
       }
 
       let bodyContent=(
@@ -66,8 +71,8 @@ const ForgotPasswordRentModal = () => {
         bodyContent=(
             <div className="flex flex-col gap-8">
             <Heading
-              title="How would you describe your place?"
-              subtitle="Short and sweet works best!"
+              title="Please enter your email address"
+              subtitle="--- Your email and username ---"
             />
             <InputForGot
               id="email"
@@ -89,6 +94,63 @@ const ForgotPasswordRentModal = () => {
         </div>
         )
       }
+    
+        if (step===STEPS.MES){
+            bodyContent=(
+                <div className="flex flex-col gap-8">
+                <Heading
+                  title="Please check your email and write OTP next step "
+                  subtitle="--- Your email and username ---"
+                />
+            </div>
+            )
+        }
+        if (step===STEPS.OTP){
+            bodyContent=(
+                <div className="flex flex-col gap-4">
+                <Heading
+                  title="Please enter your email address"
+                  subtitle="--- Your email and username ---"
+                />
+                <InputForGot
+                  id="username"
+                  label="Username"
+                  disabled={isLoading}
+                  register={register}
+                  errors={errors}
+                  required
+                />
+                <hr />
+                <InputForGot
+                  id="password"
+                  label="Password"
+                  disabled={isLoading}
+                  register={register}
+                  errors={errors}
+                  required
+                />
+                 <hr />
+                <InputForGot
+                  id="confirmpassword"
+                  label="Confirm password"
+                  disabled={isLoading}
+                  register={register}
+                  errors={errors}
+                  required
+                />
+                 <hr />
+                <InputForGot
+                  id="otp"
+                  label="OTP HERE"
+                  disabled={isLoading}
+                  register={register}
+                  errors={errors}
+                  required
+                />
+            </div>
+            )
+        }
+
     return (
         <Modal
         isOpen={rentModal.isOpen}
