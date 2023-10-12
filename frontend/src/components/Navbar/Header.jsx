@@ -4,7 +4,6 @@ import withBase from "../../hocs/withBase"
 import icons from '../../ultils/icons'
 import { useSelector } from "react-redux"
 import { logout } from '../../store/user/userSlice'
-
 const {AiOutlineLogout}=icons
 
 const Header = ({dispatch, navigate}) => {
@@ -24,7 +23,7 @@ const Header = ({dispatch, navigate}) => {
               <span 
                   title="Logout"
                   className="pr-5 hover:text-blue-500 transition"
-                  onClick={()=>dispatch(logout())}>
+                  onClick={()=>{dispatch(logout()),  navigate(`${path.LOGIN}`)}}>
                   <AiOutlineLogout  fontSize={18}/>
                 </span>              
               </div> 

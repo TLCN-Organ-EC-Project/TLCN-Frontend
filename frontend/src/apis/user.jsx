@@ -30,3 +30,8 @@ export const apiResetPassword =(data)=>axios({
     data
 })
 
+export const apiCreateCart=(username,data)=>axios({
+    url: `/users/${username}/carts`,
+    method:'post',
+    data
+})

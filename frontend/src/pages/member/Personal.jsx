@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import path from '../../ultils/path'
 import InputForm from '../../components/Input/InputForm'
 import { Button } from '../../components'
 import { apiUpdateUser } from '../../apis/user'
@@ -10,10 +12,11 @@ import { login } from "../../store/user/userSlice";
 import { getListProvinces,getProvinceById } from '../../apis/products'
 
 const Personal = () => {
+  const navigate=useNavigate()
   const { register, formState: { errors, isDirty }, handleSubmit, reset } = useForm()
   const { current } = useSelector(state => state.user)
   const [userData, setUserData] = useState(null)
-  const [provinces, setProvinces] = useState(null)
+  const [provinces, setProvinces] = useState('')
   const dispatch = useDispatch()
  
   const handleUpdateInfor = async (data) => {
@@ -27,8 +30,6 @@ const Personal = () => {
       toast.success('Success')
     }
   }
-
-
   const getProvince=useCallback(async(pid)=>{
     const response=await getProvinceById(pid)
     if (response){
@@ -45,7 +46,7 @@ const Personal = () => {
       address: current?.address,
       province: provinces,
     })
-  }, [userData])
+  }, [userData,provinces,current])
   return (
     <div>
       <div className='border border-b-gray-800 border-t-gray-100 border-l-gray-100 border-r-gray-100'>Account information</div>

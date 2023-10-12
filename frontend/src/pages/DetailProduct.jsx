@@ -6,12 +6,23 @@ import { formatNumber } from '../ultils/helper'
 import CustomSliderProduct from "../components/Slider/CustomSliderProduct"
 import { size } from '../ultils/contants'
 import SelectQuality from "../components/SelectOption/SelectQuality"
-import { ButtonBack } from "../components/Button/ButtonBack"
 import Button from "../components/Button/Button"
 import bang from '../assets/bang.jpg'
+import clsx from 'clsx'
+import Swal from 'sweetalert2'
+import {apiCreateCart} from '../apis/user'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom"
+import path from "../ultils/path"
+import { toast } from "react-toastify"
 
 const DetailProduct = () => {
-  const [first, setfirst] = useState(size[0].id)
+  
+  const { current } = useSelector(state => state.user)
+  const navigate=useNavigate()
+  const dispatch= useDispatch()
+  const [first, setfirst] = useState(size[0].size)
   const { pid, productname } = useParams()
   const [product, setProduct] = useState(null)
   const [quantily, setQuantity] = useState(1)
@@ -33,14 +44,39 @@ const DetailProduct = () => {
     if (flag === 'minus') setQuantity(prev => +prev - 1)
     if (flag === 'plus') setQuantity(prev => +prev + 1)
   }, [quantily])
+ 
+
+  const handleAddtoCart=async()=>{
+    if (!current) {
+      return Swal.fire({
+        title: 'Almost...',
+        text: 'Please login first!',
+        icon: 'info',
+        cancelButtonText: 'Not now!',
+        showCancelButton: true,
+        confirmButtonText: 'Go login page '
+      }).then((rs) => {
+        if (rs.isConfirmed) navigate(`/${path.LOGIN}`)
+      })
+    }
+    const response= await apiCreateCart(current?.username,{
+      product_id:+pid,
+      quantity:+quantily,
+      size:first,
+    })
+    if(response?.data){
+      toast.success('Success')
+      console.log(response)
+    }else{
+      toast.error('Cant not order')
+    }
+  }
 
   useEffect(() => {
     fecthProductById(pid)
   }, [pid, productname])
   
-  const handleClick = () => {
-
-  }
+ 
   return (
     <div className="w-main">
       <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
@@ -67,11 +103,14 @@ const DetailProduct = () => {
             <div className='flex justify-start py-3 gap-3 border border-b-gray-300 border-r-gray-100 border-l-gray-100'>
               {size.map((el) => (
                 <div
-                  onClick={() => { setfirst(el.id) }}
-                  key={el.id}
-                  className={`${first === el.id ? "bg-gray-500 text-white" : ""
-                    } bg-white text-gray border flex text-sm transition font-light items-center justify-center w-10 h-10 cursor-pointer
-                  `}
+                  onClick={() => { setfirst(el.size) }}
+                  key={el.size}
+                  className={clsx(
+                    { '!bg-gray-800': first === el.size, 'text-white': first === el.size },
+                    { 'bg-white': first !== el.size, 'text-gray': first !== el.size },
+                    'border', 'flex', 'text-sm', 'transition', 'font-light',
+                    'items-center', 'justify-center', 'w-10', 'h-10', 'cursor-pointer'
+                  )}
                 >
                   {el.size}
                 </div>
@@ -81,7 +120,7 @@ const DetailProduct = () => {
               <SelectQuality quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
             </div>
             <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
-              <Button children='ADD TO CART' buttonAdd handleOnClick={handleClick} />
+              <Button children='ADD TO CART' buttonAdd  handleOnClick={handleAddtoCart}/>
             </div>
             <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
               <div className="text-sm font-medium underline">
