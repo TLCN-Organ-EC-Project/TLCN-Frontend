@@ -17,10 +17,12 @@ import { useNavigate } from "react-router-dom"
 import path from "../ultils/path"
 import { toast } from "react-toastify"
 import { useProductsByCart } from "../hooks/useProductsByCategory"
+import { useQueryClient } from 'react-query';
 
 const DetailProduct = () => {
   
   const { current } = useSelector(state => state.user)
+  const queryClient = useQueryClient();
   const navigate=useNavigate()
   const dispatch= useDispatch()
   const [first, setfirst] = useState(size[0].size)
@@ -66,8 +68,9 @@ const DetailProduct = () => {
       size:first,
     })
     if(response?.data){
+      queryClient.invalidateQueries(['products-dataCart',current?.username])
       toast.success('Success')
-      console.log(response)
+      
     }else{
       toast.error('Cant not order')
     }
@@ -118,7 +121,7 @@ const DetailProduct = () => {
               ))}
             </div>
             <div className="py-4">
-              <SelectQuality quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
+              <SelectQuality  select quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
             </div>
             <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
               <Button children='ADD TO CART' buttonAdd  handleOnClick={handleAddtoCart}/>

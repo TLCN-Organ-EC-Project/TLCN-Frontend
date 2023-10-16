@@ -11,9 +11,6 @@ const { ImBin } = icons
 
 const ItemCart = ({ cartData, dispatch }) => {
     const { current } = useSelector(state => state.user)
-    console.log(current)
-
-    console.log(cartData)
     const removeCart = async (username, cid) => {
         const response = await deleteItemCart(username, cid)
         if (response){

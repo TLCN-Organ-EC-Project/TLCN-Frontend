@@ -4,21 +4,26 @@ import { useSelector } from 'react-redux'
 import { useProductsByCart } from '../../hooks/useProductsByCategory'
 import { formatNumber } from '../../ultils/helper'
 import Button from '../Button/Button'
-import { getListCart } from '../../store/user/asyncActions'
 import { deleteItemCart } from '../../apis/user'
 import { useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom'
+import path from '../../ultils/path'
+import { ShowModal } from '../../store/app/appSlice'
+import { useDispatch } from 'react-redux'
 
-const { AiOutlineCloseCircle ,ImBin} = icons
+const { AiOutlineCloseCircle, ImBin } = icons
 
 const Cart = () => {
+    const dispatch=useDispatch()
     const queryClient = useQueryClient();
+    const navigate = useNavigate()
     const { current } = useSelector(state => state.user);
     const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
 
     const removeCart = async (username, cid) => {
         const response = await deleteItemCart(username, cid)
-        if (response){
-            queryClient.invalidateQueries(['products-dataCart',current?.username])
+        if (response) {
+            queryClient.invalidateQueries(['products-dataCart', current?.username])
         }
     }
     return (
@@ -75,7 +80,17 @@ const Cart = () => {
                 productsData &&
                 <div className='flex justify-between items-center gap-3 py-5'>
                     <Button children='CHECK OUT' buttonAdd />
-                    <Button children='DEATAIL CART' buttonAdd />
+                    <Button
+                        handleOnClick={() => {
+                            navigate(`/${path.DETAIL_CART}`)
+                            dispatch(ShowModal({
+                                isShowModal: false,
+                                modalChildren: null
+                            }))
+                        }
+                        }
+                        children='DEATAIL CART'
+                        buttonAdd />
                 </div>
             }
 

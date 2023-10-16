@@ -6,11 +6,16 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import path from "../../ultils/path"
 import Cart from "../Cart/Cart"
+import { useProductsByCart } from "../../hooks/useProductsByCategory"
+import { useSelector } from "react-redux"
 const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,FaSearch} = icons
 const NavbarLeft = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
+  const {current}=useSelector(state=>state.user)
+  const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
 
+  console.log(productsData)
   const handleCart=()=>{
     dispatch(ShowModal({
       isShowModal:true, 
@@ -48,7 +53,7 @@ const NavbarLeft = () => {
       onClick={handleCart}
       className="relative">
         <BsBag size={26} color="#696969" />
-        <span className="text-sm absolute  top-2 ml-2">0</span>
+        <span className="text-sm absolute  top-2 ml-2">{productsData?.carts?.reduce((sum,el)=>sum+Number(el?.cart?.quantity),0)}</span>
       </div>
       <div 
       onClick={handleSearch}>
