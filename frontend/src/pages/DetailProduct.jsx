@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 import path from "../ultils/path"
 import { toast } from "react-toastify"
+import { useProductsByCart } from "../hooks/useProductsByCategory"
 
 const DetailProduct = () => {
   

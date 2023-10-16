@@ -1,14 +1,23 @@
 import icons from "../../ultils/icons"
-import { ShowModal } from "../../store/app/appSlice"
+import {ShowModal } from "../../store/app/appSlice"
 import withBase from "../../hocs/withBase"
 import ModalSearch from "../Modal/ModalSearch"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import path from "../../ultils/path"
+import Cart from "../Cart/Cart"
 const { BsFillTelephoneFill, MdEmail, BsBag, FaUserCircle,FaSearch} = icons
 const NavbarLeft = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
+
+  const handleCart=()=>{
+    dispatch(ShowModal({
+      isShowModal:true, 
+      modalChildren:<Cart/>
+    }))
+  }
+
   const handleSearch =()=>{
     dispatch(ShowModal({
       isShowModal:true, 
@@ -35,11 +44,14 @@ const NavbarLeft = () => {
         </div>
         <div className="text-xs text-gray-700 flex justify-center">Online Support 24/7</div>
       </div>
-      <div className="relative">
+      <div 
+      onClick={handleCart}
+      className="relative">
         <BsBag size={26} color="#696969" />
         <span className="text-sm absolute  top-2 ml-2">0</span>
       </div>
-      <div onClick={handleSearch}>
+      <div 
+      onClick={handleSearch}>
         <FaSearch size={22} color="rose" />
       </div>
       <div 

@@ -5,29 +5,19 @@ import { getProductByCategory } from '../../apis/products'
 import ButtonSeeMore from '../Button/ButtonSeeMore'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'
+import { useProductsByCategory } from '../../hooks/useProductsByCategory'
 
 const ProductsSort = () => {
     const navigate=useNavigate()
 
     const [activedTab, setActivedTab] = useState(1)
 
-    const [products, setproducts] = useState(null)
+    const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activedTab);
 
     const handleClickButtonShowMore = () => {
         navigate(`${path.PRODUCTS}`);
       };
-      
-    const fetchProducts = async (cid) => {
-        const response = await getProductByCategory(
-            cid, 1, 10
-        )
-        if (response) {
-            setproducts(response?.data)
-        }
-    }
-    useEffect(() => {
-        fetchProducts(activedTab)
-    }, [activedTab])
+
     return (
         <div className='w-main'>
             <h3 className='font-light text-center text-sm'>NEW PRODUCTS</h3>
@@ -43,7 +33,7 @@ const ProductsSort = () => {
                     </h1>
                 ))}
             </div>
-            <CustomSlider products={products} />
+            <CustomSlider products={productsData} />
             <div className="justify-center flex  pt-10">
                 <ButtonSeeMore children="Show more" handleOnClick={handleClickButtonShowMore}/>
             </div>
