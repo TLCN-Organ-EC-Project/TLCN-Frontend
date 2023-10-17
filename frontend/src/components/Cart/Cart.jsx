@@ -14,12 +14,11 @@ import { useDispatch } from 'react-redux'
 const { AiOutlineCloseCircle, ImBin } = icons
 
 const Cart = () => {
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
     const queryClient = useQueryClient();
     const navigate = useNavigate()
     const { current } = useSelector(state => state.user);
     const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
-
     const removeCart = async (username, cid) => {
         const response = await deleteItemCart(username, cid)
         if (response) {
@@ -79,7 +78,18 @@ const Cart = () => {
             {
                 productsData &&
                 <div className='flex justify-between items-center gap-3 py-5'>
-                    <Button children='CHECK OUT' buttonAdd />
+                    <Button
+                        handleOnClick={() => {
+                            navigate(`/${path.ORDER}`)
+                            dispatch(ShowModal({
+                                isShowModal: false,
+                                modalChildren: null
+                            }))
+                        }
+                        }
+                        children='CHECK OUT'
+                        buttonAdd
+                    />
                     <Button
                         handleOnClick={() => {
                             navigate(`/${path.DETAIL_CART}`)

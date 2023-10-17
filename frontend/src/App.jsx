@@ -13,6 +13,7 @@ import Modal from "./components/ForgotPassword/Modal";
 import ForgotPasswordRentModal from "./components/ForgotPassword/ForgotPasswordRentModal";
 import Cart from "./components/Cart/Cart";
 import { useProductsByCategory } from "./hooks/useProductsByCategory";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           </Route>
         </Route>
         <Route path={path.LOGIN} element={<Login />} />
+        <Route path={path.ORDER} element={<OrderPage />} />
       </Routes>
       <ToastContainer
         position="top-right"

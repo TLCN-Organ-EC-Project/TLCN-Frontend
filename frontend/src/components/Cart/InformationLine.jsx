@@ -3,7 +3,6 @@ import Button from '../Button/Button'
 import { formatNumber } from '../../ultils/helper'
 
 const InformationLine = ({data}) => {
-    console.log(data)
     return (
         <div className='border border-gray-300 w-[250px] h-[200px] ml-6 flex flex-col '>
             <div className=' h-[33%] flex justify-start items-center p-2 border border-b-gray-300 text-base font-semibold opacity-80 '>Information line</div>
