@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 
 const InputForGot = ({ id,
+  value,
     label,
     type = "text", 
     disabled, 
@@ -17,6 +18,7 @@ const InputForGot = ({ id,
             disabled={disabled}
             {...register(id, { required })}
             placeholder=" "
+            value={value}
             type={type}
             className={`
               peer
@@ -25,7 +27,7 @@ const InputForGot = ({ id,
               pt-6 
               font-light 
               bg-white 
-              border-2
+              border-1
               rounded-md
               outline-none
               transition
@@ -39,10 +41,10 @@ const InputForGot = ({ id,
           <label 
             className={`
               absolute 
-              text-md
-              duration-150 
+              text-sm
+              duration-200
               transform 
-              -translate-y-3 
+              -translate-y-3
               top-3 
               z-10 
               origin-[0] 

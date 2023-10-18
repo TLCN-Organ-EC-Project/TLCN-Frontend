@@ -22,11 +22,13 @@ const ModalSearch = () => {
             setProductsData(response?.data)
         }
     }, [])
-    const debounce = useDebounce(search, 400)
+    const debounce = useDebounce(search, 800)
     useEffect(() => {
-        setIsLoading(true)
-        fetchProducts(debounce)
-        setIsLoading(false)
+        if(search!==" "){
+            setIsLoading(true)
+            fetchProducts(debounce)
+            setIsLoading(false)
+        }
     }, [search, debounce])
     return (
         <div

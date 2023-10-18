@@ -71,15 +71,12 @@ const DetailProduct = () => {
       toast.success('Success')
       
     }else{
-      toast.error('Cant not order')
+      toast.error('Cant not AddtoCart')
     }
   }
-
   useEffect(() => {
     fecthProductById(pid)
   }, [pid, productname])
-  
- 
   return (
     <div className="w-main">
       <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
