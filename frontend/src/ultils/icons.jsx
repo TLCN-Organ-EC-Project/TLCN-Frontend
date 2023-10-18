@@ -7,6 +7,7 @@ import {FaUserCircle,FaTty,FaSearch} from 'react-icons/fa'
 import {BiGift} from 'react-icons/bi'
 import {BsThreeDots,BsFacebook,BsBag,BsTiktok,BsPerson} from 'react-icons/bs'
 import {ImBin} from 'react-icons/im'
+import {TiTickOutline} from 'react-icons/ti'
 import {HiOutlineShoppingBag} from 'react-icons/hi'
 import {TfiViewListAlt} from 'react-icons/tfi'
 import {SiBlockchaindotcom} from 'react-icons/si'
@@ -15,6 +16,7 @@ import {AiFillStar,AiFillCheckCircle,AiFillGoogleCircle,AiFillInstagram,AiOutlin
 
 const icons={
     BsFillTelephoneFill,
+    TiTickOutline,
     AiFillCheckCircle,
     BsPerson,
     FaSearch,
