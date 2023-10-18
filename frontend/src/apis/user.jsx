@@ -55,3 +55,8 @@ export const createOrder =(username,data)=>axios({
     method:'post',
     data
 })
+
+export const deleteAllCart=(username)=>axios({
+    url:`/users/${username}/carts`,
+    method:'delete',
+})

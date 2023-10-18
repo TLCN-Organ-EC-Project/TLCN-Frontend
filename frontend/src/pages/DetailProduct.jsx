@@ -69,7 +69,6 @@ const DetailProduct = () => {
     if(response?.data){
       queryClient.invalidateQueries(['products-dataCart',current?.username])
       toast.success('Success')
-      
     }else{
       toast.error('Cant not AddtoCart')
     }

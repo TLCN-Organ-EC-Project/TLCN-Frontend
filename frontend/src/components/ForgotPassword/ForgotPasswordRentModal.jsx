@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import Heading from '../Heading/Heading'
 import InputForGot from '../Input/InputForGot';
 import axios from 'axios';
-import { apiForgotPassword, apiResetPassword } from '../../apis/user';
 import { toast } from 'react-toastify'
 
 
@@ -179,6 +178,7 @@ const ForgotPasswordRentModal = () => {
                     disabled={isLoading}
                     register={register}
                     errors={errors}
+                    type='password'
                     required
                 />
                 <hr />

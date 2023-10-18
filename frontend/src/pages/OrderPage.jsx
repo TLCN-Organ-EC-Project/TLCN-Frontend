@@ -9,17 +9,19 @@ import { useSelector } from 'react-redux';
 import { useProductsByCart } from '../hooks/useProductsByCategory';
 import { formatNumber } from '../ultils/helper';
 import path from '../ultils/path'
-import { apiCreateCart, createOrder } from '../apis/user'
+import { apiCreateCart, createOrder,deleteAllCart } from '../apis/user'
 import { toast } from 'react-toastify';
+import { useQueryClient } from 'react-query';
 
 
 
 
 const { MdKeyboardArrowRight, BsPerson, AiFillCheckCircle, TiTickOutline } = icons
 const OrderPage = ({ dispatch, navigate }) => {
-
+  const queryClient = useQueryClient();
   const { current } = useSelector(state => state.user);
   const [dataOrder, setDataOrder] = useState(null)
+  const { data: productsDataCart, isLoading: isFetchingProductsCart } = useProductsByCart(current?.username);
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
   const [isLoading, setIsLoading] = useState(false)
   const product_id = productsData?.carts?.map((item) => item?.product?.id)
@@ -41,7 +43,6 @@ const OrderPage = ({ dispatch, navigate }) => {
 
     },
   });
-
   const address = watch('address')
   const province = watch('province')
   const data = {
@@ -61,6 +62,13 @@ const OrderPage = ({ dispatch, navigate }) => {
       toast.success('Success')
       setDataOrder(response?.data)
     }
+  }
+  const handleGoHome =async()=>{
+      const respone =await deleteAllCart(current?.username)
+      if (respone){
+        navigate(`${path.PUBLIC}`)
+        queryClient.invalidateQueries(['products-dataCart', current?.username])
+      }
   }
 
   return (
@@ -156,7 +164,7 @@ const OrderPage = ({ dispatch, navigate }) => {
               <div className='p-3 text-sm'>Payment methods : </div>
               <div className='pt-1 px-3 pb-2 text-sm'>Cash on delivery (COD)</div>
             </div>   
-            <Button children='Go home' btnGoHome handleOnClick={()=>navigate(`${path.PUBLIC}`)}/>
+            <Button children='Go home' btnGoHome handleOnClick={handleGoHome}/>
           </div>
       }
       <div className="w-[50%] bg-gray-200 p-10">
