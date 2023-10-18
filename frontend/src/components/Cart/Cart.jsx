@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'
 import { ShowModal } from '../../store/app/appSlice'
 import { useDispatch } from 'react-redux'
+import Loading from '../Loading/Loading'
 
 const { AiOutlineCloseCircle, ImBin } = icons
 
@@ -45,6 +46,10 @@ const Cart = () => {
             <div className='py-5 border border-t-white border-l-white border-r-white border-b-gray-700 border-b-2'>
                 <div className={clsx('w-full relative mb-2 ')}>
                     {
+                        isFetchingProducts
+                        ?
+                       <Loading/>
+                        :
                         productsData?.carts?.map((el) => (
                             <div className='w-full justify-between  flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>
                                 <div className='w-full flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>

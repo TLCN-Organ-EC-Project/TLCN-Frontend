@@ -2,6 +2,7 @@ import React from 'react'
 import { useListOrderByUserName } from '../../hooks/useProductsByCategory'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
+import Loading from '../../components/Loading/Loading'
 
 const ListOrder = () => {
     const { current } = useSelector(state => state.user);
@@ -16,13 +17,19 @@ const ListOrder = () => {
                     <div>Booking date</div>
                     <div className='mr-2'>Payment status</div>
                 </div>
-                {orderData?.map((el) => (
-                    <div className='grid grid-cols-3 text-sm font-medium gap-16 justify-around py-1'>
-                        <div className='text-xs flex justify-start'>{el?.booking_id}</div>
-                        <div className='pr-5'>{moment(el?.booking_date).format('YYYY-MM-DD')}</div>
-                        <div className='mr-2'>Pending</div>
-                    </div>
-                ))}
+                {
+                    isFetchingProducts 
+                    ?
+                     (<Loading/>)
+                     :
+                   orderData?.map((el) => (
+                        <div className='grid grid-cols-3 text-sm font-medium gap-16 justify-around py-1'>
+                            <div className='text-xs flex justify-start'>{el?.booking_id}</div>
+                            <div className='pr-5'>{moment(el?.booking_date).format('YYYY-MM-DD')}</div>
+                            <div className='mr-2'>Pending</div>
+                        </div>
+                    ))
+                }
 
             </div>
         </div>
