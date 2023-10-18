@@ -6,14 +6,11 @@ import Heading from '../Heading/Heading'
 import InputForGot from '../Input/InputForGot';
 import axios from 'axios';
 import { toast } from 'react-toastify'
-
-
 const STEPS = {
     EMAIL: 0,
     MES: 1,
     OTP: 2,
 }
-
 const ForgotPasswordRentModal = () => {
     const [step, setStep] = useState(STEPS.EMAIL)
     const rentModal = useRentModal()

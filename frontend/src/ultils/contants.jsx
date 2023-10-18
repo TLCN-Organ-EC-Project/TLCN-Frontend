@@ -132,5 +132,11 @@ export const memberSideBar = [
     text: 'Account information',
     path: `/${path.MEMBER}/${path.PERSINAL}`,
     icon: <AiOutlineDashboard size={20} />
+  },
+  {
+    id: 2,
+    text: 'List Order',
+    path: `/${path.MEMBER}/${path.LISTORDER}`,
+    icon: <AiOutlineDashboard size={20} />
   }
 ]

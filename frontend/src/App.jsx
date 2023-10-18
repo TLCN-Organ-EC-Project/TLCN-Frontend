@@ -14,6 +14,7 @@ import ForgotPasswordRentModal from "./components/ForgotPassword/ForgotPasswordR
 import Cart from "./components/Cart/Cart";
 import { useProductsByCategory } from "./hooks/useProductsByCategory";
 import OrderPage from "./pages/OrderPage";
+import ListOrder from "./pages/member/ListOrder";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path={path.CONTACT_US} element={<Contact />} />
           <Route path={path.MEMBER} element={<MemberLayout />}>
             <Route path={path.PERSINAL} element={<Personal />} />
+            <Route path={path.LISTORDER} element={<ListOrder />} />
           </Route>
         </Route>
         <Route path={path.LOGIN} element={<Login />} />

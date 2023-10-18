@@ -8,19 +8,14 @@ import Skeleton from "../components/Skeleton/Skeleton";
 import { useProductsByCategory } from "../hooks/useProductsByCategory";
 
 const Products = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(category[0].id)
-  // const [products, setproducts] = useState(null)
-
   const handleItemClick = (el) => {
     setTimeout(() => {
       navigate(el.id);
     }, 0);
   };
-
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activeTab);
-
   return (
     <div className="w-main">
       <div className='w-main flex justify-around items-center bg-gray-200 h-10'>

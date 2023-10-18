@@ -19,6 +19,7 @@ const Cart = () => {
     const navigate = useNavigate()
     const { current } = useSelector(state => state.user);
     const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
+    
     const removeCart = async (username, cid) => {
         const response = await deleteItemCart(username, cid)
         if (response) {
@@ -72,7 +73,19 @@ const Cart = () => {
                 productsData &&
                 <div className='py-2 flex justify-between items-center'>
                     <span className='uppercase'>Total amount : </span>
-                    <span>{formatNumber(productsData?.carts?.reduce((sum, el) => sum + Number(el?.cart?.price), 0)) + 'đ'}</span>
+                    <span>
+                        {
+                            formatNumber(
+                                productsData?.carts?.reduce((sum, el) => sum + Number(el?.cart?.price), 0)
+                            )
+                                === undefined ? 0 :
+                                formatNumber(
+                                    productsData?.carts?.reduce((sum, el) => sum + Number(el?.cart?.price), 0)
+                                ) +
+
+                                'đ'
+                        }
+                    </span>
                 </div>
             }
             {

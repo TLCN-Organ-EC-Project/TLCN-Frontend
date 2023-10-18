@@ -2,8 +2,6 @@ import React,{useState, useEffect} from 'react'
 import {blogs} from '../ultils/contants'
 import { BlogItem } from '../components'
 import Skeleton from "../components/Skeleton/Skeleton";
-
-
 const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect (()=>{
@@ -29,5 +27,4 @@ const Blog = () => {
     </div>
   )
 }
-
 export default Blog

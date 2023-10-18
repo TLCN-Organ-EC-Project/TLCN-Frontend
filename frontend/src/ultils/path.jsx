@@ -14,6 +14,7 @@ const path={
     //member
     MEMBER:'member',
     PERSINAL:'persinal',
+    LISTORDER:'listorder',
     ADDRESS:'address',
 }
 export default path

@@ -9,8 +9,7 @@ import InputForm from '../../components/Input/InputForm'
 import { Button } from '../../components'
 import { apiUpdateUser } from '../../apis/user'
 import { login } from "../../store/user/userSlice";
-import { getListProvinces,getProvinceById } from '../../apis/products'
-
+import { getProvinceById } from '../../apis/products'
 const Personal = () => {
   const navigate=useNavigate()
   const { register, formState: { errors, isDirty }, handleSubmit, reset } = useForm()
@@ -99,5 +98,4 @@ const Personal = () => {
     </div>
   )
 }
-
 export default Personal

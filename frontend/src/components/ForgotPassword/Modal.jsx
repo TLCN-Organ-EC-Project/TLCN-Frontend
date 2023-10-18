@@ -12,7 +12,6 @@ const Modal = ({ isOpen,onClose,onSubmit,title,body, actionLabel,footer,disabled
         if (disabled) {
           return;
         }
-      
         setShowModal(false);
         setTimeout(() => {
           onClose();
@@ -72,5 +71,4 @@ const Modal = ({ isOpen,onClose,onSubmit,title,body, actionLabel,footer,disabled
         </>
     )
 }
-
 export default Modal

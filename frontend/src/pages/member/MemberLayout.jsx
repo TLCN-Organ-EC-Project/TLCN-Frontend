@@ -1,8 +1,6 @@
 import React from 'react'
 import MemberSideBar from '../../components/Member/MemberSideBar'
 import { Outlet } from 'react-router-dom'
-import Personal from './Personal'
-
 const MemberLayout = () => {
   return (
     <div className='w-main justify-center text-center'>
@@ -10,11 +8,10 @@ const MemberLayout = () => {
     <div className='flex w-main'>
             <MemberSideBar/>
             <div>
-                <Personal/>
+               <Outlet/>
             </div>
     </div>
     </div>
   )
 }
-
 export default MemberLayout
