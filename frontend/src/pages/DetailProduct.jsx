@@ -19,8 +19,13 @@ import { toast } from "react-toastify"
 import { useQueryClient } from 'react-query';
 import LoadingDetail from "../components/Loading/LoadingDetail"
 import { useProductsById } from "../hooks/useProductsByCategory"
+import Comment from "../components/comment/Comment"
+import { useDetailProductStore } from "../hooks/useDetailProductStore";
+import { useSnapshot } from "valtio"
 
 const DetailProduct = () => {
+  const detailProductStore = useDetailProductStore();
+  const snapDetailProductStore = useSnapshot(detailProductStore)
 
   const { current } = useSelector(state => state.user)
   const queryClient = useQueryClient();
@@ -32,7 +37,11 @@ const DetailProduct = () => {
 
   const { data: product, isLoading: isFetchingProducts } = useProductsById(pid);
 
-  console.log(product)
+  useEffect(() => {
+    if (pid) {
+      detailProductStore.productId = pid;
+    }
+  }, [])
 
   const handleQuantily = useCallback((number) => {
     if (!Number(number) || Number(number) < 1) {
@@ -145,6 +154,9 @@ const DetailProduct = () => {
             </div>
           </div>
       }
+      <div>
+        <Comment />
+      </div>
     </div>
   )
 }

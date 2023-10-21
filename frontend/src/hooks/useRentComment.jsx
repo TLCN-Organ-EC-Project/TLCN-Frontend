@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const useRentModal = create((set) => ({
+const useRentComment = create((set) => ({
     isOpen: false,
     onOpen: () => set({ isOpen: true }),
     onClose: () => set({ isOpen: false }),
@@ -8,4 +8,4 @@ const useRentModal = create((set) => ({
 
 
 
-export default useRentModal;
+export default useRentComment;

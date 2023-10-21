@@ -3,42 +3,43 @@ import { IoMdClose } from "react-icons/io";
 import ButtonForgot from "../Button/ButtonForgot";
 
 
-const Modal = ({ isOpen,onClose,onSubmit,title,body, actionLabel,footer,disabled,secondaryAction,secondaryActionLabel }) => {
+const Modal = ({ isOpen, onClose, onSubmit, title, body, actionLabel, footer, disabled, secondaryAction, secondaryActionLabel }) => {
     const [showModal, setShowModal] = useState(isOpen);
     useEffect(() => {
         setShowModal(isOpen);
-      }, [isOpen]);
-      const handleClose = useCallback(() => {
+    }, [isOpen]);
+    const handleClose = useCallback(() => {
         if (disabled) {
-          return;
+            return;
         }
         setShowModal(false);
         setTimeout(() => {
-          onClose();
+            onClose();
         }, 300)
-      }, [onClose, disabled]);
+    }, [onClose, disabled]);
 
-      const handleSubmit=useCallback(()=>{
-        if(disabled){
-            return ;
+    const handleSubmit = useCallback(() => {
+        if (disabled) {
+            return;
         }
         onSubmit();
-      },[disabled, onSubmit])
+    }, [disabled, onSubmit])
 
-      const handleSecondaryAction = useCallback(()=>{
-        if(disabled || !secondaryAction){
-            return ;
+    const handleSecondaryAction = useCallback(() => {
+        if (disabled || !secondaryAction) {
+            return;
         }
         secondaryAction()
-      },[disabled, secondaryAction])
+    }, [disabled, secondaryAction])
 
-      if(!isOpen){
+    if (!isOpen) {
         return null;
-      }
+    }
+
     return (
         <>
             <div className="justify-center items-center flex fixed inset-0 z-50 outline-none  focus:outline-none bg-neutral-800/70">
-                <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full lg:h-auto md:h-auto">
+                <div className=" relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full lg:h-auto md:h-auto">
                     <div className={`translate duration-300 h-full 
                                 ${showModal ? 'translate-y-0 ' : 'translate-y-full'}
                                 ${showModal ? 'opacity-100' : 'opacity-0'}

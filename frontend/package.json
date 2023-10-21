@@ -41,6 +41,7 @@
     "sweetalert2": "^11.7.31",
     "swiper": "^10.3.1",
     "use-react-router-breadcrumbs": "^4.0.1",
+    "valtio": "^1.11.2",
     "zustand": "^4.4.3"
   },
   "devDependencies": {

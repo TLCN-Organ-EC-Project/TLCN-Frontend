@@ -15,44 +15,49 @@ import Cart from "./components/Cart/Cart";
 import { useProductsByCategory } from "./hooks/useProductsByCategory";
 import OrderPage from "./pages/OrderPage";
 import ListOrder from "./pages/member/ListOrder";
+import ModalComment from "./components/comment/ModalComment";
+import { DetailProductProvider } from "./context/DetailProductContext";
 
 function App() {
 
   const { isShowModal, modalChildren } = useSelector(state => state.app)
   return (
     <div className="relative">
-      <ForgotPasswordRentModal />
-      <Modal />
-      {isShowModal && <ModalChildren>{modalChildren}</ModalChildren>}
-      <Routes>
-        <Route path={path.PUBLIC} element={<Public />}>
-          <Route path={path.HOME} element={<Home />} />
-          <Route path={path.DETAIL__PRODUCT__CATEGORY__PID__TITLE} element={<DetailProduct />} />
-          <Route path={path.PRODUCTS} element={<Products />} />
-          <Route path={path.DETAIL_CART} element={<DetailCart />} />
-          <Route path={path.BLOGS} element={<Blog />} />
-          <Route path={path.CONTACT_US} element={<Contact />} />
-          <Route path={path.MEMBER} element={<MemberLayout />}>
-            <Route path={path.PERSINAL} element={<Personal />} />
-            <Route path={path.LISTORDER} element={<ListOrder />} />
+      <DetailProductProvider>
+        <ForgotPasswordRentModal />
+        <ModalComment />
+        <Modal />
+        {isShowModal && <ModalChildren>{modalChildren}</ModalChildren>}
+        <Routes>
+          <Route path={path.PUBLIC} element={<Public />}>
+            <Route path={path.HOME} element={<Home />} />
+            <Route path={path.DETAIL__PRODUCT__CATEGORY__PID__TITLE} element={<DetailProduct />} />
+            <Route path={path.PRODUCTS} element={<Products />} />
+            <Route path={path.DETAIL_CART} element={<DetailCart />} />
+            <Route path={path.BLOGS} element={<Blog />} />
+            <Route path={path.CONTACT_US} element={<Contact />} />
+            <Route path={path.MEMBER} element={<MemberLayout />}>
+              <Route path={path.PERSINAL} element={<Personal />} />
+              <Route path={path.LISTORDER} element={<ListOrder />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path={path.LOGIN} element={<Login />} />
-        <Route path={path.ORDER} element={<OrderPage />} />
-      </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-      <ToastContainer />
+          <Route path={path.LOGIN} element={<Login />} />
+          <Route path={path.ORDER} element={<OrderPage />} />
+        </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+        <ToastContainer />
+      </DetailProductProvider>
     </div>
   )
 }

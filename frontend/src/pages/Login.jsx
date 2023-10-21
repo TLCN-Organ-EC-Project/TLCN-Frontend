@@ -15,8 +15,6 @@ import { login } from "../store/user/userSlice";
 import useRentModal from '../hooks/useRentModal'
 
 const Login = () => {
-
-
   const rentModal=useRentModal()
   const dispatch = useDispatch()
   const navigate=useNavigate()

@@ -14,8 +14,6 @@ const NavbarLeft = () => {
   const navigate=useNavigate()
   const {current}=useSelector(state=>state.user)
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
-
-  console.log(productsData)
   const handleCart=()=>{
     dispatch(ShowModal({
       isShowModal:true, 

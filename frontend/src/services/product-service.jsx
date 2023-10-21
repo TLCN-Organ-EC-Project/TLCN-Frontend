@@ -63,3 +63,19 @@ export const getProductById = async (pid) => {
         throw Error(`Failed to fetch products by id: ${error}`);
     }
 }
+
+export const getFeedBackById=async (pid)=>{
+    try {
+        const data = await axios({
+            url: `/products/${pid}/feedbacks`,
+            method: 'get',
+            params: {
+                page_id: 1,
+                page_size: 10,
+            }
+        }).then((res) => res.data)
+        return data;
+    } catch (error) {
+        throw Error(`Failed to fetch feedbacks product by id: ${error}`);
+    }
+}
