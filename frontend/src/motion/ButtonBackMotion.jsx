@@ -51,6 +51,6 @@ export const StyledContainer = styled(motion.div)`
   &:hover {
     cursor: pointer;
     background-position: left;
-    color: eee5;
+    color: #eee5;
   }
 `;

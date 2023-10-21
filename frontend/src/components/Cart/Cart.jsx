@@ -13,7 +13,6 @@ import { useDispatch } from 'react-redux'
 import Loading from '../Loading/Loading'
 
 const { AiOutlineCloseCircle, ImBin } = icons
-
 const Cart = () => {
     const dispatch = useDispatch()
     const queryClient = useQueryClient();

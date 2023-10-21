@@ -36,13 +36,11 @@ const DetailProduct = () => {
   const [quantily, setQuantity] = useState(1)
 
   const { data: product, isLoading: isFetchingProducts } = useProductsById(pid);
-
   useEffect(() => {
     if (pid) {
       detailProductStore.productId = pid;
     }
   }, [])
-
   const handleQuantily = useCallback((number) => {
     if (!Number(number) || Number(number) < 1) {
       return
@@ -108,7 +106,7 @@ const DetailProduct = () => {
                 <div className="text-lg font-semibold">{`${formatNumber(product?.product[0]?.product?.price)}₫`}</div>
               </div>
               <div className='flex justify-start py-3 gap-3 border border-b-gray-300 border-r-gray-100 border-l-gray-100'>
-                {size.map((el) => (
+                {product?.product[0]?.stores?.map((el) => (
                   <div
                     onClick={() => { setfirst(el.size) }}
                     key={el.size}

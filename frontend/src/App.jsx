@@ -34,7 +34,6 @@ function App() {
             <Route path={path.DETAIL__PRODUCT__CATEGORY__PID__TITLE} element={<DetailProduct />} />
             <Route path={path.PRODUCTS} element={<Products />} />
             <Route path={path.DETAIL_CART} element={<DetailCart />} />
-            <Route path={path.BLOGS} element={<Blog />} />
             <Route path={path.CONTACT_US} element={<Contact />} />
             <Route path={path.MEMBER} element={<MemberLayout />}>
               <Route path={path.PERSINAL} element={<Personal />} />

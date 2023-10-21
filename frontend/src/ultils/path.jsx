@@ -4,7 +4,6 @@ const path={
     ALL:'*',
     LOGIN:'login',
     PRODUCTS:'category',
-    BLOGS:'blogs',
     DETAIL_BLOG:':bid/:title',
     SERVICES:'services',
     CONTACT_US:'contact',
