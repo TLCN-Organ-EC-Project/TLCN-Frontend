@@ -71,3 +71,9 @@ export const deleteFeedBack=(id,username,productCommented)=>axios({
     url:`/users/${username}/feedbacks/${productCommented}/${id}`,
     method:'delete'
 })
+
+export const apiRefreshToken = (data)=>axios({
+    url:'/tokens/renew_access',
+    method:'post',
+    data
+})

@@ -5,7 +5,6 @@ import anh3 from '../../assets/f3.webp'
 import anh4 from '../../assets/f4.webp'
 import anh5 from '../../assets/f5.webp'
 import anh6 from '../../assets/f6.webp'
-import styled from "styled-components";
 
 const TopFooter = () => {
   return (

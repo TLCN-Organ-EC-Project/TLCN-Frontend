@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import useRentComment from '../../hooks/useRentComment'
 import Modal from '../ForgotPassword/Modal'
 import { useForm } from 'react-hook-form';
 import InputForGot from '../Input/InputForGot';

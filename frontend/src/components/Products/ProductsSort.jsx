@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { menuSPMoi } from '../../ultils/contants'
 import CustomSlider from '../Slider/CustomSlider'
-import { getProductByCategory } from '../../apis/products'
 import ButtonSeeMore from '../Button/ButtonSeeMore'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'

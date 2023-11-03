@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import lottie from 'lottie-web'
 import loadingAnimation from '../../assets/loading_product.json'
-
 const LoadingDetail = () => {
     const container= useRef(null)
     useEffect(()=>{

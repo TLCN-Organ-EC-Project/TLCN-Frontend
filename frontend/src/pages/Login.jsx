@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { EarthCanvas } from "../components/Canvas";
 import { motion } from "framer-motion";
@@ -40,7 +40,8 @@ const Login = () => {
       full_name: '',
       address: '',
       province: '',
-      phone: '',
+      phone: '+84',
+      role:'Buyer',
     })
   }
 
@@ -67,11 +68,13 @@ const Login = () => {
         if (response){
          setLoading(true);
          const token = response.headers.get('x-access-token');
+         const refreshToken=response.headers.get('x-refresh-token');
          setLoading(false)
           dispatch(login({
             isLoggedIn: true,
             token:token,
             current:response.data,
+            refreshToken:refreshToken
           }))
           navigate(`/${path.HOME}`)
         }else  Swal.fire('Oops!','error')
@@ -81,7 +84,7 @@ const Login = () => {
 
   return (
     <div
-      className={` flex xl:flex-row flex-col-reverse gap-10 overflow-hidden bg-blue-300 h-[706px] relative`}
+      className={` flex xl:flex-row flex-col-reverse gap-5 overflow-hidden bg-blue-300 h-[705px] relative`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
@@ -172,7 +175,7 @@ const Login = () => {
               <span onClick={() => setIsRegister(false)} className="text-gray-700 hover:underline w-full text-center">Go Login ?</span>
             }
             <Link to={`/${path.HOME}`}>
-              <span className="hover:underline text-gray-700 ">Go home?</span>
+              <span className="hover:underline text-gray-700 inline-block mr-3">Go Home ?</span>
             </Link>
           </div>
         </form>

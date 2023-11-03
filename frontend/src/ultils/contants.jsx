@@ -1,5 +1,4 @@
 import path from './path'
-import blogimage from '../assets/blog.webp'
 import icons from '../ultils/icons'
 
 const { AiOutlineDashboard, GrGroup } = icons

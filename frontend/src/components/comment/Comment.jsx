@@ -1,7 +1,6 @@
 import React from 'react'
 import LoadingComment from '../Loading/LoadingComment'
 import anh1 from '../../assets/cm.webp'
-import useRentComment from '../../hooks/useRentComment'
 import { useDetailProductStore } from '../../hooks/useDetailProductStore'
 import { useSnapshot } from 'valtio'
 import { useFeedBackProductById } from '../../hooks/useProductsByCategory'
@@ -13,7 +12,6 @@ import { toast } from 'react-toastify'
 const Comment = () => {
   const detailProductStore = useDetailProductStore()
   const queryClient = useQueryClient();
-  const snapDetailProductStore = useSnapshot(detailProductStore)
   const { data: productsData, isLoading: isFetchingProducts } = useFeedBackProductById(detailProductStore.productId);
   const removeFeedBack = async (id, username, productCommented) => {
     const response = await deleteFeedBack(id, username, productCommented)

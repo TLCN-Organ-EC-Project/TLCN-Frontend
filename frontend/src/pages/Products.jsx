@@ -1,5 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
-// import { getProductByCategory } from '../apis/products'
+import {useState} from "react";
 import { category } from '../ultils/contants'
 import { motion } from "framer-motion";
 import { NavLink, useNavigate } from 'react-router-dom'

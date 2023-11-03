@@ -1,18 +1,14 @@
 import { Route, Routes } from "react-router-dom"
 import path from "./ultils/path"
-import { useDispatch, useSelector } from 'react-redux'
-import { Blog, Contact, DetailCart, DetailProduct, Home, Login, Products, Public, Services } from "./pages"
-import { useEffect, useState } from "react";
+import {useSelector } from 'react-redux'
+import { Contact, DetailCart, DetailProduct, Home, Login, Products, Public } from "./pages"
 import ModalChildren from "./components/Modal/ModalChildren";
 import Personal from "./pages/member/Personal";
 import MemberLayout from "./pages/member/MemberLayout";
-import Address from "./pages/member/Address";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from "./components/ForgotPassword/Modal";
 import ForgotPasswordRentModal from "./components/ForgotPassword/ForgotPasswordRentModal";
-import Cart from "./components/Cart/Cart";
-import { useProductsByCategory } from "./hooks/useProductsByCategory";
 import OrderPage from "./pages/OrderPage";
 import ListOrder from "./pages/member/ListOrder";
 import ModalComment from "./components/comment/ModalComment";

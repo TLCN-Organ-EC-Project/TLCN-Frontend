@@ -32,6 +32,7 @@ export const getListProvinces=()=>axios({
     url:'/provinces',
     method:'get',
 })
+
 export const getProvinceById=(pid)=>axios({
     url:`/provinces/${pid}`,
     method:'get',

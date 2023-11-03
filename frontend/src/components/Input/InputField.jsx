@@ -1,4 +1,3 @@
-import React,{useState} from 'react'
 import clsx from 'clsx'
 
 const InputField = ({value,setValue,nameKey, type, invalidFields, setInvalidFieds, style,fullWidth,placeholder,search}) => {
@@ -20,7 +19,5 @@ const InputField = ({value,setValue,nameKey, type, invalidFields, setInvalidFied
     </div>
   )
 }
-
-//[{name:password, mes:Require}]
 
 export default InputField

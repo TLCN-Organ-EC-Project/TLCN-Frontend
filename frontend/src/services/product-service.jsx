@@ -79,3 +79,15 @@ export const getFeedBackById=async (pid)=>{
         throw Error(`Failed to fetch feedbacks product by id: ${error}`);
     }
 }
+
+export const getListProvider =async ()=>{
+    try{
+        const data=await axios({
+            url:`/provinces`,
+            method:'get',
+        }).then((res)=>res.data)
+        return data;
+    }catch (error){
+        throw new Error(`Failded to fetch provider : ${error}`)
+    }
+}

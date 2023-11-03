@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import * as actions from './asyncActions'
 
 
@@ -10,19 +10,22 @@ export const userSlice = createSlice({
         token: null,
         isLoading: false,
         listCart:null,
-        mes: ''
+        mes: '',
+        refreshToken:null,
     },
     reducers: {
         login: (state, action) => {
             state.isLoggedIn = action.payload.isLoggedIn
             state.token = action.payload.token
             state.current=action.payload.current
+            state.refreshToken=action.payload.refreshToken
         },
         logout: (state) => {
             state.isLoggedIn = false
             state.token = null
             state.current = null
             state.mes = ''
+            state.refreshToken=null
         },
         clearMessage: (state) => {
             state.mes = ''

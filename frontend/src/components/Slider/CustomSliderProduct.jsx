@@ -1,8 +1,6 @@
 import React,{memo} from 'react'
 import Slider from 'react-slick'
 import ProductImage from '../Product/ProductImage';
-
-
 var settings = {
     dots: true,
     infinite: true,
@@ -12,9 +10,6 @@ var settings = {
     slidesToScroll: 1,
     autoplaySpeed: 3000,
   };
-
-
-
 const CustomSliderProduct = ({products}) => {
     return (
         <div className='w-[700px]'>

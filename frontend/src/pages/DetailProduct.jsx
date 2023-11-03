@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect, memo } from "react"
 import { useParams } from "react-router-dom"
 import Breadcumb from "../components/BreadCumb/Breadcumb"
-import { getProductById } from '../apis/products'
 import { formatNumber } from '../ultils/helper'
 import CustomSliderProduct from "../components/Slider/CustomSliderProduct"
 import { size } from '../ultils/contants'

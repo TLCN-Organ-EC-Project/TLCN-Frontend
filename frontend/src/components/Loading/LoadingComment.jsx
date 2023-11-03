@@ -1,8 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import lottie from 'lottie-web'
 import loadingAnimation from '../../assets/comment.json'
-
-
 const LoadingComment = () => {
     const container= useRef(null)
     useEffect(()=>{

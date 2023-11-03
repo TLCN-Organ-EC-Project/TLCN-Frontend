@@ -5,7 +5,4 @@ const useRentModal = create((set) => ({
     onOpen: () => set({ isOpen: true }),
     onClose: () => set({ isOpen: false }),
 }));
-
-
-
 export default useRentModal;

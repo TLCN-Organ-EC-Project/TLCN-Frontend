@@ -4,7 +4,6 @@ import icons from '../../ultils/icons'
 import { deleteItemCart } from '../../apis/user'
 import withBase from '../../hocs/withBase'
 import { useSelector } from 'react-redux'
-import { useProductsByCart } from '../../hooks/useProductsByCategory'
 import { getListCart } from '../../store/user/asyncActions'
 
 const { ImBin } = icons
