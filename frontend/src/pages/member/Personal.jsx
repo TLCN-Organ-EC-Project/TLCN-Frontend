@@ -3,14 +3,12 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import InputForm from '../../components/Input/InputForm'
 import { Button } from '../../components'
 import { apiUpdateUser } from '../../apis/user'
 import { login } from "../../store/user/userSlice";
 import { getProvinceById } from '../../apis/products'
 const Personal = () => {
-  const navigate=useNavigate()
   const { register, formState: { errors, isDirty }, handleSubmit, reset } = useForm()
   const { current } = useSelector(state => state.user)
   const [userData, setUserData] = useState(null)
@@ -33,6 +31,7 @@ const Personal = () => {
       setProvinces(response?.data?.name)
     }
   },[provinces,current])
+
   useEffect(() => {
     getProvince(current?.province?.toString())
     reset({

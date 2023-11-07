@@ -6,18 +6,20 @@ import cod from '../assets/cod.svg'
 import Button from '../components/Button/Button';
 import withBase from '../hocs/withBase'
 import { useSelector } from 'react-redux';
-import { useProductsByCart } from '../hooks/useProductsByCategory';
+import { useGetListProvider, useProductsByCart } from '../hooks/useProductsByCategory';
 import { formatNumber } from '../ultils/helper';
 import path from '../ultils/path'
-import { createOrder,deleteAllCart } from '../apis/user'
+import { createOrder, deleteAllCart } from '../apis/user'
 import { toast } from 'react-toastify';
 import { useQueryClient } from 'react-query';
+import SelectProvide from '../components/SelectOption/SelectProvide';
 
 const { MdKeyboardArrowRight, BsPerson, AiFillCheckCircle, TiTickOutline } = icons
 const OrderPage = ({ dispatch, navigate }) => {
   const queryClient = useQueryClient();
   const { current } = useSelector(state => state.user);
   const [dataOrder, setDataOrder] = useState(null)
+  const { data: listProvider, isLoading: isFetchingData } = useGetListProvider()
   const { data: productsDataCart, isLoading: isFetchingProductsCart } = useProductsByCart(current?.username);
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
   const [isLoading, setIsLoading] = useState(false)
@@ -42,6 +44,7 @@ const OrderPage = ({ dispatch, navigate }) => {
   });
   const address = watch('address')
   const province = watch('province')
+ 
   const data = {
     address: address,
     payment_method: 'SHIP COD',
@@ -53,6 +56,7 @@ const OrderPage = ({ dispatch, navigate }) => {
   }
   const handleOrder = async () => {
     const response = await createOrder(current?.username, data)
+    console.log(data)
     if (!response?.data) {
       toast.error('Cant not order')
     } else {
@@ -60,14 +64,13 @@ const OrderPage = ({ dispatch, navigate }) => {
       setDataOrder(response?.data)
     }
   }
-  const handleGoHome =async()=>{
-      const respone =await deleteAllCart(current?.username)
-      if (respone){
-        navigate(`${path.PUBLIC}`)
-        queryClient.invalidateQueries(['products-dataCart', current?.username])
-      }
+  const handleGoHome = async () => {
+    const respone = await deleteAllCart(current?.username)
+    if (respone) {
+      navigate(`${path.PUBLIC}`)
+      queryClient.invalidateQueries(['products-dataCart', current?.username])
+    }
   }
-
   return (
     <div className="w-full flex flex justify-center min-h-screen ">
       {
@@ -95,14 +98,6 @@ const OrderPage = ({ dispatch, navigate }) => {
           </div>
           <div className='w-full flex gap-2 flex-col'>
             <InputForGot
-              id='username'
-              label='Username'
-              disabled={isLoading}
-              register={register}
-              errors={errors}
-              required
-            />
-            <InputForGot
               id='phone'
               label='Phone'
               disabled={isLoading}
@@ -118,13 +113,11 @@ const OrderPage = ({ dispatch, navigate }) => {
               errors={errors}
               required
             />
-            <InputForGot
+            <SelectProvide
+              fullWidth
               id='province'
-              label='Province'
-              disabled={isLoading}
               register={register}
-              errors={errors}
-              required
+              options={listProvider?.map((el) => (el))}
             />
           </div>
           <div className='flex flex-col gap-3 w-full'>
@@ -160,8 +153,8 @@ const OrderPage = ({ dispatch, navigate }) => {
               <div className='p-3 text-sm'>Address : {dataOrder?.order?.address}</div>
               <div className='p-3 text-sm'>Payment methods : </div>
               <div className='pt-1 px-3 pb-2 text-sm'>Cash on delivery (COD)</div>
-            </div>   
-            <Button children='Go home' btnGoHome handleOnClick={handleGoHome}/>
+            </div>
+            <Button children='Go home' btnGoHome handleOnClick={handleGoHome} />
           </div>
       }
       <div className="w-[50%] bg-gray-200 p-10">
