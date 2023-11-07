@@ -1,31 +1,30 @@
 import { useState, useCallback, useEffect, memo } from "react"
-import { useParams } from "react-router-dom"
-import Breadcumb from "../components/BreadCumb/Breadcumb"
-import { formatNumber } from '../ultils/helper'
-import CustomSliderProduct from "../components/Slider/CustomSliderProduct"
 import { size } from '../ultils/contants'
-import SelectQuality from "../components/SelectOption/SelectQuality"
-import Button from "../components/Button/Button"
-import bang from '../assets/bang.jpg'
-import clsx from 'clsx'
-import Swal from 'sweetalert2'
 import { apiCreateCart } from '../apis/user'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
-import path from "../ultils/path"
 import { toast } from "react-toastify"
 import { useQueryClient } from 'react-query';
-import LoadingDetail from "../components/Loading/LoadingDetail"
 import { useProductsById } from "../hooks/useProductsByCategory"
-import Comment from "../components/comment/Comment"
 import { useDetailProductStore } from "../hooks/useDetailProductStore";
 import { useSnapshot } from "valtio"
+import { useParams } from "react-router-dom"
+import { formatNumber } from '../ultils/helper'
+import Breadcumb from "../components/BreadCumb/Breadcumb"
+import CustomSliderProduct from "../components/Slider/CustomSliderProduct"
+import SelectQuality from "../components/SelectOption/SelectQuality"
+import Button from "../components/Button/Button"
+import bang from '../assets/bang.jpg'
+import clsx from 'clsx'
+import Comment from "../components/comment/Comment"
+import path from "../ultils/path"
+import Swal from 'sweetalert2'
+import LoadingDetail from "../components/Loading/LoadingDetail"
 
 const DetailProduct = () => {
   const detailProductStore = useDetailProductStore();
   const snapDetailProductStore = useSnapshot(detailProductStore)
-
   const { current } = useSelector(state => state.user)
   const queryClient = useQueryClient();
   const navigate = useNavigate()

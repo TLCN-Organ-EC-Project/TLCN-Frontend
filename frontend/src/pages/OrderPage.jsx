@@ -13,9 +13,6 @@ import { createOrder,deleteAllCart } from '../apis/user'
 import { toast } from 'react-toastify';
 import { useQueryClient } from 'react-query';
 
-
-
-
 const { MdKeyboardArrowRight, BsPerson, AiFillCheckCircle, TiTickOutline } = icons
 const OrderPage = ({ dispatch, navigate }) => {
   const queryClient = useQueryClient();

@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { EarthCanvas } from "../components/Canvas";
 import { motion } from "framer-motion";
@@ -7,31 +7,25 @@ import { slideIn } from '../motion/motion'
 import { InputField } from '../components/Input'
 import { Button } from "../components";
 import path from '../ultils/path'
-import { apiResgister,apiLogin } from "../apis/user";
+import { apiResgister, apiLogin } from "../apis/user";
 import { validate } from '../ultils/helper'
 import Swal from 'sweetalert2'
-import { useNavigate ,Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/user/userSlice";
 import useRentModal from '../hooks/useRentModal'
+import { useForm, useWatch } from 'react-hook-form';
+import SelectProvide from "../components/SelectOption/SelectProvide";
+import { useGetListProvider } from "../hooks/useProductsByCategory";
 
 const Login = () => {
-  const rentModal=useRentModal()
+  const { data: listProvider, isLoading: isFetchingData } = useGetListProvider()
+  const rentModal = useRentModal()
   const dispatch = useDispatch()
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [invalidFields, setInvalidFields] = useState([])
-  const [payload,setPayload] = useState({
-    email: '',
-    username: '',
-    full_name: '',
-    address: '',
-    province: '',
-    password:'',
-    phone: '+84',
-    role:'Buyer'
-  })
-
+  const { register, watch, control } = useForm()
   const resetPayload = () => {
     setPayload({
       email: '',
@@ -39,16 +33,34 @@ const Login = () => {
       username: '',
       full_name: '',
       address: '',
-      province: '',
+      provider: '',
       phone: '+84',
-      role:'Buyer',
+      role: 'Buyer',
     })
   }
 
- 
+  const [payload, setPayload] = useState({
+    email: '',
+    username: '',
+    full_name: '',
+    address: '',
+    password: '',
+    provider: '',
+    phone: '+84',
+    role: 'Buyer'
+  })
 
-  const handleSubmit = useCallback(async () => {resetPayload()
-    const { email, full_name, address, province, phone, role,...data } = payload
+  useEffect(() => {
+
+    setPayload((prevPayload) => ({
+      ...prevPayload,
+      provider: watch('provider'),
+    }));
+  }, [watch('provider')]);
+
+  const handleSubmit = useCallback(async () => {
+    resetPayload()
+    const { email, full_name, address, provider, phone, role, ...data } = payload
     const invalids = isRegister ? validate(payload, setInvalidFields) : validate(data, setInvalidFields)
     if (invalids === 0) {
       if (isRegister) {
@@ -63,24 +75,28 @@ const Login = () => {
         } else {
           Swal.fire('Oops!', 'error')
         }
-      }else{
-        const response=await apiLogin(data)
-        if (response){
-         setLoading(true);
-         const token = response.headers.get('x-access-token');
-         const refreshToken=response.headers.get('x-refresh-token');
-         setLoading(false)
+      } else {
+        const response = await apiLogin(data)
+        if (response) {
+          setLoading(true);
+          const token = response.headers.get('x-access-token');
+          const refreshToken = response.headers.get('x-refresh-token');
+          setLoading(false)
           dispatch(login({
             isLoggedIn: true,
-            token:token,
-            current:response.data,
-            refreshToken:refreshToken
+            token: token,
+            current: response.data,
+            refreshToken: refreshToken
           }))
           navigate(`/${path.HOME}`)
-        }else  Swal.fire('Oops!','error')
+        } else Swal.fire('Oops!', 'error')
       }
+    } else {
+      Swal.fire('Oops!', 'error')
     }
-  })
+  }, [watch('provider'), payload])
+
+
 
   return (
     <div
@@ -93,6 +109,7 @@ const Login = () => {
         <h3 className={styles.sectionHeadText}>{isRegister ? 'Register' : 'Login'}</h3>
         <form
           className='mt-12 flex flex-col gap-8'
+
         >
           <label className='flex flex-col gap-5'>
             {isRegister &&
@@ -104,11 +121,10 @@ const Login = () => {
                   invalidFields={invalidFields}
                   setInvalidFieds={setInvalidFields}
                 />
-                <InputField
-                  value={payload.province}
-                  setValue={setPayload}
-                  nameKey='province'
-                  invalidFields={invalidFields}
+                <SelectProvide
+                  id='provider'
+                  register={register}
+                  options={listProvider?.map((el) => (el))}
                   setInvalidFieds={setInvalidFields}
                 />
                 <InputField

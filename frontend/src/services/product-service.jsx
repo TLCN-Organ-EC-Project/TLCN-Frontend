@@ -57,7 +57,7 @@ export const getProductById = async (pid) => {
                 page_id: 1,
                 page_size: 10,
             }
-        }).then((res) => res.data)
+        }).then((res) => res?.data)
         return data;
     } catch (error) {
         throw Error(`Failed to fetch products by id: ${error}`);
@@ -73,7 +73,7 @@ export const getFeedBackById=async (pid)=>{
                 page_id: 1,
                 page_size: 10,
             }
-        }).then((res) => res.data)
+        }).then((res) => res?.data)
         return data;
     } catch (error) {
         throw Error(`Failed to fetch feedbacks product by id: ${error}`);
@@ -85,7 +85,7 @@ export const getListProvider =async ()=>{
         const data=await axios({
             url:`/provinces`,
             method:'get',
-        }).then((res)=>res.data)
+        }).then((res)=>res?.data)
         return data;
     }catch (error){
         throw new Error(`Failded to fetch provider : ${error}`)

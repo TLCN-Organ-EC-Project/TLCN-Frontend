@@ -10,6 +10,7 @@ export const DetailProductProvider = ({ children }) => {
         storeRef.current = proxy({
             productId: null,
             isOpenModalCommet: false,
+            provider:null
         })
     }
     return (

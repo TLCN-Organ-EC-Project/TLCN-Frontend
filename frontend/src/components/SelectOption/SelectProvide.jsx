@@ -1,15 +1,20 @@
-import React from 'react'
-import { useGetListProvider } from '../../hooks/useProductsByCategory'
+import React,{memo} from 'react'
+import clsx from 'clsx'
 
-
-const SelectProvide = () => {
-    const {data:listProvider,isLoading:isFetchingData}=useGetListProvider()
-
-    console.log(listProvider)
-    
+const SelectProvide = ({ defaultValue,setInvalidFieds,validate,fullWidth, id, register, options = [] }) => {
   return (
-    <div>SelectProvide</div>
+    <div>
+      <select defaultValue={defaultValue} className={clsx('form-select my-auto py-2', fullWidth && 'w-full')} {...register(id, validate)} id={id}
+       onFocus={()=> setInvalidFieds && setInvalidFieds([])}
+      >
+        <option value="">---Provider---</option>
+        {options?.map((el, index) => {
+          return <option key={index} value={el}>{el}</option>;
+        })}
+      </select>
+     
+    </div>
   )
 }
 
-export default SelectProvide
+export default memo(SelectProvide)

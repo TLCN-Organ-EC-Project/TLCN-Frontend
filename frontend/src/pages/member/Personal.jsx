@@ -16,7 +16,6 @@ const Personal = () => {
   const [userData, setUserData] = useState(null)
   const [provinces, setProvinces] = useState('')
   const dispatch = useDispatch()
- 
   const handleUpdateInfor = async (data) => {
     const response = await apiUpdateUser(current?.username, data)
     if (response?.data) {
@@ -34,7 +33,6 @@ const Personal = () => {
       setProvinces(response?.data?.name)
     }
   },[provinces,current])
-  
   useEffect(() => {
     getProvince(current?.province?.toString())
     reset({

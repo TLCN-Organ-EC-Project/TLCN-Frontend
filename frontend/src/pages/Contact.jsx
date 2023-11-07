@@ -1,7 +1,5 @@
 import ContactLeft from '../components/Contact/ContactLeft'
 import ContactRight from '../components/Contact/ContactRight'
-
-
 const Contact = () => {
   return (
     <div className="w-main h-full">

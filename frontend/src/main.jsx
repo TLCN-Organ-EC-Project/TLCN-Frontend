@@ -10,7 +10,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const getQueryClient = new QueryClient();
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={getQueryClient}>
     <Provider store={store}>
