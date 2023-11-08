@@ -27,7 +27,7 @@ export const MotionContainer = ({onClick,color,children}) => {
 export const StyledContainer = styled(motion.div)`
   border: solid 1px #000000;
   color: #000000;
-   background: linear-gradient(to left, rgb(255, 255, 255, 0) 50%,#000000 50%) right; 
+  background: linear-gradient(to left, rgb(255, 255, 255, 0) 50%,#000000 50%) right; 
   width: 100%;
   height: 40px;
   display: flex;
@@ -36,7 +36,7 @@ export const StyledContainer = styled(motion.div)`
   text-align: center;
   background-size: 200%;
   gap: 10px;
-  transition: all 0.8s cubic-bezier(0.5, 1, 0.22, 1);   
+  transition: all 0.8s cubic-bezier(0.5, 1, 0, 1);   
   
   &:hover {
     cursor: pointer;

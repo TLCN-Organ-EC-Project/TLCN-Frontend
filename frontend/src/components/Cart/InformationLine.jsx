@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../Button/Button'
 import { formatNumber } from '../../ultils/helper'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'

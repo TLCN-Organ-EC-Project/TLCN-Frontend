@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect, memo } from "react"
 import { size } from '../ultils/contants'
 import { apiCreateCart } from '../apis/user'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { useQueryClient } from 'react-query';
@@ -28,7 +27,6 @@ const DetailProduct = () => {
   const { current } = useSelector(state => state.user)
   const queryClient = useQueryClient();
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const [first, setfirst] = useState(size[0].size)
   const { pid, productname } = useParams()
   const [quantily, setQuantity] = useState(1)
@@ -78,6 +76,14 @@ const DetailProduct = () => {
       toast.error('Cant not AddtoCart')
     }
   }
+  const handleImageRender =(src)=>{
+    if(detailProductStore.urlImageString===null){
+      src=product?.product[0]?.product?.thumb
+    }else{
+      src=detailProductStore.urlImageString
+    }
+    return src
+  }
   return (
     <div className="w-main">
       <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
@@ -91,7 +97,7 @@ const DetailProduct = () => {
           <div className="flex">
             <div className="py-4 w-[60%]">
               <div className="py-3">
-                <img src={product?.product[0]?.product?.thumb} alt="Not Yet" className="w-[700px] h-[700px]" />
+                <img src={handleImageRender()} alt="Not Yet" className="w-[700px] h-[700px] object-cover" />
               </div>
               <CustomSliderProduct products={product?.product[0]?.images} />
             </div>
