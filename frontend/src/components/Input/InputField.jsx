@@ -14,7 +14,6 @@ const InputField = ({value,setValue,nameKey, type, invalidFields, setInvalidFied
             onFocus={()=> setInvalidFieds && setInvalidFieds([])}
         />
        {invalidFields?.some(el=>el.name===nameKey) &&  
-       
        <small className='text-main text-[14px] italic flex justify-start'>{invalidFields.find(el=>el.name===nameKey)?.mes}</small>}
     </div>
   )

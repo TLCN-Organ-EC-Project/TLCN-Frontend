@@ -16,4 +16,7 @@ export const ButtonBack = ({handleClick,children}) => {
 }
 export const StyledLabel = styled.div`
   color: black;
+  &:hover{
+    color: white;
+  }
 `

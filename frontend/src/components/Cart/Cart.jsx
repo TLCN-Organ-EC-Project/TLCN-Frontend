@@ -11,6 +11,7 @@ import path from '../../ultils/path'
 import { ShowModal } from '../../store/app/appSlice'
 import { useDispatch } from 'react-redux'
 import Loading from '../Loading/Loading'
+import { ButtonBack } from '../Button/ButtonBack'
 
 const { AiOutlineCloseCircle, ImBin } = icons
 const Cart = () => {
@@ -95,8 +96,9 @@ const Cart = () => {
             {
                 productsData &&
                 <div className='flex justify-between items-center gap-3 py-5'>
-                    <Button
-                        handleOnClick={() => {
+                    <ButtonBack
+                          children='CHECK OUT'
+                          handleClick={() => {
                             navigate(`/${path.ORDER}`)
                             dispatch(ShowModal({
                                 isShowModal: false,
@@ -104,11 +106,11 @@ const Cart = () => {
                             }))
                         }
                         }
-                        children='CHECK OUT'
-                        buttonAdd
                     />
-                    <Button
-                        handleOnClick={() => {
+                   
+                   <ButtonBack
+                         children='DEATAIL CART'
+                          handleClick={() => {
                             navigate(`/${path.DETAIL_CART}`)
                             dispatch(ShowModal({
                                 isShowModal: false,
@@ -116,8 +118,7 @@ const Cart = () => {
                             }))
                         }
                         }
-                        children='DEATAIL CART'
-                        buttonAdd />
+                    />
                 </div>
             }
 

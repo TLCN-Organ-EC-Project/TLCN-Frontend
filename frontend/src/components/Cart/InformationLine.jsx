@@ -3,9 +3,10 @@ import Button from '../Button/Button'
 import { formatNumber } from '../../ultils/helper'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'
+import { ButtonBack } from '../Button/ButtonBack'
 
-const InformationLine = ({data}) => {
-    const navigate=useNavigate()
+const InformationLine = ({ data }) => {
+    const navigate = useNavigate()
     return (
         <div className='border border-gray-300 w-[250px] h-[200px] ml-6 flex flex-col '>
             <div className=' h-[33%] flex justify-start items-center p-2 border border-b-gray-300 text-base font-semibold opacity-80 '>Information line</div>
@@ -15,7 +16,10 @@ const InformationLine = ({data}) => {
             </div>
             <div className='h-[33%] w-full  justify-center items-center text-center flex'>
                 <div className='w-[90%] flex flex-col'>
-                    <Button buttonAdd children='CHECK OUT' handleOnClick={()=>  navigate(`/${path.ORDER}`)} />
+                    <ButtonBack
+                        children='CHECK OUT'
+                        handleClick={() => navigate(`/${path.ORDER}`)}
+                    />
                 </div>
             </div>
         </div>

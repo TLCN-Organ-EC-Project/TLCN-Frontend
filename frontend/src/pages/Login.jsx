@@ -38,7 +38,6 @@ const Login = () => {
       role: 'Buyer',
     })
   }
-
   const [payload, setPayload] = useState({
     email: '',
     username: '',
@@ -51,13 +50,11 @@ const Login = () => {
   })
 
   useEffect(() => {
-
     setPayload((prevPayload) => ({
       ...prevPayload,
       provider: watch('provider'),
     }));
   }, [watch('provider')]);
-
   const handleSubmit = useCallback(async () => {
     resetPayload()
     const { email, full_name, address, provider, phone, role, ...data } = payload
