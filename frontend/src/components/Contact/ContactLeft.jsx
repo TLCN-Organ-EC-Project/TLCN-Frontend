@@ -6,7 +6,7 @@ const {SiBlockchaindotcom,RiOpenbaseFill} =icons
 const ContactLeft = () => {
   return (
     <div>
-        <div className='w-[60%] text-sm text-gray-600 font-medium'>Sed vestibulum faucibus felis, sit amet facilisis tellus. Aliquam erat volutpat. Sed consectetur ipsum velit, quis rhoncus libero egestas eget.</div>
+        <div className=' sm:w-full lg:w-[60%] text-sm text-gray-600 font-medium'>Sed vestibulum faucibus felis, sit amet facilisis tellus.</div>
         <div className='flex gap-2 py-2'>
           <SiBlockchaindotcom size={14} color='gray'/>
           <div className='text-xs '>Address: 474 Ontario St Toronto, ON M4X 1M7 Canada</div>

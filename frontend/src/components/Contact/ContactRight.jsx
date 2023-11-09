@@ -4,7 +4,7 @@ import Button from '../Button/Button'
 
 const ContactRight = () => {
   return (
-    <div className='w-[40%]'>
+    <div className='lg:w-[40%] sm:w-full'>
         <div className='flex gap-2'>
             <InputField placeholder='Name'/>
             <InputField placeholder='Email'/>

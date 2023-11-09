@@ -17,7 +17,7 @@ const Products = () => {
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activeTab);
   return (
     <div className="w-main">
-      <div className='w-main flex justify-around items-center bg-gray-200 h-10'>
+      <div className='xl:w-main xl:flex xl:justify-around xl:items-center bg-gray-200 h-10  sm:grid sm:grid-cols-2 sm:text-center sm:items-center sm:justify-center'>
         {category.map((el) => (
           <button
             key={el.id}

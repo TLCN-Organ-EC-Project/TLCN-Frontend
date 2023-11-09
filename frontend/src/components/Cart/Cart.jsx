@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import { useProductsByCart } from '../../hooks/useProductsByCategory'
 import { formatNumber } from '../../ultils/helper'
-import Button from '../Button/Button'
 import { deleteItemCart } from '../../apis/user'
 import { useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom'
@@ -20,7 +19,7 @@ const Cart = () => {
     const navigate = useNavigate()
     const { current } = useSelector(state => state.user);
     const { data: productsData, isLoading: isFetchingProducts } = useProductsByCart(current?.username);
-    
+
     const removeCart = async (username, cid) => {
         const response = await deleteItemCart(username, cid)
         if (response) {
@@ -47,30 +46,30 @@ const Cart = () => {
                 <div className={clsx('w-full relative mb-2 ')}>
                     {
                         isFetchingProducts
-                        ?
-                       <Loading/>
-                        :
-                        productsData?.carts?.map((el) => (
-                            <div className='w-full justify-between  flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>
-                                <div className='w-full flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>
-                                    <img src={el?.product?.thumb} className='w-[90px] h-[90px] object-contain' />
-                                    <div>
-                                        <div className='uppercase text-xs font-medium text-gray-900 mt-1'>{el?.product?.product_name}</div>
-                                        <div className='font-light text-sm opacity-70 pt-1'>{el?.cart?.size}</div>
-                                        <div className='flex gap-3 items-center'>
-                                            <div className='w-[30px] h-[25px] bg-gray-300 flex justify-center items-center mt-3 text-gray-700 text-xs'>{el?.cart?.quantity}</div>
-                                            <div className='mt-2 block text-center font-normal opacity-70 text-sm'>{`${formatNumber(el?.cart?.price)}đ`}</div>
+                            ?
+                            <Loading />
+                            :
+                            productsData?.carts?.map((el) => (
+                                <div className='w-full justify-between  flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>
+                                    <div className='w-full flex gap-2 border  border-t-white border-l-white border-r-white border-b-gray-200'>
+                                        <img src={el?.product?.thumb} className='w-[90px] h-[90px] object-contain' />
+                                        <div>
+                                            <div className='uppercase text-xs font-medium text-gray-900 mt-1'>{el?.product?.product_name}</div>
+                                            <div className='font-light text-sm opacity-70 pt-1'>{el?.cart?.size}</div>
+                                            <div className='flex gap-3 items-center'>
+                                                <div className='w-[30px] h-[25px] bg-gray-300 flex justify-center items-center mt-3 text-gray-700 text-xs'>{el?.cart?.quantity}</div>
+                                                <div className='mt-2 block text-center font-normal opacity-70 text-sm'>{`${formatNumber(el?.cart?.price)}đ`}</div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div
+                                        onClick={() => removeCart(current?.username, el?.cart?.id)}
+                                        className='pt-2 hover:text-gray-300 text-gray-800 cursor-pointer'
+                                    >
+                                        <ImBin />
+                                    </div>
                                 </div>
-                                <div
-                                    onClick={() => removeCart(current?.username, el?.cart?.id)}
-                                    className='pt-2 hover:text-gray-300 text-gray-800 cursor-pointer'
-                                >
-                                    <ImBin />
-                                </div>
-                            </div>
-                        ))
+                            ))
                     }
                 </div>
             </div>
@@ -97,8 +96,8 @@ const Cart = () => {
                 productsData &&
                 <div className='flex justify-between items-center gap-3 py-5'>
                     <ButtonBack
-                          children='CHECK OUT'
-                          handleClick={() => {
+                        children='CHECK OUT'
+                        handleClick={() => {
                             navigate(`/${path.ORDER}`)
                             dispatch(ShowModal({
                                 isShowModal: false,
@@ -107,10 +106,9 @@ const Cart = () => {
                         }
                         }
                     />
-                   
-                   <ButtonBack
-                         children='DEATAIL CART'
-                          handleClick={() => {
+                    <ButtonBack
+                        children='DEATAIL CART'
+                        handleClick={() => {
                             navigate(`/${path.DETAIL_CART}`)
                             dispatch(ShowModal({
                                 isShowModal: false,
