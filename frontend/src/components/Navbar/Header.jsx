@@ -9,7 +9,7 @@ const {AiOutlineLogout}=icons
 const Header = ({dispatch, navigate}) => {
   const {isLoggedIn,current}=useSelector(state=>state.user)
   return (
-    <div className="bg-gray-500 w-main  h-7 hidden xl:block py-1">
+    <div className="bg-gray-500 w-main  h-7 hidden sm:block py-1">
       <div className="flex justify-between space-x-1 text-sm font-main items-center ">
         <div className="pl-4">
           <span>Saigon : 173 Huynh Van Banh - Dist. Phu Nhuan  - 0773 648 867</span>

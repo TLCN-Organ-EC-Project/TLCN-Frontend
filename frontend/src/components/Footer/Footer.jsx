@@ -6,7 +6,7 @@ const {BsFacebook,AiFillGoogleCircle,AiFillInstagram,BsTiktok,MdEmail,BsFillTele
 
 const Footer = () => {
   return (
-    <div className="w-main mt-5 border border-t-gray-300 hidden md:block">
+    <div className="w-main mt-5 border border-t-gray-300 ">
       <TopFooter/>
        <div className="flex justify-around mt-2">
           <div>

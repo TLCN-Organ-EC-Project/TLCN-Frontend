@@ -1,10 +1,10 @@
-import clsx from 'clsx'
+import clsx from 'clsx' 
 
-const InputField = ({value,setValue,nameKey, type, invalidFields, setInvalidFieds, style,fullWidth,placeholder,search}) => {
+const InputField = ({value,setValue,nameKey, type, invalidFields, setInvalidFieds, contact,style,fullWidth,placeholder,search}) => {
 
 
   return (
-    <div className={clsx('w-full relative mb-2 ',fullWidth && 'w-full',search && 'w-80')}>
+    <div className={clsx('w-full relative mb-2 ',fullWidth && 'w-full',search && 'w-80',contact && 'sm:w-40')}>
         <input
             type={type||'text'}
             className={clsx('px-4 py-2 rounded-sm border w-full focus:invalid:border-pink-300',style)}

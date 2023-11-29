@@ -9,14 +9,14 @@ import anh6 from '../../assets/f6.webp'
 const TopFooter = () => {
   return (
     <div className='w-main pb-4'>
-        <div className='flex gap-2'>
-        <img src={anh1} className='w[228px] h-[230px]'/>
-        <img src={anh2} className='w[228px] h-[230px]'/>
-        <img src={anh3} className='w[228px] h-[230px]'/>
-        <img src={anh4} className='w[228px] h-[230px]'/>
-        <img src={anh5} className='w[228px] h-[230px]'/>
-        <img src={anh6} className='w[228px] h-[230px]'/>
-        </div>
+      <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6'>
+        <img src={anh1} className='w-full lg:h-[230px] sm:h-full object-cover' />
+        <img src={anh2} className='w-full h-[230px] sm:h-full object-cover' />
+        <img src={anh3} className='w-full h-[230px] sm:h-full object-cover' />
+        <img src={anh4} className='w-full h-[230px] sm:h-full object-cover' />
+        <img src={anh5} className='w-full h-[230px] sm:h-full object-cover' />
+        <img src={anh6} className='w-full h-[230px] sm:h-full object-cover' />
+      </div>
     </div>
   )
 }
