@@ -86,7 +86,7 @@ const DetailProduct = () => {
   }
   return (
     <div className="w-main">
-      <div className="border pl-3 h-[50px] flex items-center bg-gray-200">
+      <div className="border pl-20 h-[50px] flex items-center bg-gray-200">
         <Breadcumb title={productname} />
       </div>
       {
@@ -95,7 +95,7 @@ const DetailProduct = () => {
           <LoadingDetail />
           :
           <div className="flex">
-            <div className="py-4 w-[60%]">
+            <div className="py-4 w-[60%] pl-20">
               <div className="py-3">
                 <img src={handleImageRender()} alt="Not Yet" className="w-[700px] h-[700px] object-cover" />
               </div>

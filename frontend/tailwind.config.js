@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       width:{
-        main:'1400px',
+        main:'100%',
       },
       backgroundColor:{
         header:'#515151;',
