@@ -54,7 +54,7 @@ const Comment = () => {
                     <div className='flex gap-4'>
                       <div
                         onClick={() => removeFeedBack(el?.feedback?.id, el?.feedback?.user_comment, el?.feedback?.product_commented)}
-                        className='text-sm pt-3 opacity-60 cursor-pointer'
+                        className='text-sm pt-3 opacity-70 cursor-pointer hover:text-black'
                       >
                         Remove
                       </div>

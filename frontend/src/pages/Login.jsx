@@ -1,21 +1,21 @@
 import { useState, useCallback, useEffect } from "react";
+import { apiResgister, apiLogin } from "../apis/user";
+import { useGetListProvider } from "../hooks/useProductsByCategory";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { EarthCanvas } from "../components/Canvas";
+import { InputField } from '../components/Input'
+import { validate } from '../ultils/helper'
+import { useForm } from 'react-hook-form';
+import { slideIn } from '../motion/motion'
 import { motion } from "framer-motion";
 import { styles } from '../styles/styles'
-import { slideIn } from '../motion/motion'
-import { InputField } from '../components/Input'
 import { Button } from "../components";
-import path from '../ultils/path'
-import { apiResgister, apiLogin } from "../apis/user";
-import { validate } from '../ultils/helper'
-import Swal from 'sweetalert2'
-import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/user/userSlice";
+import path from '../ultils/path'
+import Swal from 'sweetalert2'
 import useRentModal from '../hooks/useRentModal'
-import { useForm } from 'react-hook-form';
 import SelectProvide from "../components/SelectOption/SelectProvide";
-import { useGetListProvider } from "../hooks/useProductsByCategory";
 
 const Login = () => {
   const { data: listProvider, isLoading: isFetchingData } = useGetListProvider()
@@ -100,7 +100,7 @@ const Login = () => {
       className={` flex xl:flex-row flex-col-reverse gap-5 overflow-hidden bg-blue-300 h-[705px] relative`}
     >
       <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
+        variants={slideIn("left", "tween", 0.5, 1)}
         className='flex-[0.75] bg-black-100 px-8 rounded-2xl justify-center items-center text-center'
       >
         <h3 className={styles.sectionHeadText}>{isRegister ? 'Register' : 'Login'}</h3>
@@ -195,7 +195,7 @@ const Login = () => {
       </motion.div>
 
       <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
+        variants={slideIn("right", "tween", 0.5, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />

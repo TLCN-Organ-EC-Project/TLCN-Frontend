@@ -104,7 +104,7 @@ const DetailProduct = () => {
             <div className="mt-7 w-[40%] mr-40">
               <div className="border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
                 <div className="flex justify-start text-lg font-semibold ">{productname}</div>
-                <div className="text-xs font-light py-2">SKU: AKN0175MMDE</div>
+                <div className="text-xs font-light py-2">SKU : AKN0175MMDE</div>
               </div>
               <div className="py-2 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
                 <div className="text-lg font-semibold">{`${formatNumber(product?.product[0]?.product?.price)}₫`}</div>

@@ -26,6 +26,7 @@ body {
            align-items: center;
            display: block;
            padding-left: 20px;
+         
    }
    .custom-slider button.slick-prev::before{
        width: 20px !important;

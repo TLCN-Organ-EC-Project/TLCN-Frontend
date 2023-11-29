@@ -9,10 +9,12 @@ const { AiOutlineLogout } = icons
 const Header = ({ dispatch, navigate }) => {
   const { isLoggedIn, current } = useSelector(state => state.user)
   return (
-    <div className="bg-gray-500 sm:w-[660px] md:w-main h-7 py-1">
+    <div className="bg-gray-500 sm:w-full md:w-main h-7 py-1">
       <div className="flex justify-between text-sm font-main">
         <div className="pl-4">
-          <span className=" sm:block hidden">Saigon : 173 Huynh Van Banh - Dist. Phu Nhuan  - 0773 648 867</span>
+          <span className=" ">
+            Saigon : 173 Huynh Van Banh - Dist. Phu
+          </span>
         </div>
         {
           isLoggedIn && current ?

@@ -22,7 +22,6 @@ const Navbar = () => {
       modalChildren: <Cart />
     }))
   }
-
   const handleSearch = () => {
     dispatch(ShowModal({
       isShowModal: true,
@@ -38,7 +37,7 @@ const Navbar = () => {
           </Link>
           <div className="flex gap-10 pr-5 ">
             <div className="lg:flex gap-10 sm:hidden">
-              <div className="">
+              <div className="sm:block hidden">
                 <div className="flex gap-2 items-center">
                   <span>
                     <BsFillTelephoneFill size={15} color="#6495ED" />
@@ -49,7 +48,7 @@ const Navbar = () => {
                   Mon-Sat 9:00AM - 8:00PM
                 </div>
               </div>
-              <div className="">
+              <div className="sm:block hidden">
                 <div className="flex gap-2 items-center ">
                   <MdEmail size={15} color="#6495ED" />
                   <span className="font-semibold text-sm">SUPPORT@TADATHEMES.COM</span>
@@ -64,10 +63,12 @@ const Navbar = () => {
               <span className="text-sm absolute  top-2 ml-2">{productsData?.carts?.reduce((sum, el) => sum + Number(el?.cart?.quantity), 0)}</span>
             </div>
             <div
+            className="pt-1"
               onClick={handleSearch}>
               <FaSearch size={22} color="rose" />
             </div>
             <div
+              className="pt-1"
               onClick={() => navigate(`${path.MEMBER}`)}
             >
               <FaUserCircle size={24} color="rose" />
