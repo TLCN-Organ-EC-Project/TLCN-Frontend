@@ -1,7 +1,5 @@
 import React from "react";
 import "./skeleton.css";
-
-
 export default function Skeleton({ type }) {
   const COUNTER = 3;
   const COUNTERPOST=3;
@@ -18,7 +16,6 @@ export default function Skeleton({ type }) {
       </div>
     </div>
   );
-
   const ProductsSkeleton = () => (
     <div className="topSk">
       <div className="topSkIcon"></div>
@@ -26,7 +23,6 @@ export default function Skeleton({ type }) {
       <div className="topSkPrice"></div>
     </div>
   );
-
   const Product = () => (
     <div className="card">
     <div className="header">
@@ -37,10 +33,7 @@ export default function Skeleton({ type }) {
       </div>
     </div>
   </div>
-
   )
-
-
   if (type === "feed") return Array(COUNTERPOST).fill(<FeedSkeleton />);
   if (type === "test") return Array(COUNTER).fill(<Product />);
   if (type === "product") return Array(COUNTER).fill(<ProductsSkeleton />);

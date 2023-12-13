@@ -146,7 +146,7 @@ const DetailProduct = () => {
                     + {product?.product[0]?.descriptions_product?.size}
                   </li>
                   <li>
-                    + {product?.product[0]?.descriptions_product?.size_of_model}
+                    +{product?.product[0]?.descriptions_product?.size_of_model}
                   </li>
                 </ul>
               </div>

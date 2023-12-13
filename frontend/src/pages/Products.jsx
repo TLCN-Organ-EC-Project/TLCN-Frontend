@@ -39,7 +39,7 @@ const Products = () => {
         ))}
       </div>
       <div className="w-main">
-        <div className="w-full grid grid-cols-3 sm:grid-cols-2 sm:justify-start md:grid-cols-3  gap-2 lg:pl-8 sm:pl-0">
+        <div className="w-full grid grid-cols-3 justify-center items-center sm:grid-cols-2 sm:justify-start md:grid-cols-3  gap-2 lg:pl-8 sm:pl-0">
           {isFetchingProducts ? (
             <Skeleton type="test" />
           ) : (

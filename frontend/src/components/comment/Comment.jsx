@@ -40,31 +40,30 @@ const Comment = () => {
       <div className='w-main'>
         {
           productsData?.feedbacks?.map((el) => (
-            <div className='flex flex-col gap-3 pb-2' key={el}>
-              <div className='bg-white shadow-md flex justify-around rounded-2xl  w-[600px] h-[100px] ml-auto mr-auto'>
-                <div className='flex gap-3 justify-center'>
-                  <div className='pt-3'>
-                    <img src={anh1} className='w-10 h-10 rounded-xl object-contain' />
-                  </div>
-                  <div>
-                    <div className='pt-3'>
-                      <div className='text-blue-500  font-semibold'>{el?.feedback?.user_comment}</div>
-                      <div className='font-bold text-gray-700 text-sm'>{el?.feedback?.commention}</div>
+
+            <div class="flex justify-center relative top-1/3 " key={el}>
+              <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg w-[600px]">
+                <div class="relative flex gap-4">
+                  <img src={anh1} class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy"/>
+                    <div class="flex flex-col w-full">
+                      <div class="flex flex-row justify-between">
+                        <p class="relative  whitespace-nowrap truncate overflow-hidden font-semibold text-sm">{el?.feedback?.user_comment}</p>
+                        <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+                      </div>
+                      <p class="text-gray-400 text-sm">{moment(el?.feedback?.created_at).fromNow()}</p>
                     </div>
-                    <div className='flex gap-4'>
+                    
+                </div>
+                
+                <p class="-mt-4 text-gray-500">{el?.feedback?.commention}.</p>
+                <div className='flex gap-4'>
                       <div
                         onClick={() => removeFeedBack(el?.feedback?.id, el?.feedback?.user_comment, el?.feedback?.product_commented)}
-                        className='text-sm pt-3 opacity-70 cursor-pointer hover:text-black'
+                        className='text-sm  opacity-70 cursor-pointer hover:text-black'
                       >
                         Remove
                       </div>
                     </div>
-                  </div>
-
-                </div>
-                <div className='flex justify-end pt-3 text-xs opacity-70 '>
-                  <div>{moment(el?.feedback?.created_at).fromNow()}</div>
-                </div>
               </div>
             </div>
           ))
