@@ -7,7 +7,7 @@ import Skeleton from "../components/Skeleton/Skeleton";
 import { useProductsByCategory } from "../hooks/useProductsByCategory";
 import Pagination from "../components/Pagination/Pagination";
 import { useDetailProductStore } from "../hooks/useDetailProductStore";
-import {  useQueryClient } from "react-query";
+import { useQueryClient } from "react-query";
 import { useSnapshot } from "valtio";
 
 const Products = () => {
@@ -17,15 +17,19 @@ const Products = () => {
   const [activeTab, setActiveTab] = useState(category[0].id)
   const detailProductStore = useDetailProductStore();
   const detailProductStoreSnapshot = useSnapshot(detailProductStore)
-
+  const [pagination, setPagination] = useState(1)
 
   const handleItemClick = (el) => {
     setTimeout(() => {
       navigate(el.id);
     }, 0);
   };
-  console.log(detailProductStoreSnapshot.page_id)
+  const handlePaginationChange = () => {
+    detailProductStore.page_id = pagination;
+  };
+
   const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activeTab, detailProductStoreSnapshot.page_id);
+
   
   return (
     <div className="w-main">
@@ -33,7 +37,13 @@ const Products = () => {
         {category.map((el) => (
           <button
             key={el.id}
-            onClick={() => { setActiveTab(el.id); handleItemClick(el); detailProductStoreSnapshot.page_id(1)}}
+            onClick={() => {
+              setActiveTab(el.id);
+              handleItemClick(el);
+              handlePaginationChange();
+            }
+
+            }
             className={`${activeTab === el.id ? "text-gray-900" : "hover:text-gray-500"
               } relative px-5 py-1.5 text-sm font-medium text-gray-900 transition 
             `}
@@ -62,7 +72,7 @@ const Products = () => {
           )}
         </div>
       </div>
-      <Pagination/>
+      <Pagination />
     </div>
   )
 }
