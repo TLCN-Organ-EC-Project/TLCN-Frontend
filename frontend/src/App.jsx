@@ -13,6 +13,7 @@ import OrderPage from "./pages/OrderPage";
 import ListOrder from "./pages/member/ListOrder";
 import ModalComment from "./components/comment/ModalComment";
 import { DetailProductProvider } from "./context/DetailProductContext";
+import DetailOrder from "./pages/member/DetailOrder";
 
 function App() {
 
@@ -28,9 +29,7 @@ function App() {
           <Route path={path.PUBLIC} element={<Public />}>
             <Route path={path.HOME} element={<Home />} />
             <Route path={path.DETAIL__PRODUCT__CATEGORY__PID__TITLE} element={<DetailProduct />} />
-            <Route path={path.PRODUCTS} element={
-                <Products />
-            } />
+            <Route path={path.PRODUCTS} element={<Products />} />
             <Route path={path.DETAIL_CART} element={<DetailCart />} />
             <Route path={path.CONTACT_US} element={<Contact />} />
             <Route path={path.MEMBER} element={<MemberLayout />}>
@@ -38,6 +37,7 @@ function App() {
               <Route path={path.LISTORDER} element={<ListOrder />} />
             </Route>
           </Route>
+          <Route path={path.DETAILORDER} element={<DetailOrder />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.ORDER} element={<OrderPage />} />
         </Routes>
