@@ -91,8 +91,8 @@ const OrderPage = ({ dispatch, navigate }) => {
           </div>
           <div className='flex justify-start gap-2 items-center'>
             <div className='w-12 h-12 bg-gray-300 border flex justify-center items-center text-center shadow-sm rounded-lg'><BsPerson size={20} color='white' /></div>
-            <div className='flex flex-col gap-1 text-sm'>
-              <div>tranmaitue</div>
+            <div className='flex flex-col gap-1 text-sm'> 
+              <div>{current?.fullname}</div>
               <div>{current?.email}</div>
             </div>
           </div>

@@ -1,21 +1,22 @@
 import { useQuery } from "react-query"
-import { getAllProductByCategory,getAllProductFromCart,getListProvider,getAllOrderByUsername,getProductById, getFeedBackById } from "../services/product-service"
+import { getAllProductByCategory, getAllProductFromCart, getListProvider, getAllOrderByUsername, getProductById, getFeedBackById } from "../services/product-service"
+import { truncateString } from "../ultils/helper"
 
-export const useProductsByCategory = (cid,page_id) => {
-    return useQuery(["products-data,", cid,page_id], () => getAllProductByCategory(cid,page_id), {
+export const useProductsByCategory = (cid, page_id) => {
+    return useQuery(["products-data,", cid, page_id], () => getAllProductByCategory(cid, page_id), {
         staleTime: 5 * 60 * 1000,
-        retry: false
+        retry: truncateString
     })
 }
 
-export const useProductsByCart=(username)=>{
+export const useProductsByCart = (username) => {
     return useQuery(["products-dataCart", username], () => getAllProductFromCart(username), {
         staleTime: 5 * 60 * 1000,
         retry: false
     })
 }
 
-export const useListOrderByUserName= (username) => {
+export const useListOrderByUserName = (username) => {
     return useQuery(["order-data,", username], () => getAllOrderByUsername(username), {
         staleTime: 5 * 60 * 1000,
         retry: false
@@ -29,15 +30,15 @@ export const useProductsById = (pid) => {
     })
 }
 
-export const useFeedBackProductById=(pid)=>{
-    return useQuery(["products-dataFeedBack",pid],()=>getFeedBackById(pid),{
+export const useFeedBackProductById = (pid) => {
+    return useQuery(["products-dataFeedBack", pid], () => getFeedBackById(pid), {
         staleTime: 5 * 60 * 1000,
         retry: false
     })
 }
 
-export const useGetListProvider=()=>{
-    return useQuery(["provider-data"],()=>getListProvider(),{
+export const useGetListProvider = () => {
+    return useQuery(["provider-data"], () => getListProvider(), {
         staleTime: 5 * 60 * 1000,
         retry: false
     })

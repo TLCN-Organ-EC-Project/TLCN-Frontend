@@ -5,12 +5,13 @@ import { useSnapshot } from 'valtio';
 
 const Pagination = () => {
   const detailProductStore = useDetailProductStore();
-  const snapPaginationStore = useSnapshot(detailProductStore)
+   const detailProductStoreSnapshot = useSnapshot(detailProductStore)
+   
   const [pagination, setPagination] = useState(1)
 
-  useEffect(() => {
-    detailProductStore.page_id === pagination
-  }, [pagination])
+  const handlePaginationChange = (newPagination) => {
+    detailProductStore.page_id = newPagination;
+  };
 
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-main px-4 py-3 sm:px-6">
@@ -22,19 +23,19 @@ const Pagination = () => {
             >
             </span>
             <span
-              onClick={() => setPagination(1)}
+             onClick={() => handlePaginationChange(1)}
               className="relative cursor-pointer inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               1
             </span>
             <span
-              onClick={() => setPagination(2)}
+             onClick={() => handlePaginationChange(2)}
               className="relative cursor-pointer inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               2
             </span>
             <span
-              onClick={() => setPagination(3)}
+              onClick={() => handlePaginationChange(3)}
               className="relative cursor-pointer hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
             >
               3

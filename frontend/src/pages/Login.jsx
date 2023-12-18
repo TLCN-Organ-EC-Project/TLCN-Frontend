@@ -55,12 +55,13 @@ const Login = () => {
       provider: watch('provider'),
     }));
   }, [watch('provider')]);
+
   const handleSubmit = useCallback(async () => {
     resetPayload()
     const { email, full_name, address, provider, phone, role, ...data } = payload
     const invalids = isRegister ? validate(payload, setInvalidFields) : validate(data, setInvalidFields)
     if (invalids === 0) {
-      if (isRegister) {
+      if (isRegister) { 
         setLoading(true)
         const response = await apiResgister(payload)
         setLoading(false)

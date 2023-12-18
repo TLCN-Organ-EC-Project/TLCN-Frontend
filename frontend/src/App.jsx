@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import path from "./ultils/path"
-import {useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Contact, DetailCart, DetailProduct, Home, Login, Products, Public } from "./pages"
 import ModalChildren from "./components/Modal/ModalChildren";
 import Personal from "./pages/member/Personal";
@@ -28,7 +28,9 @@ function App() {
           <Route path={path.PUBLIC} element={<Public />}>
             <Route path={path.HOME} element={<Home />} />
             <Route path={path.DETAIL__PRODUCT__CATEGORY__PID__TITLE} element={<DetailProduct />} />
-            <Route path={path.PRODUCTS} element={<Products />} />
+            <Route path={path.PRODUCTS} element={
+                <Products />
+            } />
             <Route path={path.DETAIL_CART} element={<DetailCart />} />
             <Route path={path.CONTACT_US} element={<Contact />} />
             <Route path={path.MEMBER} element={<MemberLayout />}>
