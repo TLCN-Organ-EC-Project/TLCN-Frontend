@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { getAllProductByCategory, getAllProductFromCart, getListProvider, getAllOrderByUsername, getProductById, getFeedBackById } from "../services/product-service"
+import { getAllProductByCategory, getAllProductFromCart, getListProvider, getAllOrderByUsername, getProductById, getFeedBackById, getListDetailOrder } from "../services/product-service"
 import { truncateString } from "../ultils/helper"
 
 export const useProductsByCategory = (cid, page_id) => {
@@ -39,6 +39,12 @@ export const useFeedBackProductById = (pid) => {
 
 export const useGetListProvider = () => {
     return useQuery(["provider-data"], () => getListProvider(), {
+        staleTime: 5 * 60 * 1000,
+        retry: false
+    })
+}
+export const useGetDetailOrder = (username, bookingid) => {
+    return useQuery(['orderDetail-data',username, bookingid], () => getListDetailOrder(username, bookingid), {
         staleTime: 5 * 60 * 1000,
         retry: false
     })

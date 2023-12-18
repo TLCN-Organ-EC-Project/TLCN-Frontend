@@ -49,6 +49,10 @@ export const deleteItemCart = (username, cid) => axios({
     url: `/users/${username}/carts/${cid}`,
     method: 'delete',
 })
+export const deleteOrder=(username, bookingid)=>axios({
+    url:`/users/${username}/orders/${bookingid}/cancel`,
+    method:'delete',
+})
 
 export const createOrder = (username, data) => axios({
     url: `/users/${username}/orders`,

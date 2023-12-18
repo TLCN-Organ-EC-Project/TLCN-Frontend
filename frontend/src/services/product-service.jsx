@@ -91,3 +91,14 @@ export const getListProvider =async ()=>{
         throw new Error(`Failded to fetch provider : ${error}`)
     }
 }
+export const getListDetailOrder=async (username, bookingid)=>{
+    try{
+        const data=await axios({
+            url:`/users/${username}/orders/${bookingid}/detail`,
+            method:'get',
+        }).then((res)=>res?.data)
+        return data;
+    }catch (error){
+        throw new Error(`Failded to fetch provider : ${error}`)
+    }
+}
