@@ -32,7 +32,7 @@ const Navigate = () => {
               transition={{duration:0.5}}
             />
           )}
-          <NavLink  to={el.path}  className='relative z-50'>{el.value}</NavLink>
+          <NavLink  to={el.path}  className='relative z-10'>{el.value}</NavLink>
       </button>
     ))}
 </div>

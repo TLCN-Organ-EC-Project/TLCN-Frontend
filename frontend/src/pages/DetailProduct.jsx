@@ -94,12 +94,12 @@ const DetailProduct = () => {
           ?
           <LoadingDetail />
           :
-          <div className="flex">
+          <div className=" flex lg:flex-row sm:flex-col">
             <div className="py-4 w-[60%] pl-20">
               <div className="py-3">
-                <img src={handleImageRender()} alt="Not Yet" className="w-[700px] h-[700px] object-cover" />
+                <img src={handleImageRender()} alt="Not Yet" className="lg:w-[700px] lg:h-[700px] object-cover sm:w-[200px] sm:h-[200px]" />
               </div>
-              <CustomSliderProduct products={product?.product[0]?.images} />
+                <CustomSliderProduct products={product?.product[0]?.images} />
             </div>
             <div className="mt-7 w-[40%] mr-40">
               <div className="border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">

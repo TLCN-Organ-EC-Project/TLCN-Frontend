@@ -2,7 +2,6 @@ import React from 'react'
 import LoadingComment from '../Loading/LoadingComment'
 import anh1 from '../../assets/cm.webp'
 import { useDetailProductStore } from '../../hooks/useDetailProductStore'
-import { useSnapshot } from 'valtio'
 import { useFeedBackProductById } from '../../hooks/useProductsByCategory'
 import moment from 'moment'
 import { deleteFeedBack } from '../../apis/user'
@@ -40,11 +39,10 @@ const Comment = () => {
       <div className='w-main'>
         {
           productsData?.feedbacks?.map((el) => (
-
             <div class="flex justify-center relative top-1/3 " key={el}>
               <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg w-[600px]">
                 <div class="relative flex gap-4">
-                  <img src={anh1} class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy"/>
+                  <img src={anh1} class="relative rounded-lg -top-8 -mb-4 bg-white border h-16 w-16" alt="" loading="lazy"/>
                     <div class="flex flex-col w-full">
                       <div class="flex flex-row justify-between">
                         <p class="relative  whitespace-nowrap truncate overflow-hidden font-semibold text-sm">{el?.feedback?.user_comment}</p>
@@ -52,9 +50,7 @@ const Comment = () => {
                       </div>
                       <p class="text-gray-400 text-sm">{moment(el?.feedback?.created_at).fromNow()}</p>
                     </div>
-                    
                 </div>
-                
                 <p class="-mt-4 text-gray-500">{el?.feedback?.commention}.</p>
                 <div className='flex gap-4'>
                       <div
@@ -73,5 +69,4 @@ const Comment = () => {
     </div>
   )
 }
-
 export default Comment

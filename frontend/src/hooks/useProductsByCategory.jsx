@@ -1,8 +1,8 @@
 import { useQuery } from "react-query"
 import { getAllProductByCategory,getAllProductFromCart,getListProvider,getAllOrderByUsername,getProductById, getFeedBackById } from "../services/product-service"
 
-export const useProductsByCategory = (cid) => {
-    return useQuery(["products-data,", cid], () => getAllProductByCategory(cid), {
+export const useProductsByCategory = (cid,page_id) => {
+    return useQuery(["products-data,", cid,page_id], () => getAllProductByCategory(cid,page_id), {
         staleTime: 5 * 60 * 1000,
         retry: false
     })

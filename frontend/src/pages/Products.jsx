@@ -1,20 +1,32 @@
-import {useState} from "react";
+import { useEffect, useState } from "react";
 import { category } from '../ultils/contants'
 import { motion } from "framer-motion";
 import { NavLink, useNavigate } from 'react-router-dom'
 import Product from "../components/Product/Product";
 import Skeleton from "../components/Skeleton/Skeleton";
 import { useProductsByCategory } from "../hooks/useProductsByCategory";
+import Pagination from "../components/Pagination/Pagination";
+import { useDetailProductStore } from "../hooks/useDetailProductStore";
+import {  useQueryClient } from "react-query";
 
 const Products = () => {
+
   const navigate = useNavigate()
+  const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState(category[0].id)
+  const detailProductStore = useDetailProductStore();
   const handleItemClick = (el) => {
     setTimeout(() => {
       navigate(el.id);
     }, 0);
   };
-  const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activeTab);
+
+  const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activeTab, detailProductStore.page_id);
+
+  useEffect(() => {
+    queryClient.invalidateQueries(['products-data', activeTab, detailProductStore.page_id])
+  }, [detailProductStore.page_id])
+  
   return (
     <div className="w-main">
       <div className='xl:w-main xl:flex xl:justify-around xl:items-center bg-gray-200 h-10  sm:grid sm:grid-cols-2 sm:text-center sm:items-center sm:justify-center'>
@@ -49,6 +61,9 @@ const Products = () => {
           )}
         </div>
       </div>
+      <Pagination
+
+      />
     </div>
   )
 }

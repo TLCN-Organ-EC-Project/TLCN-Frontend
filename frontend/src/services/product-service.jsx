@@ -1,13 +1,13 @@
 import axios from "../apis/axios";
 
-export const getAllProductByCategory = async (cid) => {
+export const getAllProductByCategory = async (cid,page_id) => {
     try {
         const data = await axios({
             url: `/categories/${cid}/products`,
             method: 'get',
             params: {
-                page_id: 1,
-                page_size: 10,
+                page_id: page_id,
+                page_size: 6,
             }
         }).then((res) => res?.data)
         return data;

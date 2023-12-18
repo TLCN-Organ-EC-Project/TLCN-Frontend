@@ -11,7 +11,7 @@ const ProductsSort = () => {
 
     const [activedTab, setActivedTab] = useState(1)
 
-    const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activedTab);
+    const { data: productsData, isLoading: isFetchingProducts } = useProductsByCategory(activedTab,2);
 
     const handleClickButtonShowMore = () => {
         navigate(`${path.PRODUCTS}`);
