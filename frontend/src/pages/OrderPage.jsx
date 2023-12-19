@@ -56,7 +56,6 @@ const OrderPage = ({ dispatch, navigate }) => {
   }
   const handleOrder = async () => {
     const response = await createOrder(current?.username, data)
-    console.log(data)
     if (!response?.data) {
       toast.error('Cant not order')
     } else {
@@ -69,6 +68,7 @@ const OrderPage = ({ dispatch, navigate }) => {
     if (respone) {
       navigate(`${path.PUBLIC}`)
       queryClient.invalidateQueries(['products-dataCart', current?.username])
+      queryClient.invalidateQueries(['order-data', current?.username])
     }
   }
   return (

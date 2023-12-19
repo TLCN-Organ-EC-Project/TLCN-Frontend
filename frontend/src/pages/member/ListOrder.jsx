@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import { deleteOrder } from '../../apis/user'
 import { useQueryClient } from 'react-query'
 import icons from '../../ultils/icons'
+import Swal from 'sweetalert2'
 
 const { GiConfirmed } = icons
 
@@ -18,11 +19,23 @@ const ListOrder = () => {
     console.log(orderData)
     const queryClient = useQueryClient();
     const hanleDeleteOrder = async (username, bookingid) => {
-        const response = await deleteOrder(username, bookingid)
-        console.log(response)
-        if (response) {
-          queryClient.invalidateQueries(['order-data', current?.username])
-        }
+        Swal.fire({
+            title: 'Are you want cancel order',
+            showCancelButton: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                if (result.isConfirmed && current) {
+                    const response = await deleteOrder(username, bookingid)
+                    console.log(response)
+                    if (response) {
+                        queryClient.invalidateQueries(['order-data', current?.username])
+                        toast.success('Delete user success')
+                    } else {
+                        toast.error('Can not delete order')
+                    }
+                }
+            }
+        })
       }
     return (
         <div>

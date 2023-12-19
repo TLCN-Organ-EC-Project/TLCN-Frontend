@@ -17,7 +17,7 @@ export const useProductsByCart = (username) => {
 }
 
 export const useListOrderByUserName = (username) => {
-    return useQuery(["order-data,", username], () => getAllOrderByUsername(username), {
+    return useQuery(["order-data", username], () => getAllOrderByUsername(username), {
         staleTime: 5 * 60 * 1000,
         retry: true
     })
