@@ -144,8 +144,8 @@ const OrderPage = ({ dispatch, navigate }) => {
               <span>{dataOrder?.order?.booking_id}</span>
             </div>
             <div className='text-sm'>Thank you for your purchase</div>
-            <div className='border w-[500px] h-[250px] bg-white shadow-lg rounded-lg'>
-              <div className='p-3 text-sm font-semibold flex justify-center border border-b-gray-400'>Information line</div>
+            <div className=' w-[500px] h-[250px] bg-white shadow-lg'>
+              <div className='p-3 text-sm font-semibold flex justify-center  border-b-gray-400'>Information line</div>
               <div className='flex justify-between'>
                 <div className='p-3 text-sm font-semibold'>Shipment Details</div>
               </div>
@@ -154,7 +154,9 @@ const OrderPage = ({ dispatch, navigate }) => {
               <div className='p-3 text-sm'>Payment methods : </div>
               <div className='pt-1 px-3 pb-2 text-sm'>Cash on delivery (COD)</div>
             </div>
+            <div className='pt-5 flex '>
             <Button children='Go home' btnGoHome handleOnClick={handleGoHome} />
+            </div>
           </div>
       }
       <div className="w-[50%] bg-gray-200 p-10">
