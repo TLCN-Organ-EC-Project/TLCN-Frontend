@@ -28,7 +28,12 @@ const DetailOrder = () => {
   const queryClient = useQueryClient();
   const { data: detailOrderData, isLoading: isFetchingProducts } = useGetDetailOrder(current?.username, bookingid);
 
-
+  const hanleDeleteOrder = async (username, bookingid) => {
+    const response = await deleteOrder(username, bookingid)
+    if (response) {
+      queryClient.invalidateQueries(['order-data', current?.username])
+    }
+  }
   return (
     <main className="bg-white px-4 pt-16 pb-24 sm:px-6 sm:pt-24 lg:px-8 lg:py-32">
       <div className="mx-auto max-w-3xl">
