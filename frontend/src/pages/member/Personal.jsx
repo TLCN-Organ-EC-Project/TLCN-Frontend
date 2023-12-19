@@ -35,7 +35,7 @@ const Personal = () => {
   useEffect(() => {
     getProvince(current?.province?.toString())
     reset({
-      username: current?.username,
+      full_name: current?.username,
       email: current?.email,
       phone: current?.phone,
       address: current?.address,
@@ -47,10 +47,10 @@ const Personal = () => {
       <div className='border border-b-gray-800 border-t-gray-100 border-l-gray-100 border-r-gray-100'>Account information</div>
       <form onSubmit={handleSubmit(handleUpdateInfor)}>
         <InputForm
-          label='Username'
+          label='Full_name'
           register={register}
           errors={errors}
-          id='username'
+          id='full_name'
           validate={{ required: 'Need fill this field' }}
         />
         <InputForm

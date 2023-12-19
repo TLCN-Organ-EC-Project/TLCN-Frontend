@@ -5,7 +5,6 @@ import moment from 'moment'
 import Loading from '../../components/Loading/Loading'
 import { ButtonBack } from '../../components/Button/ButtonBack'
 import { useNavigate } from "react-router-dom"
-import path from '../../ultils/path'
 import { deleteOrder } from '../../apis/user'
 import { useQueryClient } from 'react-query'
 
@@ -17,6 +16,7 @@ const ListOrder = () => {
     const queryClient = useQueryClient();
     const hanleDeleteOrder = async (username, bookingid) => {
         const response = await deleteOrder(username, bookingid)
+        console.log(response)
         if (response) {
           queryClient.invalidateQueries(['order-data', current?.username])
         }
