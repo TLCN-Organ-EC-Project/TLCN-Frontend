@@ -22,17 +22,16 @@ const products = [
   },
 ]
 const DetailOrder = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const { bookingid } = useParams()
   const { current } = useSelector(state => state.user);
   const queryClient = useQueryClient();
   const { data: detailOrderData, isLoading: isFetchingProducts } = useGetDetailOrder(current?.username, bookingid);
-  console.log(detailOrderData)
-  const hanleDeleteOrder=async (username, bookingid)=>{
+
+  const hanleDeleteOrder = async (username, bookingid) => {
     const response = await deleteOrder(username, bookingid)
-    if (response){
-        queryClient.invalidateQueries(['order-data', current?.username])
-        navigate(``)
+    if (response) {
+      queryClient.invalidateQueries(['order-data', current?.username])
     }
   }
   return (
@@ -55,29 +54,29 @@ const DetailOrder = () => {
           </h2>
 
           <h3 className="sr-only">Items</h3>
-          {detailOrderData.product_ordered.map((product) => (
-            <div key={product.id} className="flex space-x-6 border-b border-gray-200 py-10">
+          {detailOrderData?.product_ordered?.map((product) => (
+            <div key={product?.id} className="flex space-x-6 border-b border-gray-200 py-10">
               <img
-                src={product.product_thumb}
-                alt={product.imageAlt}
+                src={product?.product_thumb}
+                alt={product?.imageAlt}
                 className="h-20 w-20 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40"
               />
               <div className="flex flex-auto flex-col">
                 <div>
                   <h4 className="font-medium text-gray-900">
-                    <a href={product.href}>{product.product_name}</a>
+                    <a>{product?.product_name}</a>
                   </h4>
-                  <p className="mt-2 text-sm text-gray-600">Size : {product.size}</p>
+                  <p className="mt-2 text-sm text-gray-600">Size : {product?.size}</p>
                 </div>
                 <div className="mt-6 flex flex-1 items-end">
                   <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
                     <div className="flex">
                       <dt className="font-medium text-gray-900">Quantity</dt>
-                      <dd className="ml-2 text-gray-700">{product.quantity}</dd>{/*  */}
+                      <dd className="ml-2 text-gray-700">{product?.quantity}</dd>{/*  */}
                     </div>
                     <div className="flex pl-4 sm:pl-6">
                       <dt className="font-medium text-gray-900">Price</dt>
-                      <dd className="ml-2 text-gray-700">{product.price}</dd>
+                      <dd className="ml-2 text-gray-700">{product?.price}</dd>
                     </div>
                   </dl>
                 </div>
@@ -94,7 +93,7 @@ const DetailOrder = () => {
                 <dt className="font-medium text-gray-900">Shipping address</dt>
                 <dd className="mt-2 text-gray-700">
                   <address className="not-italic">
-                    <span className="block">{detailOrderData.order.address}</span>
+                    <span className="block">{detailOrderData?.order?.address}</span>
                   </address>
                 </dd>
               </div>
@@ -102,7 +101,7 @@ const DetailOrder = () => {
                 <dt className="font-medium text-gray-900">Billing address</dt>
                 <dd className="mt-2 text-gray-700">
                   <address className="not-italic">
-                    <span className="block">{detailOrderData.order.address}</span>
+                    <span className="block">{detailOrderData?.order?.address}</span>
                   </address>
                 </dd>
               </div>
@@ -113,7 +112,7 @@ const DetailOrder = () => {
               <div>
                 <dt className="font-medium text-gray-900">Payment method</dt>
                 <dd className="mt-2 text-gray-700">
-                  <p>{detailOrderData.order.payment_method}</p>
+                  <p>{detailOrderData?.order?.payment_method}</p>
                   <p>
                     <span aria-hidden="true">••••</span>
                     <span className="sr-only">Ending in </span>
@@ -134,35 +133,31 @@ const DetailOrder = () => {
             <dl className="space-y-6 border-t border-gray-200 pt-10 text-sm">
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Subtotal</dt>
-                <dd className="text-gray-700">{detailOrderData.order.amount}</dd>
+                <dd className="text-gray-700">{detailOrderData?.order?.amount}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="flex font-medium text-gray-900">
                   Discount
-{/*                   <span className="ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600">STUDENT50</span> */}
+                  {/*                   <span className="ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600">STUDENT50</span> */}
                 </dt>
                 <dd className="text-gray-700">(0%)</dd>
               </div>
-          
+
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>
-                <dd className="text-gray-900">{detailOrderData.order.amount}</dd>
+                <dd className="text-gray-900">{detailOrderData?.order?.amount}</dd>
               </div>
             </dl>
           </div>
         </section>
-        <section className='flex justify-between gap-10 pt-10'>
-          <button 
-          class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-          onClick={()=>   navigate(`/${path.HOME}`)}
+        <section className='flex justify-end gap-10 pt-10'>
+          <button
+            class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            onClick={() => navigate(`/${path.HOME}`)}
           >
             Go home
           </button>
-          <button
-            onClick={()=>hanleDeleteOrder(current?.username,bookingid)}
-           class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-               Cancel Order
-          </button>
+          
         </section>
       </div>
     </main>
