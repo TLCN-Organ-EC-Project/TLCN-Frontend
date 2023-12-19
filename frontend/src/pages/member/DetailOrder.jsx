@@ -30,9 +30,10 @@ const DetailOrder = () => {
   console.log(detailOrderData)
   const hanleDeleteOrder=async (username, bookingid)=>{
     const response = await deleteOrder(username, bookingid)
-   /*  if (response){
-        queryClient.invalidateQueries(['orderDetail-data', current?.username,bookingid])
-    } */
+    if (response){
+        queryClient.invalidateQueries(['order-data', current?.username])
+        navigate(``)
+    }
   }
   return (
     <main className="bg-white px-4 pt-16 pb-24 sm:px-6 sm:pt-24 lg:px-8 lg:py-32">
@@ -54,19 +55,19 @@ const DetailOrder = () => {
           </h2>
 
           <h3 className="sr-only">Items</h3>
-          {products.map((product) => (
+          {detailOrderData.product_ordered.map((product) => (
             <div key={product.id} className="flex space-x-6 border-b border-gray-200 py-10">
               <img
-                src={product.imageSrc}
+                src={product.product_thumb}
                 alt={product.imageAlt}
                 className="h-20 w-20 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40"
               />
               <div className="flex flex-auto flex-col">
                 <div>
                   <h4 className="font-medium text-gray-900">
-                    <a href={product.href}>{product.name}</a>
+                    <a href={product.href}>{product.product_name}</a>
                   </h4>
-                  <p className="mt-2 text-sm text-gray-600">{product.description}</p>
+                  <p className="mt-2 text-sm text-gray-600">Size : {product.size}</p>
                 </div>
                 <div className="mt-6 flex flex-1 items-end">
                   <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
@@ -93,9 +94,7 @@ const DetailOrder = () => {
                 <dt className="font-medium text-gray-900">Shipping address</dt>
                 <dd className="mt-2 text-gray-700">
                   <address className="not-italic">
-                    <span className="block">Kristin Watson</span>
-                    <span className="block">7363 Cynthia Pass</span>
-                    <span className="block">Toronto, ON N3Y 4H8</span>
+                    <span className="block">{detailOrderData.order.address}</span>
                   </address>
                 </dd>
               </div>
@@ -103,9 +102,7 @@ const DetailOrder = () => {
                 <dt className="font-medium text-gray-900">Billing address</dt>
                 <dd className="mt-2 text-gray-700">
                   <address className="not-italic">
-                    <span className="block">Kristin Watson</span>
-                    <span className="block">7363 Cynthia Pass</span>
-                    <span className="block">Toronto, ON N3Y 4H8</span>
+                    <span className="block">{detailOrderData.order.address}</span>
                   </address>
                 </dd>
               </div>
@@ -116,11 +113,10 @@ const DetailOrder = () => {
               <div>
                 <dt className="font-medium text-gray-900">Payment method</dt>
                 <dd className="mt-2 text-gray-700">
-                  <p>Apple Pay</p>
-                  <p>Mastercard</p>
+                  <p>{detailOrderData.order.payment_method}</p>
                   <p>
                     <span aria-hidden="true">••••</span>
-                    <span className="sr-only">Ending in </span>1545
+                    <span className="sr-only">Ending in </span>
                   </p>
                 </dd>
               </div>
@@ -138,22 +134,19 @@ const DetailOrder = () => {
             <dl className="space-y-6 border-t border-gray-200 pt-10 text-sm">
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Subtotal</dt>
-                <dd className="text-gray-700">$36.00</dd>
+                <dd className="text-gray-700">{detailOrderData.order.amount}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="flex font-medium text-gray-900">
                   Discount
-                  <span className="ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600">STUDENT50</span>
+{/*                   <span className="ml-2 rounded-full bg-gray-200 py-0.5 px-2 text-xs text-gray-600">STUDENT50</span> */}
                 </dt>
-                <dd className="text-gray-700">-$18.00 (50%)</dd>
+                <dd className="text-gray-700">(0%)</dd>
               </div>
-              <div className="flex justify-between">
-                <dt className="font-medium text-gray-900">Shipping</dt>
-                <dd className="text-gray-700">$5.00</dd>
-              </div>
+          
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>
-                <dd className="text-gray-900">$23.00</dd>
+                <dd className="text-gray-900">{detailOrderData.order.amount}</dd>
               </div>
             </dl>
           </div>
