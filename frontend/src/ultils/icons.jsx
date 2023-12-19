@@ -10,6 +10,7 @@ import {ImBin} from 'react-icons/im'
 import {TiTickOutline} from 'react-icons/ti'
 import {HiOutlineShoppingBag} from 'react-icons/hi'
 import {TfiViewListAlt} from 'react-icons/tfi'
+import { GiConfirmed } from "react-icons/gi";
 import {SiBlockchaindotcom} from 'react-icons/si'
 import {RiProductHuntLine,RiBillLine,RiOpenbaseFill} from 'react-icons/ri'
 import {AiFillStar,AiFillCheckCircle,AiFillGoogleCircle,AiFillInstagram,AiOutlineStar,AiFillEye,AiOutlineMenu,AiOutlineDashboard,AiOutlineLogout,AiOutlineDown,AiOutlineCloseCircle} from 'react-icons/ai'
@@ -55,6 +56,7 @@ const icons={
     AiOutlineProfile,
     TfiViewListAlt,
     SiBlockchaindotcom,
+    GiConfirmed,
 }
 
 export default icons

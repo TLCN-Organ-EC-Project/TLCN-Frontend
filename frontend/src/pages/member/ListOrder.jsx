@@ -7,6 +7,9 @@ import { ButtonBack } from '../../components/Button/ButtonBack'
 import { useNavigate } from "react-router-dom"
 import { deleteOrder } from '../../apis/user'
 import { useQueryClient } from 'react-query'
+import icons from '../../ultils/icons'
+
+const { GiConfirmed } = icons
 
 const ListOrder = () => {
     const navigate= useNavigate()
@@ -42,7 +45,15 @@ const ListOrder = () => {
                             <div className='pr-5'>{moment(el?.booking_date).format('YYYY-MM-DD')}</div>
                             <div className='mr-2'>{el.status}</div>
                             <ButtonBack children='Detail Order'handleClick={()=>navigate(`/member/${el?.booking_id}`)} />  
-                            <ButtonBack children='Cancel Order'handleClick={()=>{hanleDeleteOrder(current?.username,el?.booking_id)}} />  
+                            {
+                                el?.status==="validated" 
+                                ? 
+                                  <ButtonBack children='Cancel Order'handleClick={()=>{hanleDeleteOrder(current?.username,el?.booking_id)}} />  
+                                  :
+                                  <div className='justify-center flex'>
+                                      <GiConfirmed size={25}/>
+                                  </div>
+                            }
                         </div>
                     ))
                 }

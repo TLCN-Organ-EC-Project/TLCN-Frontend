@@ -11,6 +11,7 @@ import { getProvinceById } from '../../apis/products'
 const Personal = () => {
   const { register, formState: { errors, isDirty }, handleSubmit, reset } = useForm()
   const { current } = useSelector(state => state.user)
+  console.log(current)
   const [userData, setUserData] = useState(null)
   const [provinces, setProvinces] = useState('')
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ const Personal = () => {
   useEffect(() => {
     getProvince(current?.province?.toString())
     reset({
-      full_name: current?.username,
+      full_name: current?.full_name,
       email: current?.email,
       phone: current?.phone,
       address: current?.address,

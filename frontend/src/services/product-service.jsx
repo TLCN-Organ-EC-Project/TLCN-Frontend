@@ -31,7 +31,6 @@ export const getAllProductFromCart = async (username) => {
         throw Error(`Failed to fetch products from cart : ${error}`);
     }
 }
-
 export const getAllOrderByUsername = async (username) => {
     try {
         const data = await axios({
@@ -47,7 +46,6 @@ export const getAllOrderByUsername = async (username) => {
         throw Error(`Failed to fetch products by category: ${error}`);
     }
 }
-
 export const getProductById = async (pid) => {
     try {
         const data = await axios({
@@ -63,7 +61,6 @@ export const getProductById = async (pid) => {
         throw Error(`Failed to fetch products by id: ${error}`);
     }
 }
-
 export const getFeedBackById=async (pid)=>{
     try {
         const data = await axios({
@@ -79,7 +76,6 @@ export const getFeedBackById=async (pid)=>{
         throw Error(`Failed to fetch feedbacks product by id: ${error}`);
     }
 }
-
 export const getListProvider =async ()=>{
     try{
         const data=await axios({
