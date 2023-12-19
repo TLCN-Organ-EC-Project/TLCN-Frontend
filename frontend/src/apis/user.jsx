@@ -51,7 +51,7 @@ export const deleteItemCart = (username, cid) => axios({
 })
 export const deleteOrder=(username, bookingid)=>axios({
     url:`/users/${username}/orders/${bookingid}/cancel`,
-    method:'delete',
+    method:'put',
 })
 
 export const createOrder = (username, data) => axios({
