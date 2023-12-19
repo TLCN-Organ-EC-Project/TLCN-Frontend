@@ -2,25 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetDetailOrder } from '../../hooks/useProductsByCategory'
 import { useSelector } from 'react-redux'
-import { ButtonBack } from '../../components/Button/ButtonBack'
 import { useNavigate } from 'react-router-dom'
 import path from '../../ultils/path'
 import { deleteOrder } from '../../apis/user'
 import { useQueryClient } from 'react-query'
 
-const products = [
-  {
-    id: 1,
-    name: 'Cold Brew Bottle',
-    description:
-      'This glass bottle comes with a mesh insert for steeping tea or cold-brewing coffee. Pour from any angle and remove the top for easy cleaning.',
-    href: '#',
-    quantity: 1,
-    price: '$32.00',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-05-product-01.jpg',
-    imageAlt: 'Glass bottle with black plastic pour top and mesh insert.',
-  },
-]
 const DetailOrder = () => {
   const navigate = useNavigate()
   const { bookingid } = useParams()
@@ -86,7 +72,6 @@ const DetailOrder = () => {
 
           <div className="sm:ml-40 sm:pl-6">
             <h3 className="sr-only">Your information</h3>
-
             <h4 className="sr-only">Addresses</h4>
             <dl className="grid grid-cols-2 gap-x-6 py-10 text-sm">
               <div>
@@ -106,7 +91,6 @@ const DetailOrder = () => {
                 </dd>
               </div>
             </dl>
-
             <h4 className="sr-only">Payment</h4>
             <dl className="grid grid-cols-2 gap-x-6 border-t border-gray-200 py-10 text-sm">
               <div>
@@ -156,8 +140,7 @@ const DetailOrder = () => {
             onClick={() => navigate(`/${path.HOME}`)}
           >
             Go home
-          </button>
-          
+          </button>    
         </section>
       </div>
     </main>
