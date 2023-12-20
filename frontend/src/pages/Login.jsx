@@ -65,17 +65,17 @@ const Login = () => {
         setLoading(true)
         const response = await apiResgister(payload)
         setLoading(false)
-        if (response) {
+        if (response.data) {
           Swal.fire('Congratulation', 'success').then(() => {
             setIsRegister(false)
             navigate(`/${path.LOGIN}`)
           })
         } else {
-          Swal.fire('Oops!', 'error')
+          Swal.fire('Oops!', 'Error,Please register again')
         }
       } else {
         const response = await apiLogin(data)
-        if (response) {
+        if (response.data) {
           setLoading(true);
           const token = response.headers.get('x-access-token');
           const refreshToken = response.headers.get('x-refresh-token');
@@ -87,7 +87,7 @@ const Login = () => {
             refreshToken: refreshToken
           }))
           navigate(`/${path.HOME}`)
-        } else Swal.fire('Oops!', 'error')
+        } else Swal.fire('Oops!', 'Error, Please login again')
       }
     } else {
       Swal.fire('Oops!', 'error')
