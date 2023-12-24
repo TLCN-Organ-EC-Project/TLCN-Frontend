@@ -14,6 +14,7 @@ import ListOrder from "./pages/member/ListOrder";
 import ModalComment from "./components/comment/ModalComment";
 import { DetailProductProvider } from "./context/DetailProductContext";
 import DetailOrder from "./pages/member/DetailOrder";
+import PageNotPound from "./pages/PageNotPound";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path={path.DETAILORDER} element={<DetailOrder />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.ORDER} element={<OrderPage />} />
+          <Route path="*"  element={<PageNotPound/>} />
         </Routes>
         <ToastContainer
           position="top-right"

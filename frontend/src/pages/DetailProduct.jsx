@@ -126,7 +126,7 @@ const DetailProduct = () => {
                 ))}
               </div>
               <div className="py-4">
-                <SelectQuality select quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
+                       <SelectQuality select quantily={quantily} handleQuantily={handleQuantily} handleChangeQuantity={handleChangeQuantity} />
               </div>
               <div className="py-5 border border-b-gray-300 border-t-gray-100 border-l-gray-100 border-r-gray-100">
                 <Button children='ADD TO CART' buttonAdd handleOnClick={handleAddtoCart} />
