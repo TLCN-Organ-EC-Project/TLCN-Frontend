@@ -1,6 +1,7 @@
 import React from 'react'
-
+import { NavLink, useNavigate } from 'react-router-dom'
 const PageNotPound = () => {
+    const navigate= useNavigate()
     return (
         <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
             <h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
@@ -16,7 +17,7 @@ const PageNotPound = () => {
                     ></span>
 
                     <span className="relative block px-8 py-3 bg-[#1A2238] border border-current">
-                        <router-link to="/">Go Home</router-link>
+                        <NavLink to="/">Go Home</NavLink>
                     </span>
                 </a>
             </button>
