@@ -14,11 +14,8 @@ const Public = () => {
             if (response) {
 
             }
-
         } catch (error) {
-
             console.error('Error refreshing token', error)
-            
         }
     }
     useEffect(() => {
@@ -27,7 +24,7 @@ const Public = () => {
             handleRefreshToken();
         }, delay);
         return () => clearTimeout(timeoutId);
-    }, [    ]);
+    }, [ ]);
     
     return (
         <div className="w-full flex flex-col items-center ">

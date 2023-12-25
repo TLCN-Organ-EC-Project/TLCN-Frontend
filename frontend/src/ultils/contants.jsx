@@ -1,7 +1,7 @@
 import path from './path'
 import icons from '../ultils/icons'
 
-const { AiOutlineDashboard, GrGroup } = icons
+const { AiOutlineDashboard} = icons
 
 
 export const navigation = [
@@ -21,35 +21,6 @@ export const navigation = [
     path: `/${path.CONTACT_US}`
   }
 ]
-
-export const blogs = [
-  {
-    id: 1,
-    title: 'IN 2017, YOUR PHONES CAMERA WILL HAVE SUPERPOWERS',
-    image: 'https://digital-world-2.myshopify.com/cdn/shop/articles/blog12_1024x1024.jpg?v=1492595082',
-    author: 'By Tada Theme',
-    createAt: 'Dec 13, 2023',
-    desc: 'Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood. You could engage with augmented reality with a headset, and see 3D objects "projected" into your real world -- something thats usually called "mixed reality.'
-  },
-  {
-    id: 2,
-    title: 'IN 2017, YOUR PHONES CAMERA WILL HAVE SUPERPOWERS',
-    image: 'https://digital-world-2.myshopify.com/cdn/shop/articles/blog12_1024x1024.jpg?v=1492595082',
-    author: 'By Tada Theme',
-    createAt: 'Dec 13, 2023',
-    desc: 'Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood. You could engage with augmented reality with a headset, and see 3D objects "projected" into your real world -- something thats usually called "mixed reality.'
-  },
-  {
-    id: 3,
-    title: 'IN 2017, YOUR PHONES CAMERA WILL HAVE SUPERPOWERS',
-    image: 'https://digital-world-2.myshopify.com/cdn/shop/articles/blog12_1024x1024.jpg?v=1492595082',
-    author: 'By Tada Theme',
-    createAt: 'Dec 13, 2023',
-    desc: 'Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood Virtual reality is a somewhat understandable concept in 2016. You put on a headset, you find yourself in 3D worlds. But augmented reality -- AR -- is still a bit less understood. You could engage with augmented reality with a headset, and see 3D objects "projected" into your real world -- something thats usually called "mixed reality.'
-  },
-
-]
-
 
 export const menuSPMoi = [
   {

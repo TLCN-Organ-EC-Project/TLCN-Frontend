@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import {blogs} from '../ultils/contants'
 import { BlogItem } from '../components'
 import Skeleton from "../components/Skeleton/Skeleton";
 const Blog = () => {

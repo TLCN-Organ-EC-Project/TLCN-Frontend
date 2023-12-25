@@ -98,7 +98,7 @@ const Login = () => {
 
   return (
     <div
-      className={` flex xl:flex-row flex-col-reverse gap-5 overflow-hidden bg-blue-300 h-[705px] relative`}
+      className={` flex xl:flex-row flex-col-reverse gap-5 overflow-hidden bg-blue-300 h-[734px] relative`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0.5, 1)}
@@ -197,7 +197,7 @@ const Login = () => {
 
       <motion.div
         variants={slideIn("right", "tween", 0.5, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+        className='xl:flex-1 xl:h-auto md:h-[600px] h-[350px]'
       >
         <EarthCanvas />
       </motion.div>
